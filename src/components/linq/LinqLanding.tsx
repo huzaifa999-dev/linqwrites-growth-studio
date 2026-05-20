@@ -484,6 +484,13 @@ function PartnerCTA() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 120, damping: 18 });
   const sy = useSpring(my, { stiffness: 120, damping: 18 });
+  const cards = [
+    { src: showLinkedin, rot: -14, x: -260, y: 40, d: 0.05 },
+    { src: showSaas, rot: -6, x: -120, y: -10, d: 0.12 },
+    { src: showBrand, rot: 4, x: 40, y: -30, d: 0.19 },
+    { src: showAi, rot: 12, x: 200, y: 10, d: 0.26 },
+    { src: showCarousel, rot: 20, x: 340, y: 60, d: 0.33 },
+  ];
   return (
     <section
       id="contact"
@@ -499,10 +506,10 @@ function PartnerCTA() {
       <div className="relative mx-auto max-w-5xl px-6 text-center">
         <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05) — Let’s build</p>
         <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="font-display text-[clamp(2.4rem,7vw,6rem)] font-light leading-[0.98] text-ink">
-          Build something <em className="italic text-accent-warm">people remember.</em>
+          Partner with <em className="italic text-accent-warm">LinqWrites.</em>
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.2 }} className="mx-auto mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
-          Visibility compounds. Authority scales. Trust closes.
+          A two-person studio. A short waitlist. Tell us what you’re building — we’ll tell you what we’d do.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.35 }} className="mt-14">
           <a href="mailto:linqwrites@gmail.com" data-hover className="group inline-flex items-center gap-3 rounded-full bg-ink px-9 py-5 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
@@ -510,6 +517,27 @@ function PartnerCTA() {
             <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </motion.div>
+
+        {/* Floating fanned project cards — sendoff inspired */}
+        <div className="relative mx-auto mt-24 hidden h-[260px] w-full max-w-3xl md:block">
+          {cards.map((c, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 80, rotate: 0 }}
+              whileInView={{ opacity: 1, y: c.y, rotate: c.rot }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.1, delay: c.d, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: c.y - 18, rotate: c.rot * 0.6, scale: 1.05, zIndex: 20 }}
+              style={{ left: `calc(50% + ${c.x}px)` }}
+              className="absolute top-0 -translate-x-1/2"
+            >
+              <div className="h-[200px] w-[150px] overflow-hidden rounded-2xl bg-paper shadow-lift ring-1 ring-white/10">
+                <img src={c.src} alt="" className="h-full w-full object-cover" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         <div className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-ink-soft">
           <a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-2 hover:text-ink"><Mail size={14}/> linqwrites@gmail.com</a>
           <a href="tel:+917381442999" className="inline-flex items-center gap-2 hover:text-ink"><Phone size={14}/> +91 73814 42999</a>
@@ -578,10 +606,78 @@ function FloatingCTA() {
   );
 }
 
+/* -------------------- Preloader -------------------- */
+function Preloader({ onDone }: { onDone: () => void }) {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    let p = 0;
+    const id = setInterval(() => {
+      p = Math.min(100, p + Math.random() * 14 + 6);
+      setProgress(Math.floor(p));
+      if (p >= 100) {
+        clearInterval(id);
+        setTimeout(onDone, 650);
+      }
+    }, 110);
+    return () => clearInterval(id);
+  }, [onDone]);
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-paper"
+    >
+      <motion.div
+        initial={{ scale: 1 }}
+        exit={{ scale: 1.1, y: -40 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-md px-8 text-center"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-5xl tracking-tight text-ink md:text-6xl"
+        >
+          Linq<em className="italic text-accent-warm">Writes</em>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-6 text-[0.7rem] uppercase tracking-[0.4em] text-ink-soft"
+        >
+          Master your narrative
+        </motion.p>
+        <div className="relative mx-auto mt-12 h-px w-full overflow-hidden bg-white/10">
+          <motion.div
+            animate={{ width: `${progress}%` }}
+            transition={{ ease: "easeOut", duration: 0.3 }}
+            className="absolute inset-y-0 left-0 bg-accent-warm"
+          />
+        </div>
+        <div className="mt-4 flex justify-between text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft tabular-nums">
+          <span>Loading studio</span>
+          <span>{String(progress).padStart(3, "0")}%</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 /* -------------------- Page -------------------- */
 export function LinqLanding() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [loading]);
   return (
     <div className="bg-paper text-ink">
+      <AnimatePresence>
+        {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
+      </AnimatePresence>
       <CustomCursor />
       <Nav />
       <main>

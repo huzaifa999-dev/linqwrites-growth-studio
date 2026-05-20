@@ -64,17 +64,18 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.995 0.005 80);
-  --foreground: oklch(0.18 0.025 220);
-  --ink: oklch(0.18 0.025 220);
-  --ink-soft: oklch(0.32 0.022 220);
-  --paper: oklch(0.985 0.012 75);
-  --paper-warm: oklch(0.965 0.022 78);
-  --accent-warm: oklch(0.72 0.13 55);
-  --accent-gold: oklch(0.78 0.12 80);
-  --hairline: oklch(0.86 0.012 80);
-  --shadow-soft: 0 30px 80px -30px oklch(0.18 0.025 220 / 0.18);
-  --shadow-lift: 0 40px 100px -40px oklch(0.18 0.025 220 / 0.28);
+  /* Dark cinematic palette — semantic names kept for compatibility */
+  --background: oklch(0.13 0.012 260);
+  --foreground: oklch(0.96 0.01 85);
+  --ink: oklch(0.97 0.012 85);          /* "ink" now reads on dark = light text */
+  --ink-soft: oklch(0.74 0.018 80);
+  --paper: oklch(0.13 0.012 260);       /* "paper" now = deep night */
+  --paper-warm: oklch(0.16 0.018 270);  /* slightly lifted surface */
+  --accent-warm: oklch(0.82 0.14 80);   /* warm champagne gold */
+  --accent-gold: oklch(0.86 0.13 85);
+  --hairline: oklch(1 0 0 / 0.09);
+  --shadow-soft: 0 30px 80px -30px oklch(0 0 0 / 0.6);
+  --shadow-lift: 0 50px 140px -40px oklch(0 0 0 / 0.75);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);

@@ -134,7 +134,7 @@ function Hero() {
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto max-w-5xl px-6 text-center">
-        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/60 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
+        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
           <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
         </motion.p>
 
@@ -171,7 +171,7 @@ function Hero() {
             Start a project
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
-          <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/60 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white">
+          <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
             View our work
             <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
           </a>
@@ -209,7 +209,7 @@ function Marquee() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[var(--paper)] to-transparent" />
         <div className="flex w-max marquee-track gap-8 px-8">
           {[...items, ...items].map((it, i) => (
-            <figure key={i} className="group relative h-[380px] w-[520px] shrink-0 overflow-hidden rounded-3xl bg-white shadow-soft transition duration-700 hover:shadow-lift">
+            <figure key={i} className="group relative h-[380px] w-[520px] shrink-0 overflow-hidden rounded-3xl bg-paper-warm shadow-soft transition duration-700 hover:shadow-lift">
               <img src={it.src} alt={it.label} loading="lazy" className="h-full w-full object-cover transition duration-[1.4s] group-hover:scale-105" />
               <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-sm text-white">
                 <span>{it.label}</span>
@@ -232,47 +232,69 @@ function Story() {
 
   return (
     <section id="about" ref={ref} className="relative overflow-hidden bg-paper-warm py-32 md:py-44">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-12">
-        <div className="md:col-span-7">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
-            (01) — The Founders
-          </motion.p>
-          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
-            <Quote size={36} className="mb-6 inline-block -rotate-6 text-accent-warm" />
-            <br />
-            <em className="italic">“Most founders don’t need more ideas. They need clearer positioning.”</em>
-          </motion.h2>
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} custom={1} className="mt-12 max-w-xl space-y-5 text-base leading-relaxed text-ink-soft">
-            <p>
-              LinqWrites was built by <span className="text-ink">Huzaifa</span> &amp; <span className="text-ink">Faiz</span>
-              {" "}— two operators who believe that smart founders deserve to sound like themselves online: sharp,
-              specific, human. Not robotic, corporate, or forgettable.
-            </p>
-            <p>
-              We design narrative systems — the words, the visuals, the workflows — so the right people start
-              paying attention, and stay.
-            </p>
-            <div className="grid grid-cols-3 gap-8 pt-10">
-              {[["120+","Founders served"],["38M+","Impressions generated"],["4.9","Avg. client rating"]].map(([n,l])=>(
-                <div key={l as string}>
-                  <div className="font-display text-3xl text-ink">{n}</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-ink-soft">{l}</div>
+      <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.82_0.14_80/0.12),transparent_70%)] blur-3xl" />
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
+          (01) — The Founders
+        </motion.p>
+        <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="max-w-4xl font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
+          <Quote size={32} className="mb-6 inline-block -rotate-6 text-accent-warm" />
+          <br />
+          <em className="italic">“Most founders don’t need more ideas. They need clearer positioning.”</em>
+        </motion.h2>
+
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} custom={1} className="mt-12 grid max-w-3xl gap-5 text-base leading-relaxed text-ink-soft md:text-lg">
+          <p>
+            LinqWrites is a two-person studio built by <span className="text-ink">Huzaifa</span> &amp; <span className="text-ink">Faiz</span> —
+            operators who believe smart founders deserve to sound like themselves online: sharp, specific, human.
+            Not robotic, corporate, or forgettable.
+          </p>
+          <p>
+            We design narrative systems — the words, the visuals, the workflows — so the right people start
+            paying attention, and stay.
+          </p>
+        </motion.div>
+
+        {/* Founders grid — both visible on every screen */}
+        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
+          {[
+            { img: founderHuzaifa, name: "Huzaifa", role: "Co-founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
+            { img: founderFaiz, name: "Faiz", role: "Co-founder · Design & Systems", bio: "Lives at the intersection of taste and ops. Designs the visuals, the systems and the AI that make it all run quietly.", y: y2 },
+          ].map((f) => (
+            <motion.figure
+              key={f.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative"
+            >
+              <motion.div style={{ y: f.y }} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper shadow-lift">
+                <img
+                  src={f.img}
+                  alt={`${f.name} — co-founder of LinqWrites`}
+                  loading="lazy"
+                  className="h-full w-full object-cover grayscale transition duration-[1.6s] group-hover:grayscale-0 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="font-display text-3xl text-[var(--paper)] mix-blend-difference">{f.name}</div>
+                  <div className="mt-1 text-[0.7rem] uppercase tracking-[0.25em] text-white/80">{f.role}</div>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+              </motion.div>
+              <figcaption className="mt-5 max-w-md text-sm leading-relaxed text-ink-soft">{f.bio}</figcaption>
+            </motion.figure>
+          ))}
         </div>
 
-        <div className="relative md:col-span-5">
-          <motion.div style={{ y: y1 }} className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-lift">
-            <img src={founderHuzaifa} alt="Huzaifa — co-founder of LinqWrites" loading="lazy" className="h-full w-full object-cover" />
-            <div className="absolute bottom-4 left-4 rounded-full bg-paper/90 px-4 py-1.5 text-xs tracking-wide text-ink backdrop-blur">Huzaifa — Strategy &amp; Voice</div>
-          </motion.div>
-          <motion.div style={{ y: y2 }} className="absolute -bottom-16 -left-6 hidden aspect-[3/4] w-2/3 overflow-hidden rounded-3xl shadow-lift md:block">
-            <img src={founderFaiz} alt="Faiz — co-founder of LinqWrites" loading="lazy" className="h-full w-full object-cover" />
-            <div className="absolute bottom-4 left-4 rounded-full bg-paper/90 px-4 py-1.5 text-xs tracking-wide text-ink backdrop-blur">Faiz — Design &amp; Systems</div>
-          </motion.div>
-        </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }} className="mt-20 grid grid-cols-3 gap-8 border-t border-hairline pt-12">
+          {[["120+","Founders served"],["38M+","Impressions generated"],["4.9","Avg. client rating"]].map(([n,l])=>(
+            <div key={l}>
+              <div className="font-display text-3xl text-ink md:text-4xl">{n}</div>
+              <div className="mt-2 text-[0.65rem] uppercase tracking-widest text-ink-soft md:text-xs">{l}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       <div className="mx-auto mt-32 max-w-7xl px-6">
@@ -328,7 +350,7 @@ function Services() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
               data-hover
-              className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-white"
+              className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-paper-warm"
             >
               <div className="flex items-start justify-between">
                 <s.icon size={26} strokeWidth={1.4} className="text-ink transition group-hover:text-accent-warm" />
@@ -462,6 +484,13 @@ function PartnerCTA() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 120, damping: 18 });
   const sy = useSpring(my, { stiffness: 120, damping: 18 });
+  const cards = [
+    { src: showLinkedin, rot: -14, x: -260, y: 40, d: 0.05 },
+    { src: showSaas, rot: -6, x: -120, y: -10, d: 0.12 },
+    { src: showBrand, rot: 4, x: 40, y: -30, d: 0.19 },
+    { src: showAi, rot: 12, x: 200, y: 10, d: 0.26 },
+    { src: showCarousel, rot: 20, x: 340, y: 60, d: 0.33 },
+  ];
   return (
     <section
       id="contact"
@@ -477,10 +506,10 @@ function PartnerCTA() {
       <div className="relative mx-auto max-w-5xl px-6 text-center">
         <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05) — Let’s build</p>
         <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="font-display text-[clamp(2.4rem,7vw,6rem)] font-light leading-[0.98] text-ink">
-          Build something <em className="italic text-accent-warm">people remember.</em>
+          Partner with <em className="italic text-accent-warm">LinqWrites.</em>
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.2 }} className="mx-auto mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
-          Visibility compounds. Authority scales. Trust closes.
+          A two-person studio. A short waitlist. Tell us what you’re building — we’ll tell you what we’d do.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.35 }} className="mt-14">
           <a href="mailto:linqwrites@gmail.com" data-hover className="group inline-flex items-center gap-3 rounded-full bg-ink px-9 py-5 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
@@ -488,6 +517,27 @@ function PartnerCTA() {
             <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </motion.div>
+
+        {/* Floating fanned project cards — sendoff inspired */}
+        <div className="relative mx-auto mt-24 hidden h-[260px] w-full max-w-3xl md:block">
+          {cards.map((c, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 80, rotate: 0 }}
+              whileInView={{ opacity: 1, y: c.y, rotate: c.rot }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.1, delay: c.d, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: c.y - 18, rotate: c.rot * 0.6, scale: 1.05, zIndex: 20 }}
+              style={{ left: `calc(50% + ${c.x}px)` }}
+              className="absolute top-0 -translate-x-1/2"
+            >
+              <div className="h-[200px] w-[150px] overflow-hidden rounded-2xl bg-paper shadow-lift ring-1 ring-white/10">
+                <img src={c.src} alt="" className="h-full w-full object-cover" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         <div className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-ink-soft">
           <a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-2 hover:text-ink"><Mail size={14}/> linqwrites@gmail.com</a>
           <a href="tel:+917381442999" className="inline-flex items-center gap-2 hover:text-ink"><Phone size={14}/> +91 73814 42999</a>
@@ -556,10 +606,78 @@ function FloatingCTA() {
   );
 }
 
+/* -------------------- Preloader -------------------- */
+function Preloader({ onDone }: { onDone: () => void }) {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    let p = 0;
+    const id = setInterval(() => {
+      p = Math.min(100, p + Math.random() * 14 + 6);
+      setProgress(Math.floor(p));
+      if (p >= 100) {
+        clearInterval(id);
+        setTimeout(onDone, 650);
+      }
+    }, 110);
+    return () => clearInterval(id);
+  }, [onDone]);
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-paper"
+    >
+      <motion.div
+        initial={{ scale: 1 }}
+        exit={{ scale: 1.1, y: -40 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-md px-8 text-center"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-5xl tracking-tight text-ink md:text-6xl"
+        >
+          Linq<em className="italic text-accent-warm">Writes</em>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-6 text-[0.7rem] uppercase tracking-[0.4em] text-ink-soft"
+        >
+          Master your narrative
+        </motion.p>
+        <div className="relative mx-auto mt-12 h-px w-full overflow-hidden bg-white/10">
+          <motion.div
+            animate={{ width: `${progress}%` }}
+            transition={{ ease: "easeOut", duration: 0.3 }}
+            className="absolute inset-y-0 left-0 bg-accent-warm"
+          />
+        </div>
+        <div className="mt-4 flex justify-between text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft tabular-nums">
+          <span>Loading studio</span>
+          <span>{String(progress).padStart(3, "0")}%</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 /* -------------------- Page -------------------- */
 export function LinqLanding() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [loading]);
   return (
     <div className="bg-paper text-ink">
+      <AnimatePresence>
+        {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
+      </AnimatePresence>
       <CustomCursor />
       <Nav />
       <main>

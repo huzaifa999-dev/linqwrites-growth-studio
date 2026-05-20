@@ -232,47 +232,69 @@ function Story() {
 
   return (
     <section id="about" ref={ref} className="relative overflow-hidden bg-paper-warm py-32 md:py-44">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-12">
-        <div className="md:col-span-7">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
-            (01) — The Founders
-          </motion.p>
-          <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
-            <Quote size={36} className="mb-6 inline-block -rotate-6 text-accent-warm" />
-            <br />
-            <em className="italic">“Most founders don’t need more ideas. They need clearer positioning.”</em>
-          </motion.h2>
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} custom={1} className="mt-12 max-w-xl space-y-5 text-base leading-relaxed text-ink-soft">
-            <p>
-              LinqWrites was built by <span className="text-ink">Huzaifa</span> &amp; <span className="text-ink">Faiz</span>
-              {" "}— two operators who believe that smart founders deserve to sound like themselves online: sharp,
-              specific, human. Not robotic, corporate, or forgettable.
-            </p>
-            <p>
-              We design narrative systems — the words, the visuals, the workflows — so the right people start
-              paying attention, and stay.
-            </p>
-            <div className="grid grid-cols-3 gap-8 pt-10">
-              {[["120+","Founders served"],["38M+","Impressions generated"],["4.9","Avg. client rating"]].map(([n,l])=>(
-                <div key={l as string}>
-                  <div className="font-display text-3xl text-ink">{n}</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-ink-soft">{l}</div>
+      <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.82_0.14_80/0.12),transparent_70%)] blur-3xl" />
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
+          (01) — The Founders
+        </motion.p>
+        <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="max-w-4xl font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
+          <Quote size={32} className="mb-6 inline-block -rotate-6 text-accent-warm" />
+          <br />
+          <em className="italic">“Most founders don’t need more ideas. They need clearer positioning.”</em>
+        </motion.h2>
+
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} custom={1} className="mt-12 grid max-w-3xl gap-5 text-base leading-relaxed text-ink-soft md:text-lg">
+          <p>
+            LinqWrites is a two-person studio built by <span className="text-ink">Huzaifa</span> &amp; <span className="text-ink">Faiz</span> —
+            operators who believe smart founders deserve to sound like themselves online: sharp, specific, human.
+            Not robotic, corporate, or forgettable.
+          </p>
+          <p>
+            We design narrative systems — the words, the visuals, the workflows — so the right people start
+            paying attention, and stay.
+          </p>
+        </motion.div>
+
+        {/* Founders grid — both visible on every screen */}
+        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
+          {[
+            { img: founderHuzaifa, name: "Huzaifa", role: "Co-founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
+            { img: founderFaiz, name: "Faiz", role: "Co-founder · Design & Systems", bio: "Lives at the intersection of taste and ops. Designs the visuals, the systems and the AI that make it all run quietly.", y: y2 },
+          ].map((f) => (
+            <motion.figure
+              key={f.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative"
+            >
+              <motion.div style={{ y: f.y }} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper shadow-lift">
+                <img
+                  src={f.img}
+                  alt={`${f.name} — co-founder of LinqWrites`}
+                  loading="lazy"
+                  className="h-full w-full object-cover grayscale transition duration-[1.6s] group-hover:grayscale-0 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="font-display text-3xl text-[var(--paper)] mix-blend-difference">{f.name}</div>
+                  <div className="mt-1 text-[0.7rem] uppercase tracking-[0.25em] text-white/80">{f.role}</div>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+              </motion.div>
+              <figcaption className="mt-5 max-w-md text-sm leading-relaxed text-ink-soft">{f.bio}</figcaption>
+            </motion.figure>
+          ))}
         </div>
 
-        <div className="relative md:col-span-5">
-          <motion.div style={{ y: y1 }} className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-lift">
-            <img src={founderHuzaifa} alt="Huzaifa — co-founder of LinqWrites" loading="lazy" className="h-full w-full object-cover" />
-            <div className="absolute bottom-4 left-4 rounded-full bg-paper/90 px-4 py-1.5 text-xs tracking-wide text-ink backdrop-blur">Huzaifa — Strategy &amp; Voice</div>
-          </motion.div>
-          <motion.div style={{ y: y2 }} className="absolute -bottom-16 -left-6 hidden aspect-[3/4] w-2/3 overflow-hidden rounded-3xl shadow-lift md:block">
-            <img src={founderFaiz} alt="Faiz — co-founder of LinqWrites" loading="lazy" className="h-full w-full object-cover" />
-            <div className="absolute bottom-4 left-4 rounded-full bg-paper/90 px-4 py-1.5 text-xs tracking-wide text-ink backdrop-blur">Faiz — Design &amp; Systems</div>
-          </motion.div>
-        </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }} className="mt-20 grid grid-cols-3 gap-8 border-t border-hairline pt-12">
+          {[["120+","Founders served"],["38M+","Impressions generated"],["4.9","Avg. client rating"]].map(([n,l])=>(
+            <div key={l}>
+              <div className="font-display text-3xl text-ink md:text-4xl">{n}</div>
+              <div className="mt-2 text-[0.65rem] uppercase tracking-widest text-ink-soft md:text-xs">{l}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       <div className="mx-auto mt-32 max-w-7xl px-6">

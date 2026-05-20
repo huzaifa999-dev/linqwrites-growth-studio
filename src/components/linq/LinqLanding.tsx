@@ -134,7 +134,7 @@ function Hero() {
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto max-w-5xl px-6 text-center">
-        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/60 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
+        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
           <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
         </motion.p>
 
@@ -171,7 +171,7 @@ function Hero() {
             Start a project
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
-          <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/60 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white">
+          <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
             View our work
             <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
           </a>
@@ -209,7 +209,7 @@ function Marquee() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[var(--paper)] to-transparent" />
         <div className="flex w-max marquee-track gap-8 px-8">
           {[...items, ...items].map((it, i) => (
-            <figure key={i} className="group relative h-[380px] w-[520px] shrink-0 overflow-hidden rounded-3xl bg-white shadow-soft transition duration-700 hover:shadow-lift">
+            <figure key={i} className="group relative h-[380px] w-[520px] shrink-0 overflow-hidden rounded-3xl bg-paper-warm shadow-soft transition duration-700 hover:shadow-lift">
               <img src={it.src} alt={it.label} loading="lazy" className="h-full w-full object-cover transition duration-[1.4s] group-hover:scale-105" />
               <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-sm text-white">
                 <span>{it.label}</span>
@@ -328,7 +328,7 @@ function Services() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
               data-hover
-              className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-white"
+              className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-paper-warm"
             >
               <div className="flex items-start justify-between">
                 <s.icon size={26} strokeWidth={1.4} className="text-ink transition group-hover:text-accent-warm" />

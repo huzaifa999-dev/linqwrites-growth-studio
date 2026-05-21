@@ -137,53 +137,59 @@ function Hero() {
       <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
 
-      <motion.div style={{ y, opacity }} className="relative mx-auto max-w-5xl px-6 text-center">
-        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
-          <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
-        </motion.p>
+      <motion.div style={{ y, opacity }} className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+        <div className="text-center md:text-left">
+          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
+            <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
+          </motion.p>
 
-        <h1 className="font-display text-[clamp(2.6rem,7vw,6.5rem)] font-light leading-[0.98] text-ink">
-          {["Create a bold", "founder presence", "that turns attention", "into trust."].map((line, i) => (
-            <motion.span
-              key={line}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={i + 1}
-              className="block"
-            >
-              {i === 1 ? (
-                <em className="not-italic font-display italic text-accent-warm">{line}</em>
-              ) : i === 3 ? (
-                <>
-                  into <em className="not-italic font-display italic text-accent-warm">trust.</em>
-                </>
-              ) : (
-                line
-              )}
-            </motion.span>
-          ))}
-        </h1>
+          <h1 className="font-display text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[0.98] text-ink">
+            {["Master the", "founder narrative", "the internet", "wants to follow."].map((line, i) => (
+              <motion.span
+                key={line}
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={i + 1}
+                className="block"
+              >
+                {i === 1 ? (
+                  <em className="not-italic font-display italic text-accent-warm">{line}</em>
+                ) : i === 3 ? (
+                  <>
+                    wants to <em className="not-italic font-display italic text-accent-warm">follow.</em>
+                  </>
+                ) : (
+                  line
+                )}
+              </motion.span>
+            ))}
+          </h1>
 
-        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={6} className="mx-auto mt-10 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
-          LinqWrites helps startups and founders grow through strategic storytelling, personal branding,
-          content systems, design, and AI-powered workflows.
-        </motion.p>
+          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={6} className="mt-10 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
+            LinqWrites helps startups and founders grow through strategic storytelling, personal branding,
+            content systems, design and AI powered workflows.
+          </motion.p>
 
-        <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5 hover:shadow-[0_50px_120px_-30px_rgba(0,0,0,0.35)]">
-            Start a project
-            <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-          <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
-            View our work
-            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-          </a>
-        </motion.div>
+          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+            <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
+              Start a project
+              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
+              View our work
+              <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </motion.div>
+        </div>
 
-        <motion.div variants={fadeUp} initial="hidden" animate="show" custom={9} className="mt-24 flex flex-col items-center gap-3 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
-          <span>Scroll</span>
-          <motion.span animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }} className="block h-10 w-px bg-ink/30" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative flex items-center justify-center"
+        >
+          <Planet3D />
         </motion.div>
       </motion.div>
     </section>

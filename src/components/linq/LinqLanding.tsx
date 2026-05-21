@@ -321,16 +321,16 @@ function Story() {
 
 /* -------------------- Services -------------------- */
 const services = [
-  { icon: PenLine, title: "LinkedIn Ghostwriting", desc: "Founder-led posts that sound like you on your sharpest day, every week." },
-  { icon: Layers, title: "Personal Branding", desc: "An identity, a tone, a thesis. Built so the right rooms start knowing your name." },
-  { icon: FileText, title: "Content Writing", desc: "Long-form articles, newsletters and thought pieces engineered for compounding trust." },
-  { icon: Search, title: "SEO & Blog Writing", desc: "Search-first content systems that bring buyers, not just browsers." },
-  { icon: Film, title: "Script Writing", desc: "Hooks, narratives and CTAs for short-form video that earns the swipe." },
-  { icon: Palette, title: "Logo & Brand Identity", desc: "Visual systems with the restraint and confidence of a category leader." },
-  { icon: Globe, title: "Website Development", desc: "Cinematic, fast, conversion-tuned sites, designed and shipped end to end." },
-  { icon: Megaphone, title: "Social Media Management", desc: "A weekly rhythm across platforms, strategy, creative, posting, reporting." },
-  { icon: Target, title: "Ad Management", desc: "Paid acquisition and retargeting funnels tuned to your real economics." },
-  { icon: Bot, title: "AI Automation", desc: "Custom AI workflows that compress 20 hours of busywork into a quiet afternoon." },
+  { icon: PenLine, title: "LinkedIn Ghostwriting", desc: "Founder led posts that sound like you on your sharpest day, every week.", slug: "halcyon-linkedin-growth" },
+  { icon: Layers, title: "Personal Branding", desc: "An identity, a tone, a thesis. Built so the right rooms start knowing your name.", slug: "northwind-founder-voice" },
+  { icon: FileText, title: "Content Writing", desc: "Long form articles, newsletters and thought pieces engineered for compounding trust.", slug: "foundry-content-system" },
+  { icon: Search, title: "SEO & Blog Writing", desc: "Search first content systems that bring buyers, not just browsers.", slug: "foundry-content-system" },
+  { icon: Film, title: "Script Writing", desc: "Hooks, narratives and CTAs for short form video that earns the swipe.", slug: "halcyon-linkedin-growth" },
+  { icon: Palette, title: "Logo & Brand Identity", desc: "Visual systems with the restraint and confidence of a category leader.", slug: "cinder-saas-launch" },
+  { icon: Globe, title: "Website Development", desc: "Cinematic, fast, conversion tuned sites, designed and shipped end to end.", slug: "cinder-saas-launch" },
+  { icon: Megaphone, title: "Social Media Management", desc: "A weekly rhythm across platforms, strategy, creative, posting, reporting.", slug: "halcyon-linkedin-growth" },
+  { icon: Target, title: "Ad Management", desc: "Paid acquisition and retargeting funnels tuned to your real economics.", slug: "northwind-founder-voice" },
+  { icon: Bot, title: "AI Automation", desc: "Custom AI workflows that compress 20 hours of busywork into a quiet afternoon.", slug: "meridian-ai-workflows" },
 ];
 
 function Services() {
@@ -353,28 +353,33 @@ function Services() {
 
         <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-hairline bg-[var(--hairline)] sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <motion.article
+            <motion.div
               key={s.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-              data-hover
-              className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-paper-warm"
             >
-              <div className="flex items-start justify-between">
-                <s.icon size={26} strokeWidth={1.4} className="text-ink transition group-hover:text-accent-warm" />
-                <span className="text-xs tabular-nums text-ink-soft">0{i + 1 < 10 ? i + 1 : i + 1}</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl text-ink">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-ink-soft transition group-hover:text-ink">
-                  Explore <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
-              </div>
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-accent-warm transition-transform duration-700 group-hover:scale-x-100" />
-            </motion.article>
+              <Link
+                to="/case/$slug"
+                params={{ slug: s.slug }}
+                data-hover
+                className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-paper-warm"
+              >
+                <div className="flex items-start justify-between">
+                  <s.icon size={26} strokeWidth={1.4} className="text-ink transition group-hover:text-accent-warm" />
+                  <span className="text-xs tabular-nums text-ink-soft">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl text-ink">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-ink-soft transition group-hover:text-ink">
+                    Explore <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-accent-warm transition-transform duration-700 group-hover:scale-x-100" />
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

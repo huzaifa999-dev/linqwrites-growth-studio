@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import {
   ArrowUpRight,
   Sparkles,
@@ -29,6 +30,9 @@ import showBrand from "@/assets/showcase-brand.jpg";
 import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
+import { Planet3D } from "./Planet3D";
+import { ContactForm } from "./ContactForm";
+import { caseStudies } from "./caseStudies";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {

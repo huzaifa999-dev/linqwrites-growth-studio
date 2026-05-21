@@ -430,15 +430,6 @@ function Testimonials() {
   );
 }
 
-/* -------------------- Projects -------------------- */
-const projects = [
-  { tag: "Founder Branding", title: "From silent operator to LinkedIn voice of the category.", body: "A 90-day narrative system for a B2B SaaS founder: positioning, weekly ghostwritten posts, and a content engine that turned cold inbound into closed pipeline.", img: showLinkedin },
-  { tag: "SaaS Landing", title: "A launch site that closed the seed round in 11 days.", body: "End-to-end identity, copy and a cinematic Next.js site for an AI infra startup, engineered for clarity, conversion and credibility.", img: showSaas },
-  { tag: "LinkedIn Growth", title: "0 → 42,000 followers in 7 months, 100% organic.", body: "Founder-led content with sharp hooks, opinionated POVs and visual carousels designed to be saved, shared and remembered.", img: showCarousel },
-  { tag: "AI Workflows", title: "Cutting 22 weekly hours of busywork, without a single hire.", body: "Custom AI agents wired into the team’s stack: research, drafting, reporting, CRM hygiene. Quiet leverage, on tap.", img: showAi },
-  { tag: "Content Strategy", title: "A messaging system the whole company could stand behind.", body: "Brand voice, narrative pillars and editorial cadence, codified into a 24-page operating manual the team actually uses.", img: showBrand },
-];
-
 function Projects() {
   return (
     <section id="work" className="relative bg-paper py-32 md:py-44">
@@ -451,33 +442,35 @@ function Projects() {
               <em className="italic text-accent-warm">Stories that close.</em>
             </h2>
           </div>
-          <a href="#contact" className="group inline-flex items-center gap-2 text-sm text-ink">
+          <Link to="/" hash="contact" className="group inline-flex items-center gap-2 text-sm text-ink">
             Full archive <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </div>
 
         <div className="space-y-32">
-          {projects.map((p, i) => (
+          {caseStudies.map((p, i) => (
             <motion.article
-              key={p.title}
+              key={p.slug}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className={`grid grid-cols-1 items-center gap-12 md:grid-cols-12 ${i % 2 ? "md:[&>figure]:order-2" : ""}`}
             >
-              <figure data-hover className="group relative col-span-7 overflow-hidden rounded-3xl shadow-soft transition duration-700 hover:shadow-lift">
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-[1.6s] group-hover:scale-[1.04]" />
-                </div>
-              </figure>
+              <Link to="/case/$slug" params={{ slug: p.slug }} className="col-span-7">
+                <figure data-hover className="group relative overflow-hidden rounded-3xl shadow-soft transition duration-700 hover:shadow-lift">
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-[1.6s] group-hover:scale-[1.04]" />
+                  </div>
+                </figure>
+              </Link>
               <div className="col-span-5">
                 <p className="mb-4 text-[0.7rem] uppercase tracking-[0.3em] text-accent-warm">{p.tag}</p>
                 <h3 className="font-display text-3xl font-light leading-tight text-ink md:text-4xl">{p.title}</h3>
-                <p className="mt-5 max-w-md text-ink-soft">{p.body}</p>
-                <a href="#contact" className="mt-8 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm uppercase tracking-widest text-ink">
-                  Read case <ArrowUpRight size={14} />
-                </a>
+                <p className="mt-5 max-w-md text-ink-soft">{p.excerpt}</p>
+                <Link to="/case/$slug" params={{ slug: p.slug }} className="group mt-8 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm uppercase tracking-widest text-ink">
+                  Read case <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
               </div>
             </motion.article>
           ))}

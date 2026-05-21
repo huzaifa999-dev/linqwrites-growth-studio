@@ -723,6 +723,7 @@ export function LinqLanding() {
         <Services />
         <Testimonials />
         <Projects />
+        <ContactSection />
         <PartnerCTA />
       </main>
       <Footer />

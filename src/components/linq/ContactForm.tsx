@@ -13,7 +13,7 @@ const schema = z.object({
 
 type FormState = z.infer<typeof schema>;
 
-const budgets = ["< $2k", "$2k – $5k", "$5k – $15k", "$15k+"];
+const budgets = ["< $2k", "$2k to $5k", "$5k to $15k", "$15k+"];
 
 export function ContactForm() {
   const [state, setState] = useState<FormState>({ name: "", email: "", company: "", budget: "", message: "" });

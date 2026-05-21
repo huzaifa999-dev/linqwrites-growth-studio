@@ -42,6 +42,8 @@ function CustomCursor() {
   const ringY = useSpring(dotY, { stiffness: 220, damping: 22, mass: 0.4 });
   const [hover, setHover] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
@@ -55,7 +57,8 @@ function CustomCursor() {
     return () => window.removeEventListener("mousemove", move);
   }, [dotX, dotY]);
 
-  if (typeof window !== "undefined" && window.matchMedia?.("(pointer: coarse)").matches) return null;
+  if (!mounted) return null;
+  if (window.matchMedia?.("(pointer: coarse)").matches) return null;
 
   return (
     <>

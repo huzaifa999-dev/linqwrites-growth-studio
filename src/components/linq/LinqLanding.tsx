@@ -210,7 +210,7 @@ function Marquee() {
     <section className="relative overflow-hidden bg-paper py-20">
       <div className="mb-10 px-6">
         <div className="mx-auto flex max-w-7xl items-end justify-between gap-6 border-b border-hairline pb-6">
-          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Selected work · 2024 — Now</p>
+          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Selected work · 2024, Now</p>
           <p className="hidden text-sm text-ink-soft md:block">Branding · Content · Design · Automation</p>
         </div>
       </div>
@@ -265,7 +265,7 @@ function Story() {
           </p>
         </motion.div>
 
-        {/* Founders grid — both visible on every screen */}
+        {/* Founders grid, both visible on every screen */}
         <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
           {[
             { img: founderHuzaifa, name: "Huzaifa", role: "Co founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
@@ -282,7 +282,7 @@ function Story() {
               <motion.div style={{ y: f.y }} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper shadow-lift">
                 <img
                   src={f.img}
-                  alt={`${f.name} — co-founder of LinqWrites`}
+                  alt={`${f.name}, co-founder of LinqWrites`}
                   loading="lazy"
                   className="h-full w-full object-cover grayscale transition duration-[1.6s] group-hover:grayscale-0 group-hover:scale-[1.03]"
                 />
@@ -321,14 +321,14 @@ function Story() {
 
 /* -------------------- Services -------------------- */
 const services = [
-  { icon: PenLine, title: "LinkedIn Ghostwriting", desc: "Founder-led posts that sound like you on your sharpest day — every week." },
+  { icon: PenLine, title: "LinkedIn Ghostwriting", desc: "Founder-led posts that sound like you on your sharpest day, every week." },
   { icon: Layers, title: "Personal Branding", desc: "An identity, a tone, a thesis. Built so the right rooms start knowing your name." },
   { icon: FileText, title: "Content Writing", desc: "Long-form articles, newsletters and thought pieces engineered for compounding trust." },
   { icon: Search, title: "SEO & Blog Writing", desc: "Search-first content systems that bring buyers, not just browsers." },
   { icon: Film, title: "Script Writing", desc: "Hooks, narratives and CTAs for short-form video that earns the swipe." },
   { icon: Palette, title: "Logo & Brand Identity", desc: "Visual systems with the restraint and confidence of a category leader." },
-  { icon: Globe, title: "Website Development", desc: "Cinematic, fast, conversion-tuned sites — designed and shipped end to end." },
-  { icon: Megaphone, title: "Social Media Management", desc: "A weekly rhythm across platforms — strategy, creative, posting, reporting." },
+  { icon: Globe, title: "Website Development", desc: "Cinematic, fast, conversion-tuned sites, designed and shipped end to end." },
+  { icon: Megaphone, title: "Social Media Management", desc: "A weekly rhythm across platforms, strategy, creative, posting, reporting." },
   { icon: Target, title: "Ad Management", desc: "Paid acquisition and retargeting funnels tuned to your real economics." },
   { icon: Bot, title: "AI Automation", desc: "Custom AI workflows that compress 20 hours of busywork into a quiet afternoon." },
 ];
@@ -339,14 +339,14 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(02) — Capabilities</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(02), Capabilities</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Ten disciplines.<br />
               <em className="italic text-accent-warm">One narrative system.</em>
             </h2>
           </div>
           <p className="max-w-md text-ink-soft md:text-right">
-            We stitch strategy, writing, design and automation into one engine — so growth stops feeling
+            We stitch strategy, writing, design and automation into one engine, so growth stops feeling
             like a guessing game.
           </p>
         </div>
@@ -385,7 +385,7 @@ function Services() {
 /* -------------------- Testimonials carousel -------------------- */
 const testimonials = [
   { quote: "LinqWrites turned my LinkedIn from a graveyard into a pipeline. Three enterprise calls in the first month.", name: "Ananya Rao", role: "Founder, Northwind AI" },
-  { quote: "Finally, content that sounds like me — only sharper. Inbound went from 0 to 14 qualified leads in 6 weeks.", name: "Daniel Okafor", role: "CEO, Cinder Labs" },
+  { quote: "Finally, content that sounds like me, only sharper. Inbound went from 0 to 14 qualified leads in 6 weeks.", name: "Daniel Okafor", role: "CEO, Cinder Labs" },
   { quote: "They built the brand, the site and the AI workflows. We launched in 19 days and looked five years old.", name: "Mira Pereira", role: "Co-founder, Halcyon" },
   { quote: "Strategic, fast and emotionally intelligent. The clearest creative partner we’ve ever worked with.", name: "Yusuf Demir", role: "Founder, Meridian" },
   { quote: "Our LinkedIn now closes deals before the sales call even happens. That’s the bar.", name: "Priya Shankar", role: "GTM Lead, Foundry" },
@@ -402,7 +402,7 @@ function Testimonials() {
     <section className="relative overflow-hidden bg-ink py-32 text-[var(--paper)] md:py-44">
       <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.22),transparent_70%)] blur-2xl" />
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">(03) — Founder Voices</p>
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">(03), Founder Voices</p>
 
         <div className="relative min-h-[300px]">
           <AnimatePresence mode="wait">
@@ -414,7 +414,7 @@ function Testimonials() {
                 “{t.quote}”
               </blockquote>
               <div className="mt-10 text-sm uppercase tracking-[0.25em] text-white/70">
-                {t.name} <span className="text-white/40">— {t.role}</span>
+                {t.name} <span className="text-white/40">, {t.role}</span>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -433,10 +433,10 @@ function Testimonials() {
 /* -------------------- Projects -------------------- */
 const projects = [
   { tag: "Founder Branding", title: "From silent operator to LinkedIn voice of the category.", body: "A 90-day narrative system for a B2B SaaS founder: positioning, weekly ghostwritten posts, and a content engine that turned cold inbound into closed pipeline.", img: showLinkedin },
-  { tag: "SaaS Landing", title: "A launch site that closed the seed round in 11 days.", body: "End-to-end identity, copy and a cinematic Next.js site for an AI infra startup — engineered for clarity, conversion and credibility.", img: showSaas },
+  { tag: "SaaS Landing", title: "A launch site that closed the seed round in 11 days.", body: "End-to-end identity, copy and a cinematic Next.js site for an AI infra startup, engineered for clarity, conversion and credibility.", img: showSaas },
   { tag: "LinkedIn Growth", title: "0 → 42,000 followers in 7 months, 100% organic.", body: "Founder-led content with sharp hooks, opinionated POVs and visual carousels designed to be saved, shared and remembered.", img: showCarousel },
-  { tag: "AI Workflows", title: "Cutting 22 weekly hours of busywork — without a single hire.", body: "Custom AI agents wired into the team’s stack: research, drafting, reporting, CRM hygiene. Quiet leverage, on tap.", img: showAi },
-  { tag: "Content Strategy", title: "A messaging system the whole company could stand behind.", body: "Brand voice, narrative pillars and editorial cadence — codified into a 24-page operating manual the team actually uses.", img: showBrand },
+  { tag: "AI Workflows", title: "Cutting 22 weekly hours of busywork, without a single hire.", body: "Custom AI agents wired into the team’s stack: research, drafting, reporting, CRM hygiene. Quiet leverage, on tap.", img: showAi },
+  { tag: "Content Strategy", title: "A messaging system the whole company could stand behind.", body: "Brand voice, narrative pillars and editorial cadence, codified into a 24-page operating manual the team actually uses.", img: showBrand },
 ];
 
 function Projects() {
@@ -445,7 +445,7 @@ function Projects() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-24 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04) — Case Studies</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04), Case Studies</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Work that compounds.<br />
               <em className="italic text-accent-warm">Stories that close.</em>
@@ -514,12 +514,12 @@ function PartnerCTA() {
     >
       <motion.div style={{ x: sx, y: sy, translateX: "-50%", translateY: "-50%" }} className="pointer-events-none absolute left-0 top-0 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.28),transparent_65%)] blur-3xl" />
       <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05) — Let’s build</p>
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05), Let’s build</p>
         <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="font-display text-[clamp(2.4rem,7vw,6rem)] font-light leading-[0.98] text-ink">
           Partner with <em className="italic text-accent-warm">LinqWrites.</em>
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.2 }} className="mx-auto mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
-          A two-person studio. A short waitlist. Tell us what you’re building — we’ll tell you what we’d do.
+          A two-person studio. A short waitlist. Tell us what you’re building, we’ll tell you what we’d do.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.35 }} className="mt-14">
           <a href="mailto:linqwrites@gmail.com" data-hover className="group inline-flex items-center gap-3 rounded-full bg-ink px-9 py-5 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
@@ -528,7 +528,7 @@ function PartnerCTA() {
           </a>
         </motion.div>
 
-        {/* Floating fanned project cards — sendoff inspired */}
+        {/* Floating fanned project cards, sendoff inspired */}
         <div className="relative mx-auto mt-24 hidden h-[260px] w-full max-w-3xl md:block">
           {cards.map((c, i) => (
             <motion.div

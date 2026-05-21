@@ -485,6 +485,34 @@ function Projects() {
   );
 }
 
+/* -------------------- Contact section with form -------------------- */
+function ContactSection() {
+  return (
+    <section id="contact" className="relative overflow-hidden bg-paper-warm py-32 md:py-44">
+      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.18),transparent_70%)] blur-3xl" />
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-12">
+        <div className="md:col-span-5">
+          <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05), Start a project</p>
+          <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
+            Tell us what you are <em className="italic text-accent-warm">building.</em>
+          </h2>
+          <p className="mt-6 max-w-md text-ink-soft">
+            Founders, operators and creative teams welcome. We reply within 24 hours with a sharp first reaction.
+          </p>
+          <div className="mt-10 space-y-3 text-sm text-ink">
+            <a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-3 hover:text-accent-warm"><Mail size={14}/> linqwrites@gmail.com</a>
+            <br />
+            <a href="tel:+917381442999" className="inline-flex items-center gap-3 hover:text-accent-warm"><Phone size={14}/> +91 73814 42999</a>
+          </div>
+        </div>
+        <div className="md:col-span-7">
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* -------------------- CTA with mouse-follow -------------------- */
 function PartnerCTA() {
   const ref = useRef<HTMLDivElement>(null);
@@ -501,7 +529,7 @@ function PartnerCTA() {
   ];
   return (
     <section
-      id="contact"
+      id="partner"
       ref={ref}
       onMouseMove={(e) => {
         const r = (e.currentTarget as HTMLElement).getBoundingClientRect();

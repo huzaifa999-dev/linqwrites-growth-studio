@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
-import { caseStudies, getCaseStudy } from "@/components/linq/caseStudies";
+import { caseStudies, getCaseStudy, type CaseStudy } from "@/components/linq/caseStudies";
 
 export const Route = createFileRoute("/case/$slug")({
   loader: ({ params }) => {
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/case/$slug")({
 });
 
 function CaseStudyPage() {
-  const { study } = Route.useLoaderData();
+  const { study } = Route.useLoaderData() as { study: CaseStudy };
   const related = caseStudies.filter((c) => c.slug !== study.slug).slice(0, 3);
 
   return (

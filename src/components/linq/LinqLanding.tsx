@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import {
   ArrowUpRight,
   Sparkles,
@@ -29,6 +30,9 @@ import showBrand from "@/assets/showcase-brand.jpg";
 import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
+import { Planet3D } from "./Planet3D";
+import { ContactForm } from "./ContactForm";
+import { caseStudies } from "./caseStudies";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -38,6 +42,8 @@ function CustomCursor() {
   const ringY = useSpring(dotY, { stiffness: 220, damping: 22, mass: 0.4 });
   const [hover, setHover] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
@@ -51,7 +57,8 @@ function CustomCursor() {
     return () => window.removeEventListener("mousemove", move);
   }, [dotX, dotY]);
 
-  if (typeof window !== "undefined" && window.matchMedia?.("(pointer: coarse)").matches) return null;
+  if (!mounted) return null;
+  if (window.matchMedia?.("(pointer: coarse)").matches) return null;
 
   return (
     <>
@@ -133,53 +140,59 @@ function Hero() {
       <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
 
-      <motion.div style={{ y, opacity }} className="relative mx-auto max-w-5xl px-6 text-center">
-        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
-          <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
-        </motion.p>
+      <motion.div style={{ y, opacity }} className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+        <div className="text-center md:text-left">
+          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
+            <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
+          </motion.p>
 
-        <h1 className="font-display text-[clamp(2.6rem,7vw,6.5rem)] font-light leading-[0.98] text-ink">
-          {["Create a bold", "founder presence", "that turns attention", "into trust."].map((line, i) => (
-            <motion.span
-              key={line}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={i + 1}
-              className="block"
-            >
-              {i === 1 ? (
-                <em className="not-italic font-display italic text-accent-warm">{line}</em>
-              ) : i === 3 ? (
-                <>
-                  into <em className="not-italic font-display italic text-accent-warm">trust.</em>
-                </>
-              ) : (
-                line
-              )}
-            </motion.span>
-          ))}
-        </h1>
+          <h1 className="font-display text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[0.98] text-ink">
+            {["Master the", "founder narrative", "the internet", "wants to follow."].map((line, i) => (
+              <motion.span
+                key={line}
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={i + 1}
+                className="block"
+              >
+                {i === 1 ? (
+                  <em className="not-italic font-display italic text-accent-warm">{line}</em>
+                ) : i === 3 ? (
+                  <>
+                    wants to <em className="not-italic font-display italic text-accent-warm">follow.</em>
+                  </>
+                ) : (
+                  line
+                )}
+              </motion.span>
+            ))}
+          </h1>
 
-        <motion.p variants={fadeUp} initial="hidden" animate="show" custom={6} className="mx-auto mt-10 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
-          LinqWrites helps startups and founders grow through strategic storytelling, personal branding,
-          content systems, design, and AI-powered workflows.
-        </motion.p>
+          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={6} className="mt-10 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
+            LinqWrites helps startups and founders grow through strategic storytelling, personal branding,
+            content systems, design and AI powered workflows.
+          </motion.p>
 
-        <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5 hover:shadow-[0_50px_120px_-30px_rgba(0,0,0,0.35)]">
-            Start a project
-            <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-          <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
-            View our work
-            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-          </a>
-        </motion.div>
+          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+            <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
+              Start a project
+              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
+              View our work
+              <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </motion.div>
+        </div>
 
-        <motion.div variants={fadeUp} initial="hidden" animate="show" custom={9} className="mt-24 flex flex-col items-center gap-3 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
-          <span>Scroll</span>
-          <motion.span animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }} className="block h-10 w-px bg-ink/30" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative flex items-center justify-center"
+        >
+          <Planet3D />
         </motion.div>
       </motion.div>
     </section>
@@ -200,7 +213,7 @@ function Marquee() {
     <section className="relative overflow-hidden bg-paper py-20">
       <div className="mb-10 px-6">
         <div className="mx-auto flex max-w-7xl items-end justify-between gap-6 border-b border-hairline pb-6">
-          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Selected work · 2024 — Now</p>
+          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Selected work · 2024, Now</p>
           <p className="hidden text-sm text-ink-soft md:block">Branding · Content · Design · Automation</p>
         </div>
       </div>
@@ -235,7 +248,7 @@ function Story() {
       <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.82_0.14_80/0.12),transparent_70%)] blur-3xl" />
       <div className="mx-auto max-w-7xl px-6">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
-          (01) — The Founders
+          (01) · The Founders
         </motion.p>
         <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="max-w-4xl font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
           <Quote size={32} className="mb-6 inline-block -rotate-6 text-accent-warm" />
@@ -245,21 +258,21 @@ function Story() {
 
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} custom={1} className="mt-12 grid max-w-3xl gap-5 text-base leading-relaxed text-ink-soft md:text-lg">
           <p>
-            LinqWrites is a two-person studio built by <span className="text-ink">Huzaifa</span> &amp; <span className="text-ink">Faiz</span> —
+            LinqWrites is a two person studio built by <span className="text-ink">Huzaifa</span> &amp; <span className="text-ink">Faiz</span>,
             operators who believe smart founders deserve to sound like themselves online: sharp, specific, human.
             Not robotic, corporate, or forgettable.
           </p>
           <p>
-            We design narrative systems — the words, the visuals, the workflows — so the right people start
+            We design narrative systems, the words, the visuals, the workflows, so the right people start
             paying attention, and stay.
           </p>
         </motion.div>
 
-        {/* Founders grid — both visible on every screen */}
+        {/* Founders grid, both visible on every screen */}
         <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
           {[
-            { img: founderHuzaifa, name: "Huzaifa", role: "Co-founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
-            { img: founderFaiz, name: "Faiz", role: "Co-founder · Design & Systems", bio: "Lives at the intersection of taste and ops. Designs the visuals, the systems and the AI that make it all run quietly.", y: y2 },
+            { img: founderHuzaifa, name: "Huzaifa", role: "Co founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
+            { img: founderFaiz, name: "Faiz", role: "Co founder · Design & Systems", bio: "Lives at the intersection of taste and ops. Designs the visuals, the systems and the AI that make it all run quietly.", y: y2 },
           ].map((f) => (
             <motion.figure
               key={f.name}
@@ -272,7 +285,7 @@ function Story() {
               <motion.div style={{ y: f.y }} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper shadow-lift">
                 <img
                   src={f.img}
-                  alt={`${f.name} — co-founder of LinqWrites`}
+                  alt={`${f.name}, co-founder of LinqWrites`}
                   loading="lazy"
                   className="h-full w-full object-cover grayscale transition duration-[1.6s] group-hover:grayscale-0 group-hover:scale-[1.03]"
                 />
@@ -288,7 +301,7 @@ function Story() {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }} className="mt-20 grid grid-cols-3 gap-8 border-t border-hairline pt-12">
-          {[["120+","Founders served"],["38M+","Impressions generated"],["4.9","Avg. client rating"]].map(([n,l])=>(
+          {[["42","Founders served"],["13M+","Impressions generated"],["4.1","Avg. client rating"]].map(([n,l])=>(
             <div key={l}>
               <div className="font-display text-3xl text-ink md:text-4xl">{n}</div>
               <div className="mt-2 text-[0.65rem] uppercase tracking-widest text-ink-soft md:text-xs">{l}</div>
@@ -311,16 +324,16 @@ function Story() {
 
 /* -------------------- Services -------------------- */
 const services = [
-  { icon: PenLine, title: "LinkedIn Ghostwriting", desc: "Founder-led posts that sound like you on your sharpest day — every week." },
-  { icon: Layers, title: "Personal Branding", desc: "An identity, a tone, a thesis. Built so the right rooms start knowing your name." },
-  { icon: FileText, title: "Content Writing", desc: "Long-form articles, newsletters and thought pieces engineered for compounding trust." },
-  { icon: Search, title: "SEO & Blog Writing", desc: "Search-first content systems that bring buyers, not just browsers." },
-  { icon: Film, title: "Script Writing", desc: "Hooks, narratives and CTAs for short-form video that earns the swipe." },
-  { icon: Palette, title: "Logo & Brand Identity", desc: "Visual systems with the restraint and confidence of a category leader." },
-  { icon: Globe, title: "Website Development", desc: "Cinematic, fast, conversion-tuned sites — designed and shipped end to end." },
-  { icon: Megaphone, title: "Social Media Management", desc: "A weekly rhythm across platforms — strategy, creative, posting, reporting." },
-  { icon: Target, title: "Ad Management", desc: "Paid acquisition and retargeting funnels tuned to your real economics." },
-  { icon: Bot, title: "AI Automation", desc: "Custom AI workflows that compress 20 hours of busywork into a quiet afternoon." },
+  { icon: PenLine, title: "LinkedIn Ghostwriting", desc: "Founder led posts that sound like you on your sharpest day, every week.", slug: "halcyon-linkedin-growth" },
+  { icon: Layers, title: "Personal Branding", desc: "An identity, a tone, a thesis. Built so the right rooms start knowing your name.", slug: "northwind-founder-voice" },
+  { icon: FileText, title: "Content Writing", desc: "Long form articles, newsletters and thought pieces engineered for compounding trust.", slug: "foundry-content-system" },
+  { icon: Search, title: "SEO & Blog Writing", desc: "Search first content systems that bring buyers, not just browsers.", slug: "foundry-content-system" },
+  { icon: Film, title: "Script Writing", desc: "Hooks, narratives and CTAs for short form video that earns the swipe.", slug: "halcyon-linkedin-growth" },
+  { icon: Palette, title: "Logo & Brand Identity", desc: "Visual systems with the restraint and confidence of a category leader.", slug: "cinder-saas-launch" },
+  { icon: Globe, title: "Website Development", desc: "Cinematic, fast, conversion tuned sites, designed and shipped end to end.", slug: "cinder-saas-launch" },
+  { icon: Megaphone, title: "Social Media Management", desc: "A weekly rhythm across platforms, strategy, creative, posting, reporting.", slug: "halcyon-linkedin-growth" },
+  { icon: Target, title: "Ad Management", desc: "Paid acquisition and retargeting funnels tuned to your real economics.", slug: "northwind-founder-voice" },
+  { icon: Bot, title: "AI Automation", desc: "Custom AI workflows that compress 20 hours of busywork into a quiet afternoon.", slug: "meridian-ai-workflows" },
 ];
 
 function Services() {
@@ -329,42 +342,47 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(02) — Capabilities</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(02), Capabilities</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Ten disciplines.<br />
               <em className="italic text-accent-warm">One narrative system.</em>
             </h2>
           </div>
           <p className="max-w-md text-ink-soft md:text-right">
-            We stitch strategy, writing, design and automation into one engine — so growth stops feeling
+            We stitch strategy, writing, design and automation into one engine, so growth stops feeling
             like a guessing game.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-hairline bg-[var(--hairline)] sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <motion.article
+            <motion.div
               key={s.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-              data-hover
-              className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-paper-warm"
             >
-              <div className="flex items-start justify-between">
-                <s.icon size={26} strokeWidth={1.4} className="text-ink transition group-hover:text-accent-warm" />
-                <span className="text-xs tabular-nums text-ink-soft">0{i + 1 < 10 ? i + 1 : i + 1}</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl text-ink">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-ink-soft transition group-hover:text-ink">
-                  Explore <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
-              </div>
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-accent-warm transition-transform duration-700 group-hover:scale-x-100" />
-            </motion.article>
+              <Link
+                to="/case/$slug"
+                params={{ slug: s.slug }}
+                data-hover
+                className="group relative isolate flex h-full flex-col justify-between gap-12 bg-[var(--paper)] p-8 transition duration-700 hover:bg-paper-warm"
+              >
+                <div className="flex items-start justify-between">
+                  <s.icon size={26} strokeWidth={1.4} className="text-ink transition group-hover:text-accent-warm" />
+                  <span className="text-xs tabular-nums text-ink-soft">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl text-ink">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-ink-soft transition group-hover:text-ink">
+                    Explore <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-accent-warm transition-transform duration-700 group-hover:scale-x-100" />
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -375,7 +393,7 @@ function Services() {
 /* -------------------- Testimonials carousel -------------------- */
 const testimonials = [
   { quote: "LinqWrites turned my LinkedIn from a graveyard into a pipeline. Three enterprise calls in the first month.", name: "Ananya Rao", role: "Founder, Northwind AI" },
-  { quote: "Finally, content that sounds like me — only sharper. Inbound went from 0 to 14 qualified leads in 6 weeks.", name: "Daniel Okafor", role: "CEO, Cinder Labs" },
+  { quote: "Finally, content that sounds like me, only sharper. Inbound went from 0 to 14 qualified leads in 6 weeks.", name: "Daniel Okafor", role: "CEO, Cinder Labs" },
   { quote: "They built the brand, the site and the AI workflows. We launched in 19 days and looked five years old.", name: "Mira Pereira", role: "Co-founder, Halcyon" },
   { quote: "Strategic, fast and emotionally intelligent. The clearest creative partner we’ve ever worked with.", name: "Yusuf Demir", role: "Founder, Meridian" },
   { quote: "Our LinkedIn now closes deals before the sales call even happens. That’s the bar.", name: "Priya Shankar", role: "GTM Lead, Foundry" },
@@ -392,7 +410,7 @@ function Testimonials() {
     <section className="relative overflow-hidden bg-ink py-32 text-[var(--paper)] md:py-44">
       <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.22),transparent_70%)] blur-2xl" />
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">(03) — Founder Voices</p>
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">(03), Founder Voices</p>
 
         <div className="relative min-h-[300px]">
           <AnimatePresence mode="wait">
@@ -404,7 +422,7 @@ function Testimonials() {
                 “{t.quote}”
               </blockquote>
               <div className="mt-10 text-sm uppercase tracking-[0.25em] text-white/70">
-                {t.name} <span className="text-white/40">— {t.role}</span>
+                {t.name} <span className="text-white/40">, {t.role}</span>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -420,57 +438,78 @@ function Testimonials() {
   );
 }
 
-/* -------------------- Projects -------------------- */
-const projects = [
-  { tag: "Founder Branding", title: "From silent operator to LinkedIn voice of the category.", body: "A 90-day narrative system for a B2B SaaS founder: positioning, weekly ghostwritten posts, and a content engine that turned cold inbound into closed pipeline.", img: showLinkedin },
-  { tag: "SaaS Landing", title: "A launch site that closed the seed round in 11 days.", body: "End-to-end identity, copy and a cinematic Next.js site for an AI infra startup — engineered for clarity, conversion and credibility.", img: showSaas },
-  { tag: "LinkedIn Growth", title: "0 → 42,000 followers in 7 months, 100% organic.", body: "Founder-led content with sharp hooks, opinionated POVs and visual carousels designed to be saved, shared and remembered.", img: showCarousel },
-  { tag: "AI Workflows", title: "Cutting 22 weekly hours of busywork — without a single hire.", body: "Custom AI agents wired into the team’s stack: research, drafting, reporting, CRM hygiene. Quiet leverage, on tap.", img: showAi },
-  { tag: "Content Strategy", title: "A messaging system the whole company could stand behind.", body: "Brand voice, narrative pillars and editorial cadence — codified into a 24-page operating manual the team actually uses.", img: showBrand },
-];
-
 function Projects() {
   return (
     <section id="work" className="relative bg-paper py-32 md:py-44">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-24 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04) — Case Studies</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04), Case Studies</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Work that compounds.<br />
               <em className="italic text-accent-warm">Stories that close.</em>
             </h2>
           </div>
-          <a href="#contact" className="group inline-flex items-center gap-2 text-sm text-ink">
+          <Link to="/" hash="contact" className="group inline-flex items-center gap-2 text-sm text-ink">
             Full archive <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </div>
 
         <div className="space-y-32">
-          {projects.map((p, i) => (
+          {caseStudies.map((p, i) => (
             <motion.article
-              key={p.title}
+              key={p.slug}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className={`grid grid-cols-1 items-center gap-12 md:grid-cols-12 ${i % 2 ? "md:[&>figure]:order-2" : ""}`}
             >
-              <figure data-hover className="group relative col-span-7 overflow-hidden rounded-3xl shadow-soft transition duration-700 hover:shadow-lift">
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-[1.6s] group-hover:scale-[1.04]" />
-                </div>
-              </figure>
+              <Link to="/case/$slug" params={{ slug: p.slug }} className="col-span-7">
+                <figure data-hover className="group relative overflow-hidden rounded-3xl shadow-soft transition duration-700 hover:shadow-lift">
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-[1.6s] group-hover:scale-[1.04]" />
+                  </div>
+                </figure>
+              </Link>
               <div className="col-span-5">
                 <p className="mb-4 text-[0.7rem] uppercase tracking-[0.3em] text-accent-warm">{p.tag}</p>
                 <h3 className="font-display text-3xl font-light leading-tight text-ink md:text-4xl">{p.title}</h3>
-                <p className="mt-5 max-w-md text-ink-soft">{p.body}</p>
-                <a href="#contact" className="mt-8 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm uppercase tracking-widest text-ink">
-                  Read case <ArrowUpRight size={14} />
-                </a>
+                <p className="mt-5 max-w-md text-ink-soft">{p.excerpt}</p>
+                <Link to="/case/$slug" params={{ slug: p.slug }} className="group mt-8 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm uppercase tracking-widest text-ink">
+                  Read case <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
               </div>
             </motion.article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------- Contact section with form -------------------- */
+function ContactSection() {
+  return (
+    <section id="contact" className="relative overflow-hidden bg-paper-warm py-32 md:py-44">
+      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.18),transparent_70%)] blur-3xl" />
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-12">
+        <div className="md:col-span-5">
+          <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05), Start a project</p>
+          <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
+            Tell us what you are <em className="italic text-accent-warm">building.</em>
+          </h2>
+          <p className="mt-6 max-w-md text-ink-soft">
+            Founders, operators and creative teams welcome. We reply within 24 hours with a sharp first reaction.
+          </p>
+          <div className="mt-10 space-y-3 text-sm text-ink">
+            <a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-3 hover:text-accent-warm"><Mail size={14}/> linqwrites@gmail.com</a>
+            <br />
+            <a href="tel:+917381442999" className="inline-flex items-center gap-3 hover:text-accent-warm"><Phone size={14}/> +91 73814 42999</a>
+          </div>
+        </div>
+        <div className="md:col-span-7">
+          <ContactForm />
         </div>
       </div>
     </section>
@@ -493,7 +532,7 @@ function PartnerCTA() {
   ];
   return (
     <section
-      id="contact"
+      id="partner"
       ref={ref}
       onMouseMove={(e) => {
         const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -504,12 +543,12 @@ function PartnerCTA() {
     >
       <motion.div style={{ x: sx, y: sy, translateX: "-50%", translateY: "-50%" }} className="pointer-events-none absolute left-0 top-0 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.28),transparent_65%)] blur-3xl" />
       <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05) — Let’s build</p>
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05), Let’s build</p>
         <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="font-display text-[clamp(2.4rem,7vw,6rem)] font-light leading-[0.98] text-ink">
           Partner with <em className="italic text-accent-warm">LinqWrites.</em>
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.2 }} className="mx-auto mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
-          A two-person studio. A short waitlist. Tell us what you’re building — we’ll tell you what we’d do.
+          A two-person studio. A short waitlist. Tell us what you’re building, we’ll tell you what we’d do.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.35 }} className="mt-14">
           <a href="mailto:linqwrites@gmail.com" data-hover className="group inline-flex items-center gap-3 rounded-full bg-ink px-9 py-5 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
@@ -518,7 +557,7 @@ function PartnerCTA() {
           </a>
         </motion.div>
 
-        {/* Floating fanned project cards — sendoff inspired */}
+        {/* Floating fanned project cards, sendoff inspired */}
         <div className="relative mx-auto mt-24 hidden h-[260px] w-full max-w-3xl md:block">
           {cards.map((c, i) => (
             <motion.div
@@ -687,6 +726,7 @@ export function LinqLanding() {
         <Services />
         <Testimonials />
         <Projects />
+        <ContactSection />
         <PartnerCTA />
       </main>
       <Footer />

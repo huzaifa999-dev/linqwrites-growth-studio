@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as ResourceVaultRouteImport } from './routes/resource-vault'
+import { Route as OriginRouteImport } from './routes/origin'
+import { Route as NewsroomRouteImport } from './routes/newsroom'
 import { Route as LabsRouteImport } from './routes/labs'
 import { Route as FoundersCircleRouteImport } from './routes/founders-circle'
 import { Route as DeepDiveRouteImport } from './routes/deep-dive'
+import { Route as CollectiveRouteImport } from './routes/collective'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseSlugRouteImport } from './routes/case.$slug'
 
@@ -25,6 +29,16 @@ const RoadmapRoute = RoadmapRouteImport.update({
 const ResourceVaultRoute = ResourceVaultRouteImport.update({
   id: '/resource-vault',
   path: '/resource-vault',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OriginRoute = OriginRouteImport.update({
+  id: '/origin',
+  path: '/origin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsroomRoute = NewsroomRouteImport.update({
+  id: '/newsroom',
+  path: '/newsroom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LabsRoute = LabsRouteImport.update({
@@ -42,6 +56,16 @@ const DeepDiveRoute = DeepDiveRouteImport.update({
   path: '/deep-dive',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectiveRoute = CollectiveRouteImport.update({
+  id: '/collective',
+  path: '/collective',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,18 +79,26 @@ const CaseSlugRoute = CaseSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/collective': typeof CollectiveRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/newsroom': typeof NewsroomRoute
+  '/origin': typeof OriginRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/collective': typeof CollectiveRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/newsroom': typeof NewsroomRoute
+  '/origin': typeof OriginRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
   '/case/$slug': typeof CaseSlugRoute
@@ -74,9 +106,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/collective': typeof CollectiveRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/newsroom': typeof NewsroomRoute
+  '/origin': typeof OriginRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
   '/case/$slug': typeof CaseSlugRoute
@@ -85,27 +121,39 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/careers'
+    | '/collective'
     | '/deep-dive'
     | '/founders-circle'
     | '/labs'
+    | '/newsroom'
+    | '/origin'
     | '/resource-vault'
     | '/roadmap'
     | '/case/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/careers'
+    | '/collective'
     | '/deep-dive'
     | '/founders-circle'
     | '/labs'
+    | '/newsroom'
+    | '/origin'
     | '/resource-vault'
     | '/roadmap'
     | '/case/$slug'
   id:
     | '__root__'
     | '/'
+    | '/careers'
+    | '/collective'
     | '/deep-dive'
     | '/founders-circle'
     | '/labs'
+    | '/newsroom'
+    | '/origin'
     | '/resource-vault'
     | '/roadmap'
     | '/case/$slug'
@@ -113,9 +161,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CareersRoute: typeof CareersRoute
+  CollectiveRoute: typeof CollectiveRoute
   DeepDiveRoute: typeof DeepDiveRoute
   FoundersCircleRoute: typeof FoundersCircleRoute
   LabsRoute: typeof LabsRoute
+  NewsroomRoute: typeof NewsroomRoute
+  OriginRoute: typeof OriginRoute
   ResourceVaultRoute: typeof ResourceVaultRoute
   RoadmapRoute: typeof RoadmapRoute
   CaseSlugRoute: typeof CaseSlugRoute
@@ -135,6 +187,20 @@ declare module '@tanstack/react-router' {
       path: '/resource-vault'
       fullPath: '/resource-vault'
       preLoaderRoute: typeof ResourceVaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/origin': {
+      id: '/origin'
+      path: '/origin'
+      fullPath: '/origin'
+      preLoaderRoute: typeof OriginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsroom': {
+      id: '/newsroom'
+      path: '/newsroom'
+      fullPath: '/newsroom'
+      preLoaderRoute: typeof NewsroomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/labs': {
@@ -158,6 +224,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DeepDiveRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collective': {
+      id: '/collective'
+      path: '/collective'
+      fullPath: '/collective'
+      preLoaderRoute: typeof CollectiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,9 +257,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CareersRoute: CareersRoute,
+  CollectiveRoute: CollectiveRoute,
   DeepDiveRoute: DeepDiveRoute,
   FoundersCircleRoute: FoundersCircleRoute,
   LabsRoute: LabsRoute,
+  NewsroomRoute: NewsroomRoute,
+  OriginRoute: OriginRoute,
   ResourceVaultRoute: ResourceVaultRoute,
   RoadmapRoute: RoadmapRoute,
   CaseSlugRoute: CaseSlugRoute,

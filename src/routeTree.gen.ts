@@ -9,13 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as ResourceVaultRouteImport } from './routes/resource-vault'
 import { Route as LabsRouteImport } from './routes/labs'
+import { Route as FoundersCircleRouteImport } from './routes/founders-circle'
+import { Route as DeepDiveRouteImport } from './routes/deep-dive'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseSlugRouteImport } from './routes/case.$slug'
 
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourceVaultRoute = ResourceVaultRouteImport.update({
+  id: '/resource-vault',
+  path: '/resource-vault',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LabsRoute = LabsRouteImport.update({
   id: '/labs',
   path: '/labs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoundersCircleRoute = FoundersCircleRouteImport.update({
+  id: '/founders-circle',
+  path: '/founders-circle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeepDiveRoute = DeepDiveRouteImport.update({
+  id: '/deep-dive',
+  path: '/deep-dive',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,41 +55,107 @@ const CaseSlugRoute = CaseSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/deep-dive': typeof DeepDiveRoute
+  '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/resource-vault': typeof ResourceVaultRoute
+  '/roadmap': typeof RoadmapRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/deep-dive': typeof DeepDiveRoute
+  '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/resource-vault': typeof ResourceVaultRoute
+  '/roadmap': typeof RoadmapRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/deep-dive': typeof DeepDiveRoute
+  '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/resource-vault': typeof ResourceVaultRoute
+  '/roadmap': typeof RoadmapRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/labs' | '/case/$slug'
+  fullPaths:
+    | '/'
+    | '/deep-dive'
+    | '/founders-circle'
+    | '/labs'
+    | '/resource-vault'
+    | '/roadmap'
+    | '/case/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/labs' | '/case/$slug'
-  id: '__root__' | '/' | '/labs' | '/case/$slug'
+  to:
+    | '/'
+    | '/deep-dive'
+    | '/founders-circle'
+    | '/labs'
+    | '/resource-vault'
+    | '/roadmap'
+    | '/case/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/deep-dive'
+    | '/founders-circle'
+    | '/labs'
+    | '/resource-vault'
+    | '/roadmap'
+    | '/case/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DeepDiveRoute: typeof DeepDiveRoute
+  FoundersCircleRoute: typeof FoundersCircleRoute
   LabsRoute: typeof LabsRoute
+  ResourceVaultRoute: typeof ResourceVaultRoute
+  RoadmapRoute: typeof RoadmapRoute
   CaseSlugRoute: typeof CaseSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resource-vault': {
+      id: '/resource-vault'
+      path: '/resource-vault'
+      fullPath: '/resource-vault'
+      preLoaderRoute: typeof ResourceVaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/labs': {
       id: '/labs'
       path: '/labs'
       fullPath: '/labs'
       preLoaderRoute: typeof LabsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/founders-circle': {
+      id: '/founders-circle'
+      path: '/founders-circle'
+      fullPath: '/founders-circle'
+      preLoaderRoute: typeof FoundersCircleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deep-dive': {
+      id: '/deep-dive'
+      path: '/deep-dive'
+      fullPath: '/deep-dive'
+      preLoaderRoute: typeof DeepDiveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,7 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DeepDiveRoute: DeepDiveRoute,
+  FoundersCircleRoute: FoundersCircleRoute,
   LabsRoute: LabsRoute,
+  ResourceVaultRoute: ResourceVaultRoute,
+  RoadmapRoute: RoadmapRoute,
   CaseSlugRoute: CaseSlugRoute,
 }
 export const routeTree = rootRouteImport

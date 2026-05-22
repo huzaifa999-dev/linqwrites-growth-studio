@@ -9,18 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as ResourceVaultRouteImport } from './routes/resource-vault'
+import { Route as ReportRouteImport } from './routes/report'
 import { Route as OriginRouteImport } from './routes/origin'
 import { Route as NewsroomRouteImport } from './routes/newsroom'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as LabsRouteImport } from './routes/labs'
 import { Route as FoundersCircleRouteImport } from './routes/founders-circle'
 import { Route as DeepDiveRouteImport } from './routes/deep-dive'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectiveRouteImport } from './routes/collective'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseSlugRouteImport } from './routes/case.$slug'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoadmapRoute = RoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
@@ -31,6 +40,11 @@ const ResourceVaultRoute = ResourceVaultRouteImport.update({
   path: '/resource-vault',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OriginRoute = OriginRouteImport.update({
   id: '/origin',
   path: '/origin',
@@ -39,6 +53,11 @@ const OriginRoute = OriginRouteImport.update({
 const NewsroomRoute = NewsroomRouteImport.update({
   id: '/newsroom',
   path: '/newsroom',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LabsRoute = LabsRouteImport.update({
@@ -54,6 +73,11 @@ const FoundersCircleRoute = FoundersCircleRouteImport.update({
 const DeepDiveRoute = DeepDiveRouteImport.update({
   id: '/deep-dive',
   path: '/deep-dive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollectiveRoute = CollectiveRouteImport.update({
@@ -81,26 +105,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/collective': typeof CollectiveRoute
+  '/contact': typeof ContactRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/legal': typeof LegalRoute
   '/newsroom': typeof NewsroomRoute
   '/origin': typeof OriginRoute
+  '/report': typeof ReportRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
+  '/terms': typeof TermsRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/collective': typeof CollectiveRoute
+  '/contact': typeof ContactRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/legal': typeof LegalRoute
   '/newsroom': typeof NewsroomRoute
   '/origin': typeof OriginRoute
+  '/report': typeof ReportRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
+  '/terms': typeof TermsRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRoutesById {
@@ -108,13 +140,17 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/collective': typeof CollectiveRoute
+  '/contact': typeof ContactRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
   '/labs': typeof LabsRoute
+  '/legal': typeof LegalRoute
   '/newsroom': typeof NewsroomRoute
   '/origin': typeof OriginRoute
+  '/report': typeof ReportRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
+  '/terms': typeof TermsRoute
   '/case/$slug': typeof CaseSlugRoute
 }
 export interface FileRouteTypes {
@@ -123,39 +159,51 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/collective'
+    | '/contact'
     | '/deep-dive'
     | '/founders-circle'
     | '/labs'
+    | '/legal'
     | '/newsroom'
     | '/origin'
+    | '/report'
     | '/resource-vault'
     | '/roadmap'
+    | '/terms'
     | '/case/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/careers'
     | '/collective'
+    | '/contact'
     | '/deep-dive'
     | '/founders-circle'
     | '/labs'
+    | '/legal'
     | '/newsroom'
     | '/origin'
+    | '/report'
     | '/resource-vault'
     | '/roadmap'
+    | '/terms'
     | '/case/$slug'
   id:
     | '__root__'
     | '/'
     | '/careers'
     | '/collective'
+    | '/contact'
     | '/deep-dive'
     | '/founders-circle'
     | '/labs'
+    | '/legal'
     | '/newsroom'
     | '/origin'
+    | '/report'
     | '/resource-vault'
     | '/roadmap'
+    | '/terms'
     | '/case/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -163,18 +211,29 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CareersRoute: typeof CareersRoute
   CollectiveRoute: typeof CollectiveRoute
+  ContactRoute: typeof ContactRoute
   DeepDiveRoute: typeof DeepDiveRoute
   FoundersCircleRoute: typeof FoundersCircleRoute
   LabsRoute: typeof LabsRoute
+  LegalRoute: typeof LegalRoute
   NewsroomRoute: typeof NewsroomRoute
   OriginRoute: typeof OriginRoute
+  ReportRoute: typeof ReportRoute
   ResourceVaultRoute: typeof ResourceVaultRoute
   RoadmapRoute: typeof RoadmapRoute
+  TermsRoute: typeof TermsRoute
   CaseSlugRoute: typeof CaseSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/roadmap': {
       id: '/roadmap'
       path: '/roadmap'
@@ -189,6 +248,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourceVaultRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/origin': {
       id: '/origin'
       path: '/origin'
@@ -201,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/newsroom'
       fullPath: '/newsroom'
       preLoaderRoute: typeof NewsroomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/labs': {
@@ -222,6 +295,13 @@ declare module '@tanstack/react-router' {
       path: '/deep-dive'
       fullPath: '/deep-dive'
       preLoaderRoute: typeof DeepDiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collective': {
@@ -259,13 +339,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CareersRoute: CareersRoute,
   CollectiveRoute: CollectiveRoute,
+  ContactRoute: ContactRoute,
   DeepDiveRoute: DeepDiveRoute,
   FoundersCircleRoute: FoundersCircleRoute,
   LabsRoute: LabsRoute,
+  LegalRoute: LegalRoute,
   NewsroomRoute: NewsroomRoute,
   OriginRoute: OriginRoute,
+  ReportRoute: ReportRoute,
   ResourceVaultRoute: ResourceVaultRoute,
   RoadmapRoute: RoadmapRoute,
+  TermsRoute: TermsRoute,
   CaseSlugRoute: CaseSlugRoute,
 }
 export const routeTree = rootRouteImport

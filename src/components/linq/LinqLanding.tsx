@@ -20,6 +20,10 @@ import {
   Twitter,
   Mail,
   Phone,
+  Music2,
+  Facebook,
+  Youtube,
+  Instagram,
 } from "lucide-react";
 
 import founderHuzaifa from "@/assets/founder-huzaifa.png";
@@ -30,7 +34,6 @@ import showBrand from "@/assets/showcase-brand.jpg";
 import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
-import { Planet3D } from "./Planet3D";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
 

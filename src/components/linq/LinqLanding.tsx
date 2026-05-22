@@ -623,15 +623,31 @@ function Footer() {
   const columns = [
     {
       title: "Discover",
-      links: ["Labs & Workshops", "Deep Dive Series", "Founders Circle", "Resource Vault", "Future Roadmap"],
+      links: [
+        { label: "Labs & Workshops", to: "/labs" },
+        { label: "Deep Dive Series", to: "/deep-dive" },
+        { label: "Founders Circle", to: "/founders-circle" },
+        { label: "Resource Vault", to: "/resource-vault" },
+        { label: "Future Roadmap", to: "/roadmap" },
+      ],
     },
     {
       title: "The Mission",
-      links: ["Origin Story", "The Collective", "Newsroom Hub", "Join the Team"],
+      links: [
+        { label: "Origin Story", to: "/origin" },
+        { label: "The Collective", to: "/collective" },
+        { label: "Newsroom Hub", to: "/newsroom" },
+        { label: "Join the Team", to: "/careers" },
+      ],
     },
     {
       title: "Concierge",
-      links: ["Get in Touch", "Legal & Privacy", "User Agreement", "Report a Concern"],
+      links: [
+        { label: "Get in Touch", to: "/contact" },
+        { label: "Legal & Privacy", to: "/legal" },
+        { label: "User Agreement", to: "/terms" },
+        { label: "Report a Concern", to: "/report" },
+      ],
     },
   ];
   const socials = [Music2, Facebook, Twitter, Youtube, Instagram];
@@ -662,8 +678,8 @@ function Footer() {
                 <h4 className="mb-4 text-sm font-medium uppercase tracking-wider text-white">{col.title}</h4>
                 <ul className="space-y-2 text-xs">
                   {col.links.map((l) => (
-                    <li key={l}>
-                      <a href="#" className="transition-colors hover:text-white">{l}</a>
+                    <li key={l.to}>
+                      <Link to={l.to} className="transition-colors hover:text-white">{l.label}</Link>
                     </li>
                   ))}
                 </ul>

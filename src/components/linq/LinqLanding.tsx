@@ -195,10 +195,39 @@ function Hero() {
           transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="relative flex items-center justify-center"
         >
-          <Planet3D />
+          <HeroVideo />
         </motion.div>
       </motion.div>
     </section>
+  );
+}
+
+/* -------------------- Hero Video (replaces globe) -------------------- */
+function HeroVideo() {
+  return (
+    <div className="relative aspect-square w-full max-w-[520px]">
+      <motion.div
+        aria-hidden
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute -inset-6 rounded-full bg-[conic-gradient(from_0deg,oklch(0.82_0.14_80/0.35),transparent_30%,transparent_70%,oklch(0.72_0.13_55/0.35))] blur-2xl opacity-70"
+      />
+      <div className="liquid-glass relative h-full w-full rounded-[2.5rem] shadow-lift">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full rounded-[2.5rem] object-cover"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_114316_1c7889ad-2885-410e-b493-98119fee0ddb.mp4"
+        />
+        <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute bottom-5 left-5 right-5 flex items-center justify-between text-[0.65rem] uppercase tracking-[0.3em] text-white/80">
+          <span className="inline-flex items-center gap-2"><Sparkles size={12} className="text-accent-warm" /> Live reel</span>
+          <span>LinqWrites · 2026</span>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -620,36 +620,72 @@ function PartnerCTA() {
 
 /* -------------------- Footer -------------------- */
 function Footer() {
+  const columns = [
+    {
+      title: "Discover",
+      links: ["Labs & Workshops", "Deep Dive Series", "Founders Circle", "Resource Vault", "Future Roadmap"],
+    },
+    {
+      title: "The Mission",
+      links: ["Origin Story", "The Collective", "Newsroom Hub", "Join the Team"],
+    },
+    {
+      title: "Concierge",
+      links: ["Get in Touch", "Legal & Privacy", "User Agreement", "Report a Concern"],
+    },
+  ];
+  const socials = [Music2, Facebook, Twitter, Youtube, Instagram];
   return (
-    <footer className="border-t border-hairline bg-paper py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-6 md:grid-cols-4">
-        <div className="col-span-2">
-          <div className="font-display text-3xl text-ink">Linq<em className="italic text-accent-warm">Writes</em></div>
-          <p className="mt-4 max-w-sm text-sm text-ink-soft">Creative systems for founders who want to be remembered.</p>
+    <div className="relative w-full px-4 pb-10 md:px-8">
+      <motion.footer
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="liquid-glass mx-auto mt-32 w-full max-w-7xl rounded-3xl p-6 text-white/70 md:mt-44 md:p-10"
+      >
+        <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-3 text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="currentColor">
+                <path d="M 4.688 136 C 68.373 136 120 187.627 120 251.312 C 120 252.883 119.967 254.445 119.905 256 L 0 256 L 0 136.096 C 1.555 136.034 3.117 136 4.688 136 Z M 251.312 136 C 252.883 136 254.445 136.034 256 136.096 L 256 256 L 136.095 256 C 136.032 254.438 136.001 252.875 136 251.312 C 136 187.627 187.627 136 251.312 136 Z M 119.905 0 C 119.967 1.555 120 3.117 120 4.688 C 120 68.373 68.373 120 4.687 120 C 3.117 120 1.555 119.967 0 119.905 L 0 0 Z M 256 119.905 C 254.445 119.967 252.883 120 251.312 120 C 187.627 120 136 68.373 136 4.687 C 136 3.117 136.033 1.555 136.095 0 L 256 0 Z" />
+              </svg>
+              <span className="text-xl font-medium tracking-tight">LINQWRITES</span>
+            </div>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed">
+              LinqWrites is a two person studio crafting narrative systems, branding and AI workflows for founders who want to be remembered. Shared with care, built with taste.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-7">
+            {columns.map((col) => (
+              <div key={col.title}>
+                <h4 className="mb-4 text-sm font-medium uppercase tracking-wider text-white">{col.title}</h4>
+                <ul className="space-y-2 text-xs">
+                  {col.links.map((l) => (
+                    <li key={l}>
+                      <a href="#" className="transition-colors hover:text-white">{l}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-        <div>
-          <p className="mb-4 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft">Studio</p>
-          <ul className="space-y-2 text-sm text-ink">
-            <li><a href="#services" className="hover:text-accent-warm">Services</a></li>
-            <li><a href="#work" className="hover:text-accent-warm">Work</a></li>
-            <li><a href="#about" className="hover:text-accent-warm">About</a></li>
-            <li><a href="#contact" className="hover:text-accent-warm">Contact</a></li>
-          </ul>
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-6 md:flex-row md:gap-4">
+          <p className="text-[10px] uppercase tracking-widest opacity-50">Curated by @LinqWrites · © {new Date().getFullYear()}</p>
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] uppercase tracking-widest opacity-50">Join the Journey:</span>
+            <div className="flex items-center gap-3">
+              {socials.map((Icon, i) => (
+                <a key={i} href="#" className="opacity-70 transition-colors hover:text-white hover:opacity-100">
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-        <div>
-          <p className="mb-4 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft">Elsewhere</p>
-          <ul className="space-y-2 text-sm text-ink">
-            <li><a href="#" className="inline-flex items-center gap-2 hover:text-accent-warm"><Linkedin size={14}/> LinkedIn</a></li>
-            <li><a href="#" className="inline-flex items-center gap-2 hover:text-accent-warm"><Twitter size={14}/> X / Twitter</a></li>
-            <li><a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-2 hover:text-accent-warm"><Mail size={14}/> Email</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="mx-auto mt-16 flex max-w-7xl flex-col items-start justify-between gap-4 border-t border-hairline px-6 pt-8 text-xs text-ink-soft md:flex-row md:items-center">
-        <span>© {new Date().getFullYear()} LinqWrites. All rights reserved.</span>
-        <span>Master your narrative.</span>
-      </div>
-    </footer>
+      </motion.footer>
+    </div>
   );
 }
 

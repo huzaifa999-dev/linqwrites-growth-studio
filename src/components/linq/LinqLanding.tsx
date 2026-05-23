@@ -431,6 +431,92 @@ const testimonials = [
   { quote: "Our LinkedIn now closes deals before the sales call even happens. That’s the bar.", name: "Priya Shankar", role: "GTM Lead, Foundry" },
 ];
 
+/* -------------------- Pricing -------------------- */
+const pricingTiers = [
+  { name: "LinkedIn Ghostwriting", price: "$35", cadence: "per sprint", headline: "10 posts in 24 hours.", description: "Our flagship offer. Ten founder voiced LinkedIn posts, edited by humans, delivered in a single day.", features: ["10 ghostwritten posts", "24 hour turnaround", "Founder voice capture", "Two rounds of revisions"], featured: true },
+  { name: "Personal Branding", price: "$480", cadence: "starting at", headline: "A voice, a thesis, a presence.", description: "Positioning, tone of voice and a 90 day content thesis built for the rooms you want to be in.", features: ["Brand voice document", "Positioning thesis", "90 day content map", "Two strategy calls"] },
+  { name: "Long Form Writing", price: "$220", cadence: "per essay", headline: "Articles, essays, newsletters.", description: "Deeply researched long form built to compound trust and travel beyond your immediate network.", features: ["1,200 to 2,500 words", "Research and outline", "SEO and distribution notes", "One revision pass"] },
+  { name: "SEO and Blog System", price: "$640", cadence: "per month", headline: "Buyers, not browsers.", description: "Four search first blog posts a month with keyword research, internal linking and a publishing cadence.", features: ["4 posts per month", "Keyword research", "On page SEO", "Monthly reporting"] },
+  { name: "Script Writing", price: "$95", cadence: "per script", headline: "Hooks that earn the swipe.", description: "Short form video scripts with hooks, beats and CTAs tuned for Reels, Shorts and LinkedIn video.", features: ["Up to 90 seconds", "Hook variations", "Shot suggestions", "One revision"] },
+  { name: "Logo and Brand Identity", price: "$820", cadence: "one time", headline: "A category leader look.", description: "A restrained, confident visual system with logo, colour, typography and a one page brand book.", features: ["Logo suite", "Colour and type system", "Brand guidelines", "Source files included"] },
+  { name: "Website Development", price: "$1,450", cadence: "starting at", headline: "Cinematic, fast, conversion tuned.", description: "A five to seven page marketing site, designed and shipped end to end on a modern stack.", features: ["Custom design", "Mobile first build", "CMS or static", "Two week delivery"] },
+  { name: "Social Media Management", price: "$520", cadence: "per month", headline: "A weekly creative rhythm.", description: "Strategy, creative, posting and reporting across two platforms. A founder voice held all month.", features: ["2 platforms", "12 posts per month", "Community replies", "Monthly report"] },
+  { name: "Ad Management", price: "$580", cadence: "per month + spend", headline: "Funnels tuned to real economics.", description: "Paid acquisition and retargeting set up, run and optimised against your actual unit economics.", features: ["Meta and LinkedIn", "Creative direction", "Weekly optimisation", "Transparent reporting"] },
+  { name: "AI Automation", price: "$390", cadence: "per workflow", headline: "Twenty hours into an afternoon.", description: "Custom AI workflows that quietly absorb the busywork your team should never have been doing.", features: ["Workflow design", "Tool integration", "Documentation", "30 day support"] },
+];
+
+function Pricing() {
+  return (
+    <section id="pricing" className="relative bg-paper-warm py-32 md:py-44">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-20 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
+          <div>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04), Pricing</p>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
+              Plain numbers.<br />
+              <em className="italic text-accent-warm">No retainers in disguise.</em>
+            </h2>
+          </div>
+          <p className="max-w-md text-ink-soft md:text-right">
+            Our flagship is fixed. Everything else starts here and shifts only when scope honestly does. No hourly games.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-hairline bg-[var(--hairline)] sm:grid-cols-2 lg:grid-cols-3">
+          {pricingTiers.map((p, i) => (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative flex h-full flex-col justify-between gap-10 p-8 transition duration-700 ${p.featured ? "bg-ink text-paper" : "bg-paper hover:bg-paper-warm"}`}
+            >
+              <div className="flex items-start justify-between">
+                <span className={`text-[0.65rem] uppercase tracking-[0.3em] ${p.featured ? "text-accent-warm" : "text-ink-soft"}`}>
+                  {p.featured ? "Flagship" : "Studio rate"}
+                </span>
+                <span className={`text-xs tabular-nums ${p.featured ? "text-paper/70" : "text-ink-soft"}`}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div>
+                <h3 className={`font-display text-2xl ${p.featured ? "text-paper" : "text-ink"}`}>{p.name}</h3>
+                <p className={`mt-2 text-sm ${p.featured ? "text-paper/70" : "text-ink-soft"}`}>{p.headline}</p>
+                <div className="mt-6 flex items-baseline gap-2">
+                  <span className={`font-display text-4xl ${p.featured ? "text-accent-warm" : "text-ink"}`}>{p.price}</span>
+                  <span className={`text-xs uppercase tracking-widest ${p.featured ? "text-paper/60" : "text-ink-soft"}`}>{p.cadence}</span>
+                </div>
+                <p className={`mt-5 text-sm leading-relaxed ${p.featured ? "text-paper/75" : "text-ink-soft"}`}>{p.description}</p>
+                <ul className="mt-6 space-y-2">
+                  {p.features.map((f) => (
+                    <li key={f} className={`flex items-start gap-2 text-xs ${p.featured ? "text-paper/80" : "text-ink-soft"}`}>
+                      <span className="mt-1 h-1 w-1 rounded-full bg-accent-warm" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                href="#contact"
+                data-hover
+                className={`inline-flex items-center gap-2 text-xs uppercase tracking-widest transition ${p.featured ? "text-paper hover:text-accent-warm" : "text-ink-soft hover:text-ink"}`}
+              >
+                {p.featured ? "Book the sprint" : "Start a project"}
+                <ArrowUpRight size={14} />
+              </a>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="mt-10 text-center text-xs text-ink-soft">
+          Prices in USD. Bespoke retainers available for founders on a quarterly rhythm.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Testimonials() {
   const [i, setI] = useState(0);
   useEffect(() => {

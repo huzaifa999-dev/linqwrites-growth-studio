@@ -85,8 +85,8 @@ export function PageShell({ index, eyebrow, title, emphasis, lede, children, cta
       </motion.main>
 
       <style>{`
-        .prose-linq h2 { font-family: "Fraunces", serif; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.1; color: var(--ink); margin-top: 2.5rem; letter-spacing: -0.01em; }
-        .prose-linq h3 { font-family: "Fraunces", serif; font-size: 1.25rem; color: var(--ink); margin-top: 1.5rem; }
+        .prose-linq h2 { font-family: "Playfair Display", serif; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.1; color: var(--ink); margin-top: 2.5rem; letter-spacing: -0.01em; }
+        .prose-linq h3 { font-family: "Playfair Display", serif; font-size: 1.25rem; color: var(--ink); margin-top: 1.5rem; }
         .prose-linq p { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.75; }
         .prose-linq ul { list-style: none; padding: 0; display: grid; gap: 0.75rem; }
         .prose-linq li { color: var(--ink-soft); padding-left: 1.25rem; position: relative; line-height: 1.6; }

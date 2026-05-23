@@ -808,6 +808,7 @@ export function LinqLanding() {
         <Marquee />
         <Story />
         <Services />
+        <Pricing />
         <Testimonials />
         <Projects />
         <ContactSection />

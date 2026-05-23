@@ -736,7 +736,11 @@ function Footer() {
       ],
     },
   ];
-  const socials = [Music2, Facebook, Twitter, Youtube, Instagram];
+  const socials: { Icon: typeof Facebook; href: string; label: string }[] = [
+    { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61589520398455", label: "Facebook" },
+    { Icon: Instagram, href: "https://www.instagram.com/linqwrites", label: "Instagram" },
+    { Icon: Youtube, href: "https://youtube.com/@linqwrites", label: "YouTube" },
+  ];
   return (
     <div className="relative w-full px-4 pb-10 md:px-8">
       <motion.footer
@@ -778,8 +782,15 @@ function Footer() {
           <div className="flex items-center gap-4">
             <span className="text-[10px] uppercase tracking-widest opacity-50">Join the Journey:</span>
             <div className="flex items-center gap-3">
-              {socials.map((Icon, i) => (
-                <a key={i} href="#" className="opacity-70 transition-colors hover:text-white hover:opacity-100">
+              {socials.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="opacity-70 transition-colors hover:text-white hover:opacity-100"
+                >
                   <Icon size={16} />
                 </a>
               ))}

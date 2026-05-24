@@ -867,6 +867,14 @@ function Preloader({ onDone }: { onDone: () => void }) {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full max-w-md px-8 text-center"
       >
+        <motion.img
+          src={linqLogo}
+          alt="LinqWrites"
+          initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mb-8 h-24 w-24 rounded-full shadow-lift ring-1 ring-accent-warm/50"
+        />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

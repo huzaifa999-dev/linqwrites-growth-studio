@@ -141,17 +141,18 @@ function Hero() {
   const my = useMotionValue(0);
   return (
     <section ref={ref} id="top" className="relative isolate grain overflow-hidden bg-paper pt-40 pb-28 md:pt-48 md:pb-40" onMouseMove={(e) => { const r = (e.currentTarget as HTMLElement).getBoundingClientRect(); mx.set((e.clientX - r.left - r.width / 2) / 30); my.set((e.clientY - r.top - r.height / 2) / 30); }}>
-      {/* Ambient video background */}
+      {/* Ambient video background — responsive cover */}
       <video
         aria-hidden
         autoPlay
         loop
         muted
         playsInline
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-25 mix-blend-screen"
+        preload="auto"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
         src="/linq-hero.mp4"
       />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-paper/80 via-paper/60 to-paper" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-paper/70 via-paper/55 to-paper" />
       {/* Floating gradients */}
       <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
@@ -446,16 +447,15 @@ const testimonials = [
 
 /* -------------------- Pricing -------------------- */
 const pricingTiers = [
-  { name: "LinkedIn Ghostwriting", price: "$35", cadence: "per sprint", headline: "10 posts in 24 hours.", description: "Our flagship offer. Ten founder voiced LinkedIn posts, edited by humans, delivered in a single day.", features: ["10 ghostwritten posts", "24 hour turnaround", "Founder voice capture", "Two rounds of revisions"], featured: true },
-  { name: "Personal Branding", price: "$240", cadence: "starting at", headline: "A voice, a thesis, a presence.", description: "Positioning, tone of voice and a 90 day content thesis built for the rooms you want to be in.", features: ["Brand voice document", "Positioning thesis", "90 day content map", "Two strategy calls"] },
-  { name: "Long Form Writing", price: "$220", cadence: "per essay", headline: "Articles, essays, newsletters.", description: "Deeply researched long form built to compound trust and travel beyond your immediate network.", features: ["1,200 to 2,500 words", "Research and outline", "SEO and distribution notes", "One revision pass"] },
-  { name: "SEO and Blog System", price: "$320", cadence: "per month", headline: "Buyers, not browsers.", description: "Four search first blog posts a month with keyword research, internal linking and a publishing cadence.", features: ["4 posts per month", "Keyword research", "On page SEO", "Monthly reporting"] },
-  { name: "Script Writing", price: "$55", cadence: "per script", headline: "Hooks that earn the swipe.", description: "Short form video scripts with hooks, beats and CTAs tuned for Reels, Shorts and LinkedIn video.", features: ["Up to 90 seconds", "Hook variations", "Shot suggestions", "One revision"] },
-  { name: "Logo and Brand Identity", price: "$420", cadence: "one time", headline: "A category leader look.", description: "A restrained, confident visual system with logo, colour, typography and a one page brand book.", features: ["Logo suite", "Colour and type system", "Brand guidelines", "Source files included"] },
-  { name: "Website Development", price: "$690", cadence: "starting at", headline: "Cinematic, fast, conversion tuned.", description: "A five to seven page marketing site, designed and shipped end to end on a modern stack.", features: ["Custom design", "Mobile first build", "CMS or static", "Two week delivery"] },
-  { name: "Social Media Management", price: "$260", cadence: "per month", headline: "A weekly creative rhythm.", description: "Strategy, creative, posting and reporting across two platforms. A founder voice held all month.", features: ["2 platforms", "12 posts per month", "Community replies", "Monthly report"] },
-  { name: "Ad Management", price: "$290", cadence: "per month + spend", headline: "Funnels tuned to real economics.", description: "Paid acquisition and retargeting set up, run and optimised against your actual unit economics.", features: ["Meta and LinkedIn", "Creative direction", "Weekly optimisation", "Transparent reporting"] },
-  { name: "AI Automation", price: "$190", cadence: "per workflow", headline: "Twenty hours into an afternoon.", description: "Custom AI workflows that quietly absorb the busywork your team should never have been doing.", features: ["Workflow design", "Tool integration", "Documentation", "30 day support"] },
+  { name: "LinkedIn Post Pack", price: "$49", cadence: "flagship", headline: "Your voice. Their attention.", description: "The fastest way to show up on LinkedIn without writing a single word yourself. Built for founders and executives who know LinkedIn matters but never have time to post.", features: ["10 ready to post LinkedIn posts", "Written in your exact voice", "Delivered in 24 hours", "Google Doc — copy paste done", "Hook + body + CTA + hashtags", "One revision included"], featured: true },
+  { name: "Personal Branding", price: "$149", cadence: "one time", headline: "A voice, a position, a presence.", description: "We build the complete foundation of your LinkedIn personal brand — so every post, every DM, every pitch sounds unmistakably like you.", features: ["Full LinkedIn profile rewrite (Headline, About, Experience)", "Brand voice document (tone, words, style guide)", "Positioning statement (who you help and how)", "30 day content thesis", "Featured section setup", "One strategy call included"] },
+  { name: "Long Form Writing", price: "$85", cadence: "per piece", headline: "Articles, essays, newsletters.", description: "Deeply researched long form content built to compound trust, travel beyond your immediate network, and establish you as the authority in your space.", features: ["1,200 - 2,500 words", "Full research included", "Written in your voice", "SEO structured", "Distribution notes included", "One revision pass"] },
+  { name: "SEO Blog System", price: "$199", cadence: "per month", headline: "Buyers. Not browsers.", description: "Four search-first blog posts every month that rank on Google, educate your ideal buyer, and drive them to your offer without paid ads.", features: ["4 blog posts per month", "Full keyword research", "On-page SEO optimised", "Internal linking strategy", "Google Doc delivery", "Monthly performance report"] },
+  { name: "Script Writing", price: "$39", cadence: "per script", headline: "Hooks that earn the swipe.", description: "Short form video scripts built for maximum retention — opening hooks that stop the scroll, beats that hold attention, and CTAs that actually convert.", features: ["Up to 90 seconds", "Hook variations included", "Shot suggestions", "LinkedIn · Reels · Shorts ready", "One revision included"] },
+  { name: "Logo + Brand Identity", price: "$199", cadence: "one time", headline: "A category leader look.", description: "A restrained, confident visual system that makes your brand impossible to ignore and easy to trust — from first glance.", features: ["Logo suite (primary + variations)", "Colour system + usage guide", "Typography pairing", "Brand guidelines document", "Business card ready", "All file formats delivered"] },
+  { name: "Website Development", price: "$299", cadence: "starting at", headline: "Clean. Fast. Conversion tuned.", description: "A five to seven page marketing site designed, built and shipped end to end — modern stack, mobile first, ready to convert visitors into leads.", features: ["Custom design from scratch", "Mobile first build", "CMS or static — your choice", "Contact form + integrations", "Basic SEO setup", "Full handover + documentation", "7 day delivery"] },
+  { name: "Social Media Management", price: "$149", cadence: "per month", headline: "A weekly creative rhythm.", description: "Your brand stays visible, consistent and growing — every single week — without you lifting a finger.", features: ["12 posts per month", "2 platforms included", "Written in your founder voice", "Community replies managed", "Content calendar provided", "Monthly performance report"] },
+  { name: "AI Automation Workflow", price: "$149", cadence: "per workflow", headline: "Twenty hours back every week.", description: "Custom AI workflows that quietly absorb the busywork your team should never have been doing — designed, built and documented so it runs without you.", features: ["Full workflow design", "Tool integration", "Testing + quality check", "Complete documentation", "30 day support included"] },
 ];
 
 function Pricing() {
@@ -766,9 +766,7 @@ function Footer() {
         <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="currentColor">
-                <path d="M 4.688 136 C 68.373 136 120 187.627 120 251.312 C 120 252.883 119.967 254.445 119.905 256 L 0 256 L 0 136.096 C 1.555 136.034 3.117 136 4.688 136 Z M 251.312 136 C 252.883 136 254.445 136.034 256 136.096 L 256 256 L 136.095 256 C 136.032 254.438 136.001 252.875 136 251.312 C 136 187.627 187.627 136 251.312 136 Z M 119.905 0 C 119.967 1.555 120 3.117 120 4.688 C 120 68.373 68.373 120 4.687 120 C 3.117 120 1.555 119.967 0 119.905 L 0 0 Z M 256 119.905 C 254.445 119.967 252.883 120 251.312 120 C 187.627 120 136 68.373 136 4.687 C 136 3.117 136.033 1.555 136.095 0 L 256 0 Z" />
-              </svg>
+              <img src={linqLogo} alt="LinqWrites" className="h-10 w-10 rounded-full ring-1 ring-white/20 object-cover" />
               <span className="text-xl font-medium tracking-tight">LINQWRITES</span>
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed">

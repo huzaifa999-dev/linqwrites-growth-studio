@@ -96,6 +96,7 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <a href="#top" className="flex items-center gap-2">
+          <img src={linqLogo} alt="LinqWrites" className="h-9 w-9 rounded-full ring-1 ring-accent-warm/40 shadow-soft" />
           <span className="font-display text-2xl tracking-tight text-ink">Linq<span className="italic text-accent-warm">Writes</span></span>
         </a>
         <nav className="hidden items-center gap-10 text-sm text-ink-soft md:flex">

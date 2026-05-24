@@ -34,6 +34,7 @@ import showBrand from "@/assets/showcase-brand.jpg";
 import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
+import linqLogo from "@/assets/linq-logo.webp";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
 
@@ -95,6 +96,7 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <a href="#top" className="flex items-center gap-2">
+          <img src={linqLogo} alt="LinqWrites" className="h-9 w-9 rounded-full ring-1 ring-accent-warm/40 shadow-soft" />
           <span className="font-display text-2xl tracking-tight text-ink">Linq<span className="italic text-accent-warm">Writes</span></span>
         </a>
         <nav className="hidden items-center gap-10 text-sm text-ink-soft md:flex">
@@ -139,6 +141,17 @@ function Hero() {
   const my = useMotionValue(0);
   return (
     <section ref={ref} id="top" className="relative isolate grain overflow-hidden bg-paper pt-40 pb-28 md:pt-48 md:pb-40" onMouseMove={(e) => { const r = (e.currentTarget as HTMLElement).getBoundingClientRect(); mx.set((e.clientX - r.left - r.width / 2) / 30); my.set((e.clientY - r.top - r.height / 2) / 30); }}>
+      {/* Ambient video background */}
+      <video
+        aria-hidden
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-25 mix-blend-screen"
+        src="/linq-hero.mp4"
+      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-paper/80 via-paper/60 to-paper" />
       {/* Floating gradients */}
       <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
@@ -854,6 +867,14 @@ function Preloader({ onDone }: { onDone: () => void }) {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full max-w-md px-8 text-center"
       >
+        <motion.img
+          src={linqLogo}
+          alt="LinqWrites"
+          initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mb-8 h-24 w-24 rounded-full shadow-lift ring-1 ring-accent-warm/50"
+        />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

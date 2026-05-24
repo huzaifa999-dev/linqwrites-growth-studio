@@ -141,18 +141,21 @@ function Hero() {
   const my = useMotionValue(0);
   return (
     <section ref={ref} id="top" className="relative isolate grain overflow-hidden bg-paper pt-40 pb-28 md:pt-48 md:pb-40" onMouseMove={(e) => { const r = (e.currentTarget as HTMLElement).getBoundingClientRect(); mx.set((e.clientX - r.left - r.width / 2) / 30); my.set((e.clientY - r.top - r.height / 2) / 30); }}>
-      {/* Ambient video background — responsive cover */}
+      {/* Ambient video background — responsive cover, hidden under reduced motion */}
       <video
         aria-hidden
+        data-ambient
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+        preload="metadata"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-55"
         src="/linq-hero.mp4"
       />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-paper/70 via-paper/55 to-paper" />
+      {/* Cinematic overlay: top vignette + bottom fade so type stays crisp on every screen */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.13_0.012_260/0.55)_55%,var(--paper)_100%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-paper" />
       {/* Floating gradients */}
       <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />

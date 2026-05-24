@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LinqWrites — Creative systems for founders who want to be remembered." },
+      { title: "LinqWrites" },
       { name: "description", content: "LinqWrites is a creative growth studio helping founders, startups and creators build authority through storytelling, branding, content systems, design and AI automation." },
       { name: "author", content: "LinqWrites" },
-      { property: "og:title", content: "LinqWrites — Master Your Narrative" },
-      { property: "og:description", content: "Creative systems for founders who want to be remembered." },
+      { property: "og:title", content: "LinqWrites" },
+      { property: "og:description", content: "LinqWrites is a creative growth studio helping founders, startups and creators build authority through storytelling, branding, content systems, design and AI automation." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "LinqWrites" },
+      { name: "twitter:description", content: "LinqWrites is a creative growth studio helping founders, startups and creators build authority through storytelling, branding, content systems, design and AI automation." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/9ePIfmRIi6ZQKJJuoHboy7razfQ2/social-images/social-1779615136275-1000491063.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/9ePIfmRIi6ZQKJJuoHboy7razfQ2/social-images/social-1779615136275-1000491063.webp" },
     ],
     links: [
       {

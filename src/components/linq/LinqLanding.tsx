@@ -19,7 +19,6 @@ import {
   Linkedin,
   Twitter,
   Mail,
-  Phone,
   Music2,
   Facebook,
   Youtube,

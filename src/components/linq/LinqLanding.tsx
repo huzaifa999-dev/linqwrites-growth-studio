@@ -19,7 +19,6 @@ import {
   Linkedin,
   Twitter,
   Mail,
-  Phone,
   Music2,
   Facebook,
   Youtube,
@@ -638,8 +637,6 @@ function ContactSection() {
           </p>
           <div className="mt-10 space-y-3 text-sm text-ink">
             <a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-3 hover:text-accent-warm"><Mail size={14}/><span>linqwrites@gmail.com</span></a>
-            <br />
-            <a href="tel:+917381442999" className="inline-flex items-center gap-3 hover:text-accent-warm"><Phone size={14}/><span>+91 73814 42999</span></a>
           </div>
         </div>
         <div className="md:col-span-7">
@@ -713,7 +710,6 @@ function PartnerCTA() {
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-ink-soft">
           <a href="mailto:linqwrites@gmail.com" className="inline-flex items-center gap-2 hover:text-ink"><Mail size={14}/><span>linqwrites@gmail.com</span></a>
-          <a href="tel:+917381442999" className="inline-flex items-center gap-2 hover:text-ink"><Phone size={14}/><span>+91 73814 42999</span></a>
         </div>
       </div>
     </section>

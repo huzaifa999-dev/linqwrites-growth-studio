@@ -72,16 +72,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LinqWrites" },
-      { name: "description", content: "LinqWrites is a creative growth studio helping founders, startups and creators build authority through storytelling, branding, content systems, design and AI automation." },
+      { title: "LinqWrites — Creative Growth Studio for Founders" },
+      { name: "description", content: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation." },
       { name: "author", content: "LinqWrites" },
-      { property: "og:title", content: "LinqWrites" },
-      { property: "og:description", content: "LinqWrites is a creative growth studio helping founders, startups and creators build authority through storytelling, branding, content systems, design and AI automation." },
+      { property: "og:title", content: "LinqWrites — Creative Growth Studio for Founders" },
+      { property: "og:description", content: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation." },
+      { property: "og:site_name", content: "LinqWrites" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "LinqWrites" },
-      { name: "twitter:description", content: "LinqWrites is a creative growth studio helping founders, startups and creators build authority through storytelling, branding, content systems, design and AI automation." },
+      { name: "twitter:title", content: "LinqWrites — Creative Growth Studio for Founders" },
+      { name: "twitter:description", content: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/9ePIfmRIi6ZQKJJuoHboy7razfQ2/social-images/social-1779615136275-1000491063.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/9ePIfmRIi6ZQKJJuoHboy7razfQ2/social-images/social-1779615136275-1000491063.webp" },
     ],
@@ -89,6 +89,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "LinqWrites",
+              url: "https://linqwrites-growth-studio.lovable.app",
+              description: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation.",
+              sameAs: [
+                "https://www.instagram.com/linqwrites",
+                "https://youtube.com/@linqwrites",
+                "https://www.facebook.com/profile.php?id=61589520398455",
+              ],
+            },
+            {
+              "@type": "WebSite",
+              name: "LinqWrites",
+              url: "https://linqwrites-growth-studio.lovable.app",
+            },
+          ],
+        }),
       },
     ],
   }),

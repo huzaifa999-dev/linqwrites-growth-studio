@@ -1,0 +1,25 @@
+# LinqWrites
+
+> Creative growth studio helping founders build authority through LinkedIn ghostwriting, branding, content systems, design and AI automation.
+
+LinqWrites is a two-brother studio (Huzaifa and Faiz) shipping editorial-grade content and brand systems for founders, operators and creators across India, the US, UK, Australia and Canada.
+
+## Pages
+
+- [Home](/): Studio overview, services, pricing and flagship LinkedIn Post Pack.
+- [Deep Dive Series](/deep-dive): Long-form essays on LinkedIn growth, AI ghostwriting and founder branding.
+- [Founders Circle](/founders-circle): Invite-only cohort of founders building in public together.
+- [Resource Vault](/resource-vault): Free templates, hook libraries and prompt stacks used inside the studio.
+- [Future Roadmap](/roadmap): What the studio is shipping next.
+- [Origin Story](/origin): How LinqWrites started and what we believe.
+- [The Collective](/collective): The team and bench behind every engagement.
+- [Newsroom](/newsroom): Milestones, press and client wins.
+- [Careers](/careers): Open roles and how we hire writers and strategists.
+- [Labs](/labs): Experiments in AI-assisted content and tooling.
+- [Contact](/contact): Email, WhatsApp and brief form to reach the founders.
+
+## Optional
+
+- [Legal & Privacy](/legal): Data, payments, ownership and confidentiality in plain English.
+- [Terms](/terms): Service terms.
+- [Report a Concern](/report): Direct line for client care and refunds.

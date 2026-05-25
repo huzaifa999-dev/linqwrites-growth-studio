@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as ResourceVaultRouteImport } from './routes/resource-vault'
 import { Route as ReportRouteImport } from './routes/report'
@@ -28,6 +29,11 @@ import { Route as CaseSlugRouteImport } from './routes/case.$slug'
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoadmapRoute = RoadmapRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/report': typeof ReportRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/case/$slug': typeof CaseSlugRoute
 }
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/report': typeof ReportRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/case/$slug': typeof CaseSlugRoute
 }
@@ -150,6 +158,7 @@ export interface FileRoutesById {
   '/report': typeof ReportRoute
   '/resource-vault': typeof ResourceVaultRoute
   '/roadmap': typeof RoadmapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/case/$slug': typeof CaseSlugRoute
 }
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/resource-vault'
     | '/roadmap'
+    | '/sitemap.xml'
     | '/terms'
     | '/case/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/resource-vault'
     | '/roadmap'
+    | '/sitemap.xml'
     | '/terms'
     | '/case/$slug'
   id:
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/resource-vault'
     | '/roadmap'
+    | '/sitemap.xml'
     | '/terms'
     | '/case/$slug'
   fileRoutesById: FileRoutesById
@@ -221,6 +233,7 @@ export interface RootRouteChildren {
   ReportRoute: typeof ReportRoute
   ResourceVaultRoute: typeof ResourceVaultRoute
   RoadmapRoute: typeof RoadmapRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   CaseSlugRoute: typeof CaseSlugRoute
 }
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roadmap': {
@@ -349,9 +369,20 @@ const rootRouteChildren: RootRouteChildren = {
   ReportRoute: ReportRoute,
   ResourceVaultRoute: ResourceVaultRoute,
   RoadmapRoute: RoadmapRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   CaseSlugRoute: CaseSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -185,6 +185,7 @@
 @layer utilities {
   .text-ink { color: var(--ink); }
   .text-ink-soft { color: var(--ink-soft); }
+  .text-paper { color: var(--paper); }
   .bg-paper { background-color: var(--paper); }
   .bg-paper-warm { background-color: var(--paper-warm); }
   .border-hairline { border-color: var(--hairline); }

@@ -296,7 +296,7 @@ function Story() {
       <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.82_0.14_80/0.12),transparent_70%)] blur-3xl" />
       <div className="mx-auto max-w-7xl px-6">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">
-          (01) · The Founders
+          The Founders
         </motion.p>
         <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="max-w-4xl font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
           <Quote size={32} className="mb-6 inline-block -rotate-6 text-accent-warm" />
@@ -390,7 +390,7 @@ function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(02), Capabilities</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Capabilities</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Ten disciplines.<br />
               <em className="italic text-accent-warm">One narrative system.</em>
@@ -466,7 +466,7 @@ function Pricing() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04), Pricing</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Pricing</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Plain numbers.<br />
               <em className="italic text-accent-warm">No retainers in disguise.</em>
@@ -543,7 +543,7 @@ function Testimonials() {
     <section className="relative overflow-hidden bg-ink py-32 text-[var(--paper)] md:py-44">
       <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.22),transparent_70%)] blur-2xl" />
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">(03), Founder Voices</p>
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">Founder Voices</p>
 
         <div className="relative min-h-[300px]">
           <AnimatePresence mode="wait">
@@ -577,7 +577,7 @@ function Projects() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-24 flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(04), Case Studies</p>
+            <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Case Studies</p>
             <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
               Work that compounds.<br />
               <em className="italic text-accent-warm">Stories that close.</em>
@@ -628,7 +628,7 @@ function ContactSection() {
       <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.18),transparent_70%)] blur-3xl" />
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05), Start a project</p>
+          <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Start a project</p>
           <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] text-ink">
             Tell us what you are <em className="italic text-accent-warm">building.</em>
           </h2>
@@ -674,7 +674,7 @@ function PartnerCTA() {
     >
       <motion.div style={{ x: sx, y: sy, translateX: "-50%", translateY: "-50%" }} className="pointer-events-none absolute left-0 top-0 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.28),transparent_65%)] blur-3xl" />
       <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">(05), Let’s build</p>
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-ink-soft">Let’s build</p>
         <motion.h2 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="font-display text-[clamp(2.4rem,7vw,6rem)] font-light leading-[0.98] text-ink">
           Partner with <em className="italic text-accent-warm">LinqWrites.</em>
         </motion.h2>

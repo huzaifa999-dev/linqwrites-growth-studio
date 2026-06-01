@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from "motion/react";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   ArrowUpRight,
   Sparkles,
@@ -36,6 +36,7 @@ import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
 import linqLogo from "@/assets/linq-logo.webp";
+import beeAsset from "@/assets/bee.png.asset.json";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
 

@@ -379,7 +379,13 @@ const services = [
 ];
 
 function Services() {
-  const [openAnything, setOpenAnything] = useState(false);
+  const navigate = useNavigate();
+  const [flying, setFlying] = useState(false);
+  const handleBee = () => {
+    if (flying) return;
+    setFlying(true);
+    setTimeout(() => navigate({ to: "/imagine" }), 1400);
+  };
   return (
     <section id="services" className="relative bg-paper py-32 md:py-44">
       <div className="mx-auto max-w-7xl px-6">

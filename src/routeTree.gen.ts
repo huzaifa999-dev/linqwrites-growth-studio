@@ -18,6 +18,7 @@ import { Route as OriginRouteImport } from './routes/origin'
 import { Route as NewsroomRouteImport } from './routes/newsroom'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as LabsRouteImport } from './routes/labs'
+import { Route as ImagineRouteImport } from './routes/imagine'
 import { Route as FoundersCircleRouteImport } from './routes/founders-circle'
 import { Route as DeepDiveRouteImport } from './routes/deep-dive'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -71,6 +72,11 @@ const LabsRoute = LabsRouteImport.update({
   path: '/labs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImagineRoute = ImagineRouteImport.update({
+  id: '/imagine',
+  path: '/imagine',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FoundersCircleRoute = FoundersCircleRouteImport.update({
   id: '/founders-circle',
   path: '/founders-circle',
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
+  '/imagine': typeof ImagineRoute
   '/labs': typeof LabsRoute
   '/legal': typeof LegalRoute
   '/newsroom': typeof NewsroomRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
+  '/imagine': typeof ImagineRoute
   '/labs': typeof LabsRoute
   '/legal': typeof LegalRoute
   '/newsroom': typeof NewsroomRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/deep-dive': typeof DeepDiveRoute
   '/founders-circle': typeof FoundersCircleRoute
+  '/imagine': typeof ImagineRoute
   '/labs': typeof LabsRoute
   '/legal': typeof LegalRoute
   '/newsroom': typeof NewsroomRoute
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/deep-dive'
     | '/founders-circle'
+    | '/imagine'
     | '/labs'
     | '/legal'
     | '/newsroom'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/deep-dive'
     | '/founders-circle'
+    | '/imagine'
     | '/labs'
     | '/legal'
     | '/newsroom'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/deep-dive'
     | '/founders-circle'
+    | '/imagine'
     | '/labs'
     | '/legal'
     | '/newsroom'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DeepDiveRoute: typeof DeepDiveRoute
   FoundersCircleRoute: typeof FoundersCircleRoute
+  ImagineRoute: typeof ImagineRoute
   LabsRoute: typeof LabsRoute
   LegalRoute: typeof LegalRoute
   NewsroomRoute: typeof NewsroomRoute
@@ -303,6 +316,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/imagine': {
+      id: '/imagine'
+      path: '/imagine'
+      fullPath: '/imagine'
+      preLoaderRoute: typeof ImagineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/founders-circle': {
       id: '/founders-circle'
       path: '/founders-circle'
@@ -362,6 +382,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DeepDiveRoute: DeepDiveRoute,
   FoundersCircleRoute: FoundersCircleRoute,
+  ImagineRoute: ImagineRoute,
   LabsRoute: LabsRoute,
   LegalRoute: LegalRoute,
   NewsroomRoute: NewsroomRoute,

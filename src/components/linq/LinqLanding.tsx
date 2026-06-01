@@ -190,12 +190,12 @@ function Hero() {
             ))}
           </h1>
 
-          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={6} className="mt-10 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
+          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={6} className="mx-auto mt-10 max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
             LinqWrites helps startups and founders grow through strategic storytelling, personal branding,
             content systems, design and AI powered workflows.
           </motion.p>
 
-          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4">
             <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
               Start a project
               <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

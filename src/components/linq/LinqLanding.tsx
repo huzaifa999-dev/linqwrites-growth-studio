@@ -378,6 +378,7 @@ const services = [
 ];
 
 function Services() {
+  const [openAnything, setOpenAnything] = useState(false);
   return (
     <section id="services" className="relative bg-paper py-32 md:py-44">
       <div className="mx-auto max-w-7xl px-6">
@@ -426,7 +427,132 @@ function Services() {
             </motion.div>
           ))}
         </div>
+
+        {/* Big "Anything you can imagine" CTA */}
+        <div className="relative mt-24 flex flex-col items-center text-center">
+          <motion.button
+            type="button"
+            data-hover
+            onClick={() => setOpenAnything(true)}
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            aria-label="Need something else? Tell us — we build anything"
+            className="group relative h-44 w-44 md:h-56 md:w-56"
+          >
+            <motion.span
+              aria-hidden
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,oklch(0.82_0.14_80/0.6),transparent_30%,transparent_70%,oklch(0.72_0.13_55/0.6))] blur-xl opacity-80"
+            />
+            <motion.span
+              aria-hidden
+              animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut" }}
+              className="absolute inset-0 rounded-full border border-accent-warm/60"
+            />
+            <motion.span
+              aria-hidden
+              animate={{ scale: [1, 1.35, 1], opacity: [0.3, 0, 0.3] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut", delay: 0.6 }}
+              className="absolute inset-0 rounded-full border border-accent-warm/40"
+            />
+            <span className="absolute inset-3 flex items-center justify-center rounded-full bg-ink shadow-lift">
+              <video
+                aria-hidden
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 h-full w-full rounded-full object-cover opacity-70 mix-blend-screen"
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_114316_1c7889ad-2885-410e-b493-98119fee0ddb.mp4"
+              />
+              <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,transparent_30%,oklch(0_0_0/0.5)_75%)]" />
+              <Rocket size={56} strokeWidth={1.2} className="relative z-10 text-accent-warm drop-shadow-[0_8px_18px_oklch(0.82_0.14_80/0.55)]" />
+            </span>
+          </motion.button>
+          <p className="mt-8 text-[0.7rem] uppercase tracking-[0.35em] text-ink-soft">Tap the orb</p>
+          <h3 className="mt-3 max-w-2xl font-display text-[clamp(1.6rem,3.2vw,2.6rem)] font-light leading-tight text-ink">
+            Need something <em className="italic text-accent-warm">not on the list?</em>
+          </h3>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink-soft md:text-base">
+            If you can imagine it — even a website on the moon — we’ll design, build and run it.
+          </p>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {openAnything && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Anything you can imagine"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-paper/85 px-5 backdrop-blur-xl"
+            onClick={() => setOpenAnything(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.97 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-hairline bg-paper-warm p-8 shadow-lift md:p-12"
+            >
+              <button
+                type="button"
+                onClick={() => setOpenAnything(false)}
+                aria-label="Close"
+                className="absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-ink-soft transition hover:text-accent-warm"
+              >
+                <X size={16} />
+              </button>
+              <p className="text-[0.7rem] uppercase tracking-[0.35em] text-accent-warm">From here to the moon</p>
+              <h4 className="mt-5 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.05] text-ink">
+                Tell us what it should look like.<br />
+                <em className="italic text-accent-warm">Even if it lives on the moon.</em>
+              </h4>
+              <div className="mt-6 grid gap-4 text-base leading-relaxed text-ink-soft">
+                <p>
+                  You don’t need a brief, a deck or a checklist. Describe the world you want to build —
+                  the audience, the feeling, the outcome — and leave the rest to us.
+                </p>
+                <p>
+                  We design it, write it, build it and run it. Strategy, brand, content, code, automation,
+                  motion — one studio, one team, one bill.
+                </p>
+                <p className="text-ink">
+                  Pay what the work is worth. We’ll serve you the dish.
+                </p>
+              </div>
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                <a
+                  href="#contact"
+                  onClick={() => setOpenAnything(false)}
+                  className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5"
+                >
+                  Tell us the vision
+                  <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setOpenAnything(false)}
+                  className="rounded-full border border-hairline px-6 py-3 text-sm text-ink-soft transition hover:text-ink"
+                >
+                  Maybe later
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

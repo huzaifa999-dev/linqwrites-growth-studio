@@ -23,6 +23,8 @@ import {
   Facebook,
   Youtube,
   Instagram,
+  Rocket,
+  X,
 } from "lucide-react";
 
 import founderHuzaifa from "@/assets/founder-huzaifa.png";
@@ -140,7 +142,7 @@ function Hero() {
   const my = useMotionValue(0);
   return (
     <section ref={ref} id="top" className="relative isolate grain overflow-hidden bg-paper pt-40 pb-28 md:pt-48 md:pb-40" onMouseMove={(e) => { const r = (e.currentTarget as HTMLElement).getBoundingClientRect(); mx.set((e.clientX - r.left - r.width / 2) / 30); my.set((e.clientY - r.top - r.height / 2) / 30); }}>
-      {/* Ambient video background — responsive cover, hidden under reduced motion */}
+      {/* Ambient video background — the reel as a full-bleed backdrop */}
       <video
         aria-hidden
         data-ambient
@@ -149,18 +151,18 @@ function Hero() {
         muted
         playsInline
         preload="metadata"
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-55"
-        src="/linq-hero.mp4"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_114316_1c7889ad-2885-410e-b493-98119fee0ddb.mp4"
       />
       {/* Cinematic overlay: top vignette + bottom fade so type stays crisp on every screen */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0.13_0.012_260/0.55)_55%,var(--paper)_100%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,oklch(0.13_0.012_260/0.35)_0%,oklch(0.13_0.012_260/0.78)_60%,var(--paper)_100%)]" />
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-paper" />
       {/* Floating gradients */}
       <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
       <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
 
-      <motion.div style={{ y, opacity }} className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-        <div className="text-center md:text-left">
+      <motion.div style={{ y, opacity }} className="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 text-center">
+        <div>
           <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-8 inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft backdrop-blur">
             <Sparkles size={12} className="text-accent-warm" /> Creative Growth Studio
           </motion.p>
@@ -204,15 +206,6 @@ function Hero() {
             </a>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative flex items-center justify-center"
-        >
-          <HeroVideo />
-        </motion.div>
       </motion.div>
     </section>
   );

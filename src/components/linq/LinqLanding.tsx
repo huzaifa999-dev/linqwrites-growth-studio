@@ -23,7 +23,6 @@ import {
   Facebook,
   Youtube,
   Instagram,
-  Rocket,
   X,
 } from "lucide-react";
 

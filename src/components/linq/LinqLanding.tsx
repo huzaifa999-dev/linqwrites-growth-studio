@@ -327,8 +327,9 @@ function Story() {
                   src={f.img}
                   alt={`${f.name}, co-founder of LinqWrites`}
                   loading="lazy"
-                  className="h-full w-full object-cover grayscale transition duration-[1.6s] group-hover:grayscale-0 group-hover:scale-[1.03]"
+                  className="h-full w-full object-cover saturate-[1.15] transition-transform duration-[1.4s] ease-out will-change-transform group-hover:scale-[1.05] group-hover:saturate-[1.35]"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-accent-warm/25 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <div className="font-display text-3xl text-[var(--paper)] mix-blend-difference">{f.name}</div>

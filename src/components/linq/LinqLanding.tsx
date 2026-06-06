@@ -380,10 +380,11 @@ const services = [
 function Services() {
   const navigate = useNavigate();
   const [flying, setFlying] = useState(false);
+  const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
   const handleBee = () => {
     if (flying) return;
     setFlying(true);
-    setTimeout(() => navigate({ to: "/imagine" }), 1400);
+    setTimeout(() => navigate({ to: "/imagine" }), prefersReducedMotion ? 180 : 1500);
   };
   return (
     <section id="services" className="relative bg-paper py-32 md:py-44">
@@ -444,10 +445,10 @@ function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={!flying ? { scale: 1.08, rotate: -4 } : undefined}
-            whileTap={!flying ? { scale: 0.94 } : undefined}
+            whileHover={!flying ? { scale: 1.06 } : undefined}
+            whileTap={!flying ? { scale: 0.95 } : undefined}
             aria-label="Need something else? Let the bee take you there"
-            className="group relative h-44 w-44 md:h-56 md:w-56"
+            className="group relative h-44 w-44 md:h-56 md:w-56 [transform:translateZ(0)] will-change-transform"
           >
             <motion.span
               aria-hidden
@@ -468,19 +469,26 @@ function Services() {
               animate={
                 flying
                   ? {
-                      x: [0, -40, 60, 140, 260, 480],
-                      y: [0, -60, -30, -120, -80, -260],
-                      rotate: [0, -10, 8, -6, 12, 22],
-                      scale: [1, 1.05, 0.9, 0.7, 0.45, 0.15],
-                      opacity: [1, 1, 1, 1, 0.8, 0],
+                      x: [0, -24, 40, 140, 280, 460],
+                      y: [0, -40, -90, -150, -210, -300],
+                      rotate: [0, -6, 4, -2, 8, 16],
+                      scale: [1, 1.04, 0.94, 0.74, 0.42, 0.12],
+                      opacity: [1, 1, 1, 1, 0.7, 0],
                     }
-                  : { y: [0, -8, 0], rotate: [-2, 2, -2] }
+                  : prefersReducedMotion
+                    ? { y: 0, rotate: 0 }
+                    : { y: [0, -6, 0], rotate: [-1.5, 1.5, -1.5] }
               }
               transition={
                 flying
-                  ? { duration: 1.4, ease: [0.5, 0, 0.75, 0] }
-                  : { duration: 2.4, repeat: Infinity, ease: "easeInOut" }
+                  ? {
+                      duration: 1.5,
+                      ease: [0.22, 0.61, 0.36, 1],
+                      times: [0, 0.15, 0.35, 0.6, 0.85, 1],
+                    }
+                  : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
               }
+              style={{ willChange: "transform, opacity", backfaceVisibility: "hidden" }}
               className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_18px_30px_oklch(0_0_0/0.35)]"
             />
           </motion.button>

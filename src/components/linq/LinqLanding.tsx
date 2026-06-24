@@ -23,6 +23,7 @@ import {
   Facebook,
   Youtube,
   Instagram,
+  Calendar,
 } from "lucide-react";
 
 import founderHuzaifa from "@/assets/founder-huzaifa.png";

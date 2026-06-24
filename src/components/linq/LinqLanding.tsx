@@ -23,6 +23,7 @@ import {
   Facebook,
   Youtube,
   Instagram,
+  Calendar,
 } from "lucide-react";
 
 import founderHuzaifa from "@/assets/founder-huzaifa.png";
@@ -111,6 +112,14 @@ function Nav() {
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-ink transition-all duration-500 group-hover:w-full" />
             </a>
           ))}
+          <Link
+            to="/book-your-sprint"
+            className="group relative flex items-center gap-1.5 transition hover:text-ink"
+          >
+            <Calendar size={14} className="text-accent-warm" />
+            Book Sprint
+            <span className="absolute -bottom-1 left-0 h-px w-0 bg-ink transition-all duration-500 group-hover:w-full" />
+          </Link>
         </nav>
         <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm text-[var(--paper)] transition hover:bg-[var(--ink-soft)]">
           Start a project

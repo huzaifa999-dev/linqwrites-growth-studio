@@ -91,10 +91,10 @@ function BookYourSprintPage() {
         <p className="mt-6 text-center text-sm text-white/50">
           Prefer email? Reach us at{" "}
           <a
-            href="mailto:hello@linqwrites.com"
+            href="mailto:linqwrites@gmail.com"
             className="text-teal-300 hover:text-teal-200 underline-offset-4 hover:underline"
           >
-            hello@linqwrites.com
+            linqwrites@gmail.com
           </a>
         </p>
       </div>

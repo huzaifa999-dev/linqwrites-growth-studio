@@ -24,6 +24,7 @@ import { Route as DeepDiveRouteImport } from './routes/deep-dive'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectiveRouteImport } from './routes/collective'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as BookYourSprintRouteImport } from './routes/book-your-sprint'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseSlugRouteImport } from './routes/case.$slug'
 
@@ -102,6 +103,11 @@ const CareersRoute = CareersRouteImport.update({
   path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookYourSprintRoute = BookYourSprintRouteImport.update({
+  id: '/book-your-sprint',
+  path: '/book-your-sprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -115,6 +121,7 @@ const CaseSlugRoute = CaseSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/book-your-sprint': typeof BookYourSprintRoute
   '/careers': typeof CareersRoute
   '/collective': typeof CollectiveRoute
   '/contact': typeof ContactRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/book-your-sprint': typeof BookYourSprintRoute
   '/careers': typeof CareersRoute
   '/collective': typeof CollectiveRoute
   '/contact': typeof ContactRoute
@@ -154,6 +162,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/book-your-sprint': typeof BookYourSprintRoute
   '/careers': typeof CareersRoute
   '/collective': typeof CollectiveRoute
   '/contact': typeof ContactRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/book-your-sprint'
     | '/careers'
     | '/collective'
     | '/contact'
@@ -194,6 +204,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/book-your-sprint'
     | '/careers'
     | '/collective'
     | '/contact'
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/book-your-sprint'
     | '/careers'
     | '/collective'
     | '/contact'
@@ -233,6 +245,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookYourSprintRoute: typeof BookYourSprintRoute
   CareersRoute: typeof CareersRoute
   CollectiveRoute: typeof CollectiveRoute
   ContactRoute: typeof ContactRoute
@@ -358,6 +371,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book-your-sprint': {
+      id: '/book-your-sprint'
+      path: '/book-your-sprint'
+      fullPath: '/book-your-sprint'
+      preLoaderRoute: typeof BookYourSprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -377,6 +397,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookYourSprintRoute: BookYourSprintRoute,
   CareersRoute: CareersRoute,
   CollectiveRoute: CollectiveRoute,
   ContactRoute: ContactRoute,

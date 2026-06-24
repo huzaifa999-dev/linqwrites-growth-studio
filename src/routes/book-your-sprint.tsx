@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
+import linqLogo from "@/assets/linq-logo.webp";
 import bgAsset from "@/assets/book-sprint-bg.jpg.asset.json";
 
 export const Route = createFileRoute("/book-your-sprint")({
@@ -37,6 +38,22 @@ function BookYourSprintPage() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-[#05070d] text-white">
+      {/* Top navigation / brand */}
+      <header className="fixed inset-x-0 top-0 z-50 px-6 py-5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-90">
+            <img
+              src={linqLogo}
+              alt="LinqWrites"
+              className="h-10 w-10 rounded-full ring-1 ring-teal-300/40 shadow-[0_0_20px_rgba(45,212,191,0.15)]"
+            />
+            <span className="font-display text-2xl tracking-tight text-white">
+              Linq<span className="italic text-teal-300">Writes</span>
+            </span>
+          </Link>
+        </div>
+      </header>
+
       {/* Cinematic background */}
       <div
         aria-hidden

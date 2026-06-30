@@ -214,6 +214,27 @@ function Hero() {
               <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
             </a>
           </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={8}
+            className="mt-16 inline-flex items-center gap-4 rounded-2xl border border-hairline bg-paper/60 p-2 pr-6 text-left shadow-soft backdrop-blur"
+          >
+            <img
+              src={accountManagerAsset.url}
+              alt="Account Manager at LinqWrites"
+              className="h-16 w-16 rounded-xl object-cover ring-1 ring-hairline"
+            />
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-ink-soft">Account Management</p>
+              <p className="mt-0.5 text-sm font-medium text-ink">Cash flow & client operations</p>
+              <p className="mt-1 max-w-[260px] text-xs leading-relaxed text-ink-soft">
+                Keeps client projects on track, manages billing cycles and cash flow, and makes sure every founder feels looked after.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

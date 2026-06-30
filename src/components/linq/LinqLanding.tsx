@@ -223,7 +223,7 @@ function Hero() {
             className="mt-16 inline-flex items-center gap-4 rounded-2xl border border-hairline bg-paper/60 p-2 pr-6 text-left shadow-soft backdrop-blur"
           >
             <img
-              src={accountManagerAsset.url}
+              src={accountManagerImg}
               alt="Account Manager at LinqWrites"
               className="h-16 w-16 rounded-xl object-cover ring-1 ring-hairline"
             />

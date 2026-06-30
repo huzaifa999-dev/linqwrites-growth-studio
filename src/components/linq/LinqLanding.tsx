@@ -224,17 +224,18 @@ function Hero() {
           >
             <img
               src={accountManagerImg}
-              alt="Account Manager at LinqWrites"
+              alt="Abdul Humayun, Account Management at LinqWrites"
               className="h-16 w-16 rounded-xl object-cover ring-1 ring-hairline"
             />
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-ink-soft">Account Management</p>
-              <p className="mt-0.5 text-sm font-medium text-ink">Cash flow & client operations</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-ink-soft">Abdul Humayun</p>
+              <p className="mt-0.5 text-sm font-medium text-ink">Account Management</p>
               <p className="mt-1 max-w-[260px] text-xs leading-relaxed text-ink-soft">
-                Keeps client projects on track, manages billing cycles and cash flow, and makes sure every founder feels looked after.
+                Cash flow & client operations. Keeps projects on track and makes sure every founder feels looked after.
               </p>
             </div>
           </motion.div>
+
         </div>
       </motion.div>
     </section>

@@ -36,7 +36,7 @@ import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
 import linqLogo from "@/assets/linq-logo.webp";
 import beeAsset from "@/assets/bee.png.asset.json";
-import accountManagerImg from "@/assets/account-manager.png";
+import accountManagerImg from "@/assets/account-manager.webp";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
 

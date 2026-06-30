@@ -224,17 +224,18 @@ function Hero() {
           >
             <img
               src={accountManagerImg}
-              alt="Account Manager at LinqWrites"
+              alt="Abdul Humayun, Account Management at LinqWrites"
               className="h-16 w-16 rounded-xl object-cover ring-1 ring-hairline"
             />
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-ink-soft">Account Management</p>
-              <p className="mt-0.5 text-sm font-medium text-ink">Cash flow & client operations</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-ink-soft">Abdul Humayun</p>
+              <p className="mt-0.5 text-sm font-medium text-ink">Account Management</p>
               <p className="mt-1 max-w-[260px] text-xs leading-relaxed text-ink-soft">
-                Keeps client projects on track, manages billing cycles and cash flow, and makes sure every founder feels looked after.
+                Cash flow & client operations. Keeps projects on track and makes sure every founder feels looked after.
               </p>
             </div>
           </motion.div>
+
         </div>
       </motion.div>
     </section>
@@ -313,6 +314,7 @@ function Story() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
   const y2 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   return (
     <section id="about" ref={ref} className="relative overflow-hidden bg-paper-warm py-32 md:py-44">
@@ -339,11 +341,12 @@ function Story() {
           </p>
         </motion.div>
 
-        {/* Founders grid, both visible on every screen */}
-        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
+        {/* Founders grid, all visible on every screen */}
+        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10">
           {[
             { img: founderHuzaifa, name: "Huzaifa", role: "Co founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
             { img: founderFaiz, name: "Faiz", role: "Co founder · Design & Systems", bio: "Lives at the intersection of taste and ops. Designs the visuals, the systems and the AI that make it all run quietly.", y: y2 },
+            { img: accountManagerImg, name: "Abdul Humayun", role: "Account Management · Cash Flow & Client Relations", bio: "Manages cash flows, billing cycles and client operations so every founder feels looked after from day one.", y: y3 },
           ].map((f) => (
             <motion.figure
               key={f.name}
@@ -356,7 +359,7 @@ function Story() {
               <motion.div style={{ y: f.y }} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper shadow-lift">
                 <img
                   src={f.img}
-                  alt={`${f.name}, co-founder of LinqWrites`}
+                  alt={`${f.name}, ${f.role.toLowerCase().includes("founder") ? "co-founder" : ""} at LinqWrites`}
                   loading="lazy"
                   className="h-full w-full object-cover saturate-[1.15] transition-transform duration-[1.4s] ease-out will-change-transform group-hover:scale-[1.05] group-hover:saturate-[1.35]"
                 />
@@ -371,6 +374,7 @@ function Story() {
             </motion.figure>
           ))}
         </div>
+
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }} className="mt-20 grid grid-cols-3 gap-8 border-t border-hairline pt-12">
           {[["42","Founders served"],["13M+","Impressions generated"],["4.1","Avg. client rating"]].map(([n,l])=>(

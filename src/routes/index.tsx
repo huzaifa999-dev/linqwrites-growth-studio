@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LinqLanding } from "@/components/linq/LinqLanding";
+import { CyberCanvas } from "@/components/linq/CyberCanvas";
+import { OrbNav } from "@/components/linq/OrbNav";
+import { StudioLoader } from "@/components/linq/StudioLoader";
 
 const URL = "https://linqwrites-growth-studio.lovable.app/";
 
@@ -10,5 +13,16 @@ export const Route = createFileRoute("/")({
     ],
     links: [{ rel: "canonical", href: URL }],
   }),
-  component: LinqLanding,
+  component: HomeRoute,
 });
+
+function HomeRoute() {
+  return (
+    <>
+      <StudioLoader />
+      <CyberCanvas />
+      <LinqLanding />
+      <OrbNav />
+    </>
+  );
+}

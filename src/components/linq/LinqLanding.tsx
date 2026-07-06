@@ -36,7 +36,6 @@ import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
 import linqLogo from "@/assets/linq-logo.webp";
 import beeAsset from "@/assets/bee.png.asset.json";
-import accountManagerImg from "@/assets/account-manager.webp";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
 
@@ -214,28 +213,6 @@ function Hero() {
               <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
             </a>
           </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={8}
-            className="mt-16 inline-flex items-center gap-4 rounded-2xl border border-hairline bg-paper/60 p-2 pr-6 text-left shadow-soft backdrop-blur"
-          >
-            <img
-              src={accountManagerImg}
-              alt="Abdul Humayun, Account Management at LinqWrites"
-              className="h-16 w-16 rounded-xl object-cover ring-1 ring-hairline"
-            />
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-ink-soft">Abdul Humayun</p>
-              <p className="mt-0.5 text-sm font-medium text-ink">Account Management</p>
-              <p className="mt-1 max-w-[260px] text-xs leading-relaxed text-ink-soft">
-                Cash flow & client operations. Keeps projects on track and makes sure every founder feels looked after.
-              </p>
-            </div>
-          </motion.div>
-
         </div>
       </motion.div>
     </section>
@@ -314,7 +291,6 @@ function Story() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
   const y2 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   return (
     <section id="about" ref={ref} className="relative overflow-hidden bg-paper-warm py-32 md:py-44">
@@ -342,11 +318,10 @@ function Story() {
         </motion.div>
 
         {/* Founders grid, all visible on every screen */}
-        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10">
+        <div className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-10">
           {[
             { img: founderHuzaifa, name: "Huzaifa", role: "Co founder · Strategy & Voice", bio: "Obsessed with positioning, narrative arcs and the founder voice. Architects the words that make people lean in.", y: y1 },
             { img: founderFaiz, name: "Faiz", role: "Co founder · Design & Systems", bio: "Lives at the intersection of taste and ops. Designs the visuals, the systems and the AI that make it all run quietly.", y: y2 },
-            { img: accountManagerImg, name: "Abdul Humayun", role: "Account Management · Cash Flow & Client Relations", bio: "Manages cash flows, billing cycles and client operations so every founder feels looked after from day one.", y: y3 },
           ].map((f) => (
             <motion.figure
               key={f.name}

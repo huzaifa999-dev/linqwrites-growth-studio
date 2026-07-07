@@ -249,6 +249,56 @@
 
   .section-pad { padding-block: clamp(4.5rem, 8vw, 9rem); }
 
+  /* -------- Cyber mode: let the WebGL canvas shine through -------- */
+  .cyber-mode { background: transparent !important; color: #f5f7ff; }
+  .cyber-mode .bg-paper,
+  .cyber-mode .bg-paper-warm {
+    background-color: color-mix(in oklab, #04050a 62%, transparent) !important;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  .cyber-mode .bg-ink {
+    background: linear-gradient(180deg, rgba(4,5,10,0.85), rgba(10,14,30,0.85)) !important;
+  }
+  .cyber-mode .border-hairline { border-color: rgba(255,255,255,0.09) !important; }
+  .cyber-mode .text-ink { color: #f5f7ff !important; }
+  .cyber-mode .text-ink-soft { color: rgba(230,235,255,0.72) !important; }
+  .cyber-mode .text-accent-warm {
+    color: #22d3ee !important;
+    text-shadow: 0 0 24px rgba(34,211,238,0.35);
+  }
+  .cyber-mode .grain::before { display: none; }
+  .cyber-mode section {
+    position: relative;
+  }
+  .cyber-mode section::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 40% at 8% 0%, rgba(37,99,235,0.10), transparent 70%),
+      radial-gradient(50% 40% at 100% 100%, rgba(236,72,153,0.10), transparent 70%);
+    mix-blend-mode: screen;
+    z-index: 0;
+  }
+  .cyber-mode section > * { position: relative; z-index: 1; }
+
+  /* Neon kinetic ribbon */
+  .neon-ribbon {
+    background: linear-gradient(90deg, rgba(37,99,235,0.18), rgba(34,211,238,0.14), rgba(236,72,153,0.18));
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: inset 0 0 60px rgba(34,211,238,0.15);
+  }
+  .neon-text {
+    background: linear-gradient(90deg, #60a5fa, #22d3ee, #f0abfc, #22d3ee, #60a5fa);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+    animation: neon-shift 8s linear infinite;
+  }
+  @keyframes neon-shift { to { background-position: 300% 0; } }
+
   .eyebrow {
     font-size: 0.7rem;
     line-height: 1;

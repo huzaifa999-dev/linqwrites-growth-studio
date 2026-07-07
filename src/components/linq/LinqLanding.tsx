@@ -38,6 +38,7 @@ import linqLogo from "@/assets/linq-logo.webp";
 import beeAsset from "@/assets/bee.png.asset.json";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
+import { NeonRibbon } from "./NeonRibbon";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -989,7 +990,7 @@ export function LinqLanding() {
     return () => { document.body.style.overflow = ""; };
   }, [loading]);
   return (
-    <div className="bg-paper text-ink">
+    <div className="cyber-mode text-ink">
       <AnimatePresence>
         {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
       </AnimatePresence>
@@ -999,8 +1000,10 @@ export function LinqLanding() {
         <Hero />
         <Marquee />
         <Story />
+        <NeonRibbon />
         <Services />
         <Pricing />
+        <NeonRibbon />
         <Testimonials />
         <Projects />
         <ContactSection />

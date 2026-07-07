@@ -24,6 +24,8 @@ import {
   Youtube,
   Instagram,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 import founderHuzaifa from "@/assets/founder-huzaifa.png";

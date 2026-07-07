@@ -263,6 +263,14 @@
   .cyber-mode .border-hairline { border-color: rgba(255,255,255,0.09) !important; }
   .cyber-mode .text-ink { color: #f5f7ff !important; }
   .cyber-mode .text-ink-soft { color: rgba(230,235,255,0.72) !important; }
+  /* Old "paper" token now points to dark night — force it to light in cyber mode */
+  .cyber-mode .text-paper,
+  .cyber-mode [class*="text-[var(--paper)]"] { color: #f5f7ff !important; }
+  .cyber-mode .text-black { color: #f5f7ff !important; }
+  /* Lift card / muted surfaces so glass panels don't wash into the bg */
+  .cyber-mode .bg-white,
+  .cyber-mode .bg-white\/5,
+  .cyber-mode .bg-white\/10 { background-color: rgba(255,255,255,0.06) !important; }
   .cyber-mode .text-accent-warm {
     color: #22d3ee !important;
     text-shadow: 0 0 24px rgba(34,211,238,0.35);

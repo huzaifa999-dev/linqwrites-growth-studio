@@ -614,37 +614,77 @@ function Pricing() {
 
 function Testimonials() {
   const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
   useEffect(() => {
+    if (paused) return;
     const id = setInterval(() => setI((p) => (p + 1) % testimonials.length), 6000);
     return () => clearInterval(id);
-  }, []);
+  }, [paused]);
+  const go = (dir: 1 | -1) =>
+    setI((p) => (p + dir + testimonials.length) % testimonials.length);
   const t = testimonials[i];
   return (
-    <section className="relative overflow-hidden bg-ink py-32 text-[var(--paper)] md:py-44">
-      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.22),transparent_70%)] blur-2xl" />
-      <div className="mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.3em] text-white/50">Founder Voices</p>
+    <section
+      id="voices"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      className="relative overflow-hidden bg-ink py-32 text-white md:py-44"
+    >
+      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.25),transparent_70%)] blur-2xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(236,72,153,0.22),transparent_70%)] blur-2xl" />
+      <div className="relative mx-auto max-w-5xl px-6 text-center">
+        <p className="mb-10 text-[0.7rem] uppercase tracking-[0.35em] text-cyan-300/80">Founder Voices</p>
 
-        <div className="relative min-h-[300px]">
+        <div className="relative min-h-[320px]">
           <AnimatePresence mode="wait">
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
-              <div className="mb-8 flex justify-center gap-1 text-accent-warm">
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+              <div className="mb-8 flex justify-center gap-1 text-cyan-300 [filter:drop-shadow(0_0_10px_rgba(34,211,238,0.55))]">
                 {Array.from({ length: 5 }).map((_, k) => <Star key={k} size={14} fill="currentColor" strokeWidth={0} />)}
               </div>
-              <blockquote className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-light leading-[1.2] italic">
+              <blockquote className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-light leading-[1.2] italic text-white">
                 “{t.quote}”
               </blockquote>
-              <div className="mt-10 text-sm uppercase tracking-[0.25em] text-white/70">
-                {t.name} <span className="text-white/40">, {t.role}</span>
+              <div className="mt-10 text-sm uppercase tracking-[0.25em] text-white/85">
+                {t.name} <span className="text-white/55">, {t.role}</span>
               </div>
             </motion.div>
           </AnimatePresence>
+
+          {/* Prev / Next arrows */}
+          <button
+            type="button"
+            aria-label="Previous testimonial"
+            onClick={() => go(-1)}
+            className="group absolute left-0 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 backdrop-blur-md transition hover:border-cyan-300/60 hover:bg-cyan-300/10 hover:text-white md:-left-4"
+          >
+            <ChevronLeft size={20} className="transition-transform group-hover:-translate-x-0.5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next testimonial"
+            onClick={() => go(1)}
+            className="group absolute right-0 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 backdrop-blur-md transition hover:border-pink-400/60 hover:bg-pink-400/10 hover:text-white md:-right-4"
+          >
+            <ChevronRight size={20} className="transition-transform group-hover:translate-x-0.5" />
+          </button>
         </div>
 
-        <div className="mt-14 flex justify-center gap-3">
+        <div className="mt-14 flex items-center justify-center gap-3">
           {testimonials.map((_, k) => (
-            <button key={k} onClick={() => setI(k)} aria-label={`Show testimonial ${k + 1}`} className={`h-1 rounded-full transition-all duration-500 ${k === i ? "w-10 bg-accent-warm" : "w-4 bg-white/20"}`} />
+            <button
+              key={k}
+              onClick={() => setI(k)}
+              aria-label={`Show testimonial ${k + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                k === i
+                  ? "w-12 bg-gradient-to-r from-cyan-300 to-pink-400 shadow-[0_0_12px_rgba(34,211,238,0.7)]"
+                  : "w-4 bg-white/25 hover:bg-white/45"
+              }`}
+            />
           ))}
+          <span className="ml-4 text-[0.65rem] uppercase tracking-[0.3em] text-white/45 tabular-nums">
+            {String(i + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+          </span>
         </div>
       </div>
     </section>

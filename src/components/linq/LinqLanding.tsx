@@ -41,6 +41,8 @@ import beeAsset from "@/assets/bee.png.asset.json";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
 import { NeonRibbon } from "./NeonRibbon";
+import { ScrollRail } from "./ScrollRail";
+import { Magnetic, TiltCard } from "./Magnetic";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -207,14 +209,18 @@ function Hero() {
           </motion.p>
 
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} className="mt-12 flex flex-wrap items-center justify-center gap-4">
-            <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
-              Start a project
-              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
-              View our work
-              <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            <Magnetic>
+              <a href="#contact" className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm text-[var(--paper)] shadow-lift transition hover:-translate-y-0.5">
+                Start a project
+                <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="#work" className="group inline-flex items-center gap-3 rounded-full border border-hairline bg-white/5 px-7 py-4 text-sm text-ink backdrop-blur transition hover:bg-white/10">
+                View our work
+                <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </Magnetic>
           </motion.div>
         </div>
       </motion.div>
@@ -274,13 +280,15 @@ function Marquee() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[var(--paper)] to-transparent" />
         <div className="flex w-max marquee-track gap-8 px-8">
           {[...items, ...items].map((it, i) => (
-            <figure key={i} className="group relative h-[380px] w-[520px] shrink-0 overflow-hidden rounded-3xl bg-paper-warm shadow-soft transition duration-700 hover:shadow-lift">
-              <img src={it.src} alt={it.label} loading="lazy" className="h-full w-full object-cover transition duration-[1.4s] group-hover:scale-105" />
-              <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-sm text-white">
-                <span>{it.label}</span>
-                <ArrowUpRight size={16} />
-              </figcaption>
-            </figure>
+            <TiltCard key={i} className="shrink-0">
+              <figure className="group relative h-[380px] w-[520px] overflow-hidden rounded-3xl bg-paper-warm shadow-soft transition duration-700 hover:shadow-lift">
+                <img src={it.src} alt={it.label} loading="lazy" className="h-full w-full object-cover transition duration-[1.4s] group-hover:scale-105" />
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-sm text-white">
+                  <span>{it.label}</span>
+                  <ArrowUpRight size={16} />
+                </figcaption>
+              </figure>
+            </TiltCard>
           ))}
         </div>
       </div>
@@ -1036,6 +1044,7 @@ export function LinqLanding() {
       <AnimatePresence>
         {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
       </AnimatePresence>
+      <ScrollRail />
       <CustomCursor />
       <Nav />
       <main>

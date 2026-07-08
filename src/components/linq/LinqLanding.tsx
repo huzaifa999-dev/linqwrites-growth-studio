@@ -43,6 +43,7 @@ import { caseStudies } from "./caseStudies";
 import { NeonRibbon } from "./NeonRibbon";
 import { ScrollRail } from "./ScrollRail";
 import { Magnetic, TiltCard } from "./Magnetic";
+import { SectionIndicator } from "./SectionIndicator";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -433,6 +434,7 @@ function Services() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
             >
+              <TiltCard max={6} className="h-full">
               <Link
                 to="/case/$slug"
                 params={{ slug: s.slug }}
@@ -452,6 +454,7 @@ function Services() {
                 </div>
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-accent-warm transition-transform duration-700 group-hover:scale-x-100" />
               </Link>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
@@ -1045,6 +1048,7 @@ export function LinqLanding() {
         {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
       </AnimatePresence>
       <ScrollRail />
+      <SectionIndicator />
       <CustomCursor />
       <Nav />
       <main>

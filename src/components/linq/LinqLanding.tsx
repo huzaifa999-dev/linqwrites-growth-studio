@@ -44,6 +44,8 @@ import { NeonRibbon } from "./NeonRibbon";
 import { ScrollRail } from "./ScrollRail";
 import { Magnetic, TiltCard } from "./Magnetic";
 import { SectionIndicator } from "./SectionIndicator";
+import { CursorSpotlight } from "./CursorSpotlight";
+import { MetricsBand } from "./MetricsBand";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -1050,12 +1052,14 @@ export function LinqLanding() {
       <ScrollRail />
       <SectionIndicator />
       <CustomCursor />
+      <CursorSpotlight />
       <Nav />
       <main>
         <Hero />
         <Marquee />
         <Story />
         <NeonRibbon />
+        <MetricsBand />
         <Services />
         <Pricing />
         <NeonRibbon />

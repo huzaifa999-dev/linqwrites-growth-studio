@@ -1129,6 +1129,7 @@ export function LinqLanding() {
       </main>
       <Footer />
       <FloatingCTA />
+      <AudioOrb />
     </div>
   );
 }

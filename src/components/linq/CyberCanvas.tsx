@@ -11,7 +11,7 @@ import {
 } from "@react-three/drei";
 import { useReducedMotion } from "motion/react";
 import type { Group } from "three";
-import linqLogo from "@/assets/linq-logo.webp";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 /** Mouse parallax rig — subtly rotates the whole 3D group with the cursor. */
 function Rig({ children }: { children: React.ReactNode }) {
@@ -60,12 +60,17 @@ function GlassOrb({ position, scale = 1 }: { position: [number, number, number];
 export function CyberCanvas() {
   const [mounted, setMounted] = useState(false);
   const reduce = useReducedMotion();
+  const isMobile = useIsMobile();
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#04050a]">
-      <Canvas dpr={[1, 1.6]} camera={{ position: [0, 0, 6], fov: 55 }} gl={{ antialias: true, alpha: true }}>
+      <Canvas
+        dpr={isMobile ? [1, 1.25] : [1, 1.6]}
+        camera={{ position: [0, 0, 6], fov: 55 }}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+      >
         <color attach="background" args={["#04050a"]} />
         <ambientLight intensity={0.4} />
         <pointLight position={[6, 4, 6]} intensity={1.2} color="#22d3ee" />
@@ -78,22 +83,13 @@ export function CyberCanvas() {
               <NeonKnot position={[2.4, -0.4, -1]} color="#ec4899" speed={1.1} scale={0.7} />
               <NeonKnot position={[0.2, 1.6, -2]} color="#22d3ee" speed={0.75} scale={0.55} />
               <GlassOrb position={[1.4, 1.2, 1]} scale={0.7} />
-              <GlassOrb position={[-1.8, -1.4, 0.5]} scale={0.55} />
-              <Sparkles count={70} scale={[10, 6, 6]} size={2.5} speed={0.4} color="#22d3ee" />
+              {!isMobile && <GlassOrb position={[-1.8, -1.4, 0.5]} scale={0.55} />}
+              <Sparkles count={isMobile ? 30 : 70} scale={[10, 6, 6]} size={2.5} speed={0.4} color="#22d3ee" />
             </Rig>
           )}
           <Environment preset="night" />
         </Suspense>
       </Canvas>
-
-      {/* LinqWrites logo watermark — very subtle, keeps brand presence */}
-      <img
-        src={linqLogo}
-        alt=""
-        draggable={false}
-        className="absolute left-1/2 top-1/2 w-[min(70vw,720px)] -translate-x-1/2 -translate-y-1/2 select-none"
-        style={{ opacity: 0.05, filter: "brightness(1.6) drop-shadow(0 0 40px rgba(34,211,238,0.4))" }}
-      />
 
       {/* Vignette for text legibility */}
       <div

@@ -163,7 +163,12 @@
     font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  html, body { max-width: 100%; }
+  img, video { max-width: 100%; height: auto; }
 
   .font-display {
     font-family: "Playfair Display", "Times New Roman", serif;
@@ -178,6 +183,16 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Mobile polish: soften heavy backdrop blurs & disable pointer-heavy overlays */
+  @media (max-width: 767px) {
+    .liquid-glass { backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
+    .cyber-mode .bg-paper,
+    .cyber-mode .bg-paper-warm {
+      backdrop-filter: blur(8px) saturate(130%);
+      -webkit-backdrop-filter: blur(8px) saturate(130%);
+    }
   }
 }
 

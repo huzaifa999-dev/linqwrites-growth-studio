@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
+const ROTATING = ["Narrative", "Positioning", "Growth", "Systems", "Voice"];
+
 /** Cinematic first-load overlay: "Loading studio XX%" with building bars. */
 export function StudioLoader() {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
+  const [wordIdx, setWordIdx] = useState(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -16,17 +19,18 @@ export function StudioLoader() {
     let start = performance.now();
     const tick = (t: number) => {
       const elapsed = t - start;
-      // ~1.6s ease-out to 100
-      const p = Math.min(100, Math.round((1 - Math.pow(1 - elapsed / 1600, 3)) * 100));
+      // ~2.2s ease-out to 100
+      const p = Math.min(100, Math.round((1 - Math.pow(1 - elapsed / 2200, 3)) * 100));
       setProgress(p);
       if (p < 100) raf = requestAnimationFrame(tick);
       else {
         sessionStorage.setItem("linq_studio_loaded", "1");
-        setTimeout(() => setDone(true), 350);
+        setTimeout(() => setDone(true), 500);
       }
     };
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const iv = setInterval(() => setWordIdx((i) => (i + 1) % ROTATING.length), 420);
+    return () => { cancelAnimationFrame(raf); clearInterval(iv); };
   }, []);
 
   return (
@@ -34,26 +38,39 @@ export function StudioLoader() {
       {!done && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, filter: "blur(20px)" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#04050a] text-white"
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[hsl(0_0%_4%)] text-white"
         >
-          <div className="absolute inset-0 opacity-70" style={{ background: "radial-gradient(600px 400px at 50% 40%, rgba(37,99,235,0.35), transparent 70%), radial-gradient(500px 400px at 50% 70%, rgba(236,72,153,0.28), transparent 70%)" }} />
-          <div className="relative flex flex-col items-center">
-            <div className="mb-6 text-[0.65rem] uppercase tracking-[0.5em] text-cyan-300/80">LinqWrites · Studio</div>
-            <div className="font-display text-[clamp(3rem,10vw,7rem)] font-light leading-none tracking-tight">
+          <div className="absolute inset-0 opacity-60" style={{ background: "radial-gradient(700px 500px at 50% 45%, rgba(137,170,204,0.22), transparent 70%), radial-gradient(600px 500px at 50% 75%, rgba(78,133,191,0.18), transparent 70%)" }} />
+          <div className="relative flex w-full max-w-xl flex-col items-center px-8">
+            <div className="mb-8 text-[0.6rem] uppercase tracking-[0.5em] text-white/60">LinqWrites · Studio</div>
+            <div className="font-display text-[clamp(4rem,14vw,10rem)] font-light leading-none tracking-tight tabular-nums">
               {String(progress).padStart(3, "0")}
-              <span className="ml-1 text-cyan-300">%</span>
             </div>
-            <div className="mt-8 h-px w-[240px] overflow-hidden bg-white/10">
+            <div className="mt-10 h-[2px] w-full max-w-[360px] overflow-hidden rounded-full bg-white/10">
               <motion.div
-                className="h-full bg-gradient-to-r from-blue-500 via-cyan-300 to-pink-500"
+                className="h-full bg-accent-gradient"
                 style={{ width: `${progress}%` }}
                 transition={{ ease: "linear" }}
               />
             </div>
-            <div className="mt-4 text-[0.6rem] uppercase tracking-[0.4em] text-white/50">
-              Loading studio · {progress < 40 ? "compiling narratives" : progress < 80 ? "spinning up momentum" : "opening portal"}
+            <div className="mt-6 flex items-center gap-3 text-[0.65rem] uppercase tracking-[0.4em] text-white/55">
+              <span>Loading</span>
+              <span className="relative inline-block h-4 min-w-[110px] overflow-hidden text-left">
+                <AnimatePresence mode="wait">
+                  <motion.em
+                    key={ROTATING[wordIdx]}
+                    initial={{ y: 12, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -12, opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="absolute inset-0 not-italic font-display italic text-accent-warm normal-case tracking-normal text-sm"
+                  >
+                    {ROTATING[wordIdx]}
+                  </motion.em>
+                </AnimatePresence>
+              </span>
             </div>
           </div>
         </motion.div>

@@ -102,38 +102,38 @@ function Nav() {
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-3 backdrop-blur-xl bg-paper/70 border-b border-hairline" : "py-6 bg-transparent"}`}
+      className={`fixed inset-x-0 top-4 z-50 flex justify-center px-4 transition-all duration-500 ${scrolled ? "top-2" : "top-5"}`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={linqLogo} alt="LinqWrites" className="h-9 w-9 rounded-full ring-1 ring-accent-warm/40 shadow-soft" />
-          <span className="font-display text-2xl tracking-tight text-ink">Linq<span className="italic text-accent-warm">Writes</span></span>
+      <div className="flex w-full max-w-4xl items-center justify-between gap-3 rounded-full border border-white/10 bg-[hsl(0_0%_6%/0.75)] px-3 py-2 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)] backdrop-blur-2xl">
+        <a href="#top" className="flex shrink-0 items-center gap-2 pl-2">
+          <span className="relative grid h-8 w-8 place-items-center rounded-full">
+            <span className="absolute inset-0 rounded-full bg-accent-gradient opacity-90" />
+            <img src={linqLogo} alt="LinqWrites" className="relative h-6 w-6 rounded-full" />
+          </span>
+          <span className="font-display text-lg tracking-tight text-ink hidden sm:inline">Linq<em className="not-italic font-display italic text-accent-warm">Writes</em></span>
         </a>
-        <nav className="hidden items-center gap-10 text-sm text-ink-soft md:flex">
+        <nav className="hidden items-center gap-7 text-[13px] text-ink-soft md:flex">
           {[
-            ["Work", "#work"],
+            ["Home", "#top"],
             ["Services", "#services"],
+            ["Work", "#work"],
+            ["Pricing", "#pricing"],
             ["About", "#about"],
-            ["Contact", "#contact"],
           ].map(([l, h]) => (
-            <a key={l} href={h} className="group relative transition hover:text-ink">
+            <a key={l} href={h} className="group relative transition hover:text-white">
               {l}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-ink transition-all duration-500 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent-gradient transition-all duration-500 group-hover:w-full" />
             </a>
           ))}
-          <Link
-            to="/book-your-sprint"
-            className="group relative flex items-center gap-1.5 transition hover:text-ink"
-          >
-            <Calendar size={14} className="text-accent-warm" />
-            Book Sprint
-            <span className="absolute -bottom-1 left-0 h-px w-0 bg-ink transition-all duration-500 group-hover:w-full" />
-          </Link>
         </nav>
-        <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm text-[var(--paper)] transition hover:bg-[var(--ink-soft)]">
-          Start a project
-          <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
+        <Link
+          to="/book-your-sprint"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-gradient px-4 py-2 text-[13px] font-medium text-[hsl(0_0%_4%)] shadow-[0_10px_30px_-10px_rgba(78,133,191,0.7)] transition hover:brightness-110"
+        >
+          <Calendar size={13} />
+          Book Sprint
+          <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </Link>
       </div>
     </motion.header>
   );

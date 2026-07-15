@@ -219,8 +219,14 @@
   .border-hairline { border-color: var(--hairline); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-lift { box-shadow: var(--shadow-lift); }
-  .text-accent-warm { color: var(--accent-warm); }
-  .bg-accent-warm { background-color: var(--accent-warm); }
+  .text-accent-warm {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .bg-accent-warm { background: var(--accent-gradient); color: hsl(0 0% 4%); }
+  .bg-accent-gradient { background: var(--accent-gradient); }
+  .ring-accent { box-shadow: 0 0 0 1px rgba(137,170,204,0.55), 0 0 30px -6px rgba(78,133,191,0.55); }
   .bg-ink { background-color: var(--ink); }
 
   .marquee-track {

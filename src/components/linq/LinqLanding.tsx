@@ -555,8 +555,6 @@ const pricingTiers = [
 ];
 
 function Pricing() {
-  const featuredIdx = pricingTiers.findIndex((p) => p.featured);
-  const [selected, setSelected] = useState<number>(featuredIdx >= 0 ? featuredIdx : 0);
   return (
     <section id="pricing" className="relative bg-paper-warm py-32 md:py-44">
       <div className="mx-auto max-w-7xl px-6">
@@ -575,86 +573,63 @@ function Pricing() {
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {pricingTiers.map((p, i) => {
-            const isSelected = selected === i;
+            const isSelected = true;
             return (
               <motion.button
                 type="button"
                 key={p.name}
-                onClick={() => setSelected(i)}
-                onMouseEnter={() => setSelected(i)}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-                animate={{ y: isSelected ? -6 : 0 }}
+                whileHover={{ y: -6 }}
                 data-hover
-                aria-pressed={isSelected}
-                className={`group relative flex h-full flex-col justify-between gap-10 overflow-hidden rounded-3xl border p-8 text-left transition-colors duration-500 ${
-                  isSelected
-                    ? "border-transparent bg-ink text-paper shadow-[0_30px_80px_-30px_rgba(37,99,235,0.55)]"
-                    : "border-hairline bg-paper text-ink hover:bg-paper-warm"
-                }`}
+                className="group relative flex h-full flex-col justify-between gap-10 overflow-hidden rounded-3xl border border-transparent bg-ink p-8 text-left text-paper shadow-[0_30px_80px_-30px_rgba(78,133,191,0.55)] transition-colors duration-500"
               >
-                {isSelected && (
-                  <motion.span
-                    layoutId="pricing-highlight"
-                    aria-hidden
-                    transition={{ type: "spring", stiffness: 260, damping: 30 }}
-                    className="pointer-events-none absolute inset-0 rounded-3xl"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(37,99,235,0.35), rgba(34,211,238,0.18) 45%, rgba(236,72,153,0.35))",
-                    }}
-                  />
-                )}
-                {isSelected && (
-                  <motion.span
-                    layoutId="pricing-border"
-                    aria-hidden
-                    transition={{ type: "spring", stiffness: 260, damping: 30 }}
-                    className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/25"
-                  />
-                )}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-3xl"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(137,170,204,0.32), rgba(78,133,191,0.14) 45%, rgba(137,170,204,0.28))",
+                  }}
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/25"
+                />
                 <span
                   aria-hidden
                   className="pointer-events-none absolute -inset-x-10 -top-24 h-24 rotate-6 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 blur-2xl transition-all duration-700 group-hover:top-full group-hover:opacity-60"
                 />
                 <div className="relative flex items-start justify-between">
-                  <span className={`text-[0.65rem] uppercase tracking-[0.3em] ${isSelected ? "text-accent-warm" : "text-ink-soft"}`}>
+                  <span className="text-[0.65rem] uppercase tracking-[0.3em] text-accent-warm">
                     {p.featured ? "Flagship" : "Studio rate"}
                   </span>
-                  <span className={`text-xs tabular-nums ${isSelected ? "text-paper/70" : "text-ink-soft"}`}>
+                  <span className="text-xs tabular-nums text-paper/70">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <div className="relative">
-                  <h3 className={`font-display text-2xl ${isSelected ? "text-paper" : "text-ink"}`}>{p.name}</h3>
-                  <p className={`mt-2 text-sm ${isSelected ? "text-paper/75" : "text-ink-soft"}`}>{p.headline}</p>
+                  <h3 className="font-display text-2xl text-paper">{p.name}</h3>
+                  <p className="mt-2 text-sm text-paper/75">{p.headline}</p>
                   <div className="mt-6 flex items-baseline gap-2">
-                    <motion.span
-                      key={`${p.name}-${isSelected}`}
-                      initial={{ scale: 0.94, opacity: 0.7 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ type: "spring", stiffness: 260, damping: 18 }}
-                      className={`font-display text-4xl ${isSelected ? "text-accent-warm" : "text-ink"}`}
-                    >
+                    <span className="font-display text-4xl text-accent-warm">
                       {p.price}
-                    </motion.span>
-                    <span className={`text-xs uppercase tracking-widest ${isSelected ? "text-paper/60" : "text-ink-soft"}`}>{p.cadence}</span>
+                    </span>
+                    <span className="text-xs uppercase tracking-widest text-paper/60">{p.cadence}</span>
                   </div>
-                  <p className={`mt-5 text-sm leading-relaxed ${isSelected ? "text-paper/80" : "text-ink-soft"}`}>{p.description}</p>
+                  <p className="mt-5 text-sm leading-relaxed text-paper/80">{p.description}</p>
                   <ul className="mt-6 space-y-2">
                     {p.features.map((f, fi) => (
-                      <motion.li
+                      <li
                         key={f}
-                        initial={false}
-                        animate={{ x: isSelected ? 4 : 0, opacity: 1 }}
-                        transition={{ duration: 0.35, delay: isSelected ? fi * 0.03 : 0 }}
-                        className={`flex items-start gap-2 text-xs ${isSelected ? "text-paper/85" : "text-ink-soft"}`}
+                        className="flex items-start gap-2 text-xs text-paper/85"
+                        style={{ transitionDelay: `${fi * 30}ms` }}
                       >
                         <span className="mt-1 h-1 w-1 rounded-full bg-accent-warm" />
                         {f}
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -662,14 +637,10 @@ function Pricing() {
                   href="#contact"
                   data-hover
                   onClick={(e) => e.stopPropagation()}
-                  className={`relative inline-flex items-center gap-2 text-xs uppercase tracking-widest transition ${
-                    isSelected ? "text-paper hover:text-accent-warm" : "text-ink-soft hover:text-ink"
-                  }`}
+                  className="relative inline-flex items-center gap-2 text-xs uppercase tracking-widest text-paper transition hover:text-accent-warm"
                 >
                   {p.featured ? "Book the sprint" : "Start a project"}
-                  <motion.span animate={{ x: isSelected ? 4 : 0 }} transition={{ type: "spring", stiffness: 260, damping: 20 }}>
-                    <ArrowUpRight size={14} />
-                  </motion.span>
+                  <ArrowUpRight size={14} />
                 </a>
               </motion.button>
             );

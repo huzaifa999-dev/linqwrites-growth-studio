@@ -73,30 +73,33 @@
 
 :root {
   --radius: 0.625rem;
-  /* Premium cinematic reference palette — HSL(0 0% x%) neutrals + teal/cyan accent */
-  --bg-hsl: 0 0% 4%;
-  --surface-hsl: 0 0% 8%;
-  --text-hsl: 0 0% 96%;
-  --muted-hsl: 0 0% 53%;
-  --stroke-hsl: 0 0% 12%;
+  /* ===== Luminous Creative palette — bright, airy, iridescent ===== */
+  --bg-hsl: 0 0% 100%;
+  --surface-hsl: 220 20% 98%;
+  --text-hsl: 245 47% 20%;
+  --muted-hsl: 245 18% 45%;
+  --stroke-hsl: 250 30% 90%;
   --background: hsl(var(--bg-hsl));
   --foreground: hsl(var(--text-hsl));
   --ink: hsl(var(--text-hsl));
   --ink-soft: hsl(var(--muted-hsl));
   --paper: hsl(var(--bg-hsl));
   --paper-warm: hsl(var(--surface-hsl));
-  --accent-warm: #89AACC;
-  --accent-gold: #4E85BF;
-  --accent-gradient: linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  --accent-warm: #FF4B72;
+  --accent-gold: #00D2FF;
+  --accent-gradient: linear-gradient(90deg, #FF4B72 0%, #A855F7 50%, #00D2FF 100%);
+  --peach: #FFE5D9;
+  --lavender: #E0C3FC;
+  --mint: #E8F5E9;
   --hairline: hsl(var(--stroke-hsl));
-  --shadow-soft: 0 30px 80px -30px oklch(0 0 0 / 0.6);
-  --shadow-lift: 0 50px 140px -40px oklch(0 0 0 / 0.75);
+  --shadow-soft: 0 24px 60px -28px rgba(30, 27, 75, 0.22);
+  --shadow-lift: 0 40px 110px -40px rgba(30, 27, 75, 0.28);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: #89AACC;
-  --primary-foreground: hsl(0 0% 4%);
+  --primary: #FF4B72;
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.96 0.015 78);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.95 0.012 78);
@@ -166,7 +169,7 @@
   body {
     background-color: hsl(var(--bg-hsl));
     color: hsl(var(--text-hsl));
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter", "DM Sans", ui-sans-serif, system-ui, sans-serif;
     font-weight: 400;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
@@ -178,21 +181,20 @@
   img, video { max-width: 100%; height: auto; }
 
   .font-display {
-    font-family: "Instrument Serif", "Times New Roman", serif;
+    font-family: "Outfit", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
     font-optical-sizing: auto;
-    letter-spacing: -0.015em;
-    font-weight: 400;
+    letter-spacing: -0.03em;
+    font-weight: 700;
   }
-  /* All italic display text uses Instrument Serif italic per reference */
   em, i, .italic {
-    font-family: "Instrument Serif", "Times New Roman", serif;
-    font-style: italic;
-    font-weight: 400;
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 700;
   }
 
   ::selection {
-    background: rgba(137,170,204,0.35);
-    color: #fff;
+    background: rgba(255, 75, 114, 0.2);
+    color: #1E1B4B;
   }
 
   html {

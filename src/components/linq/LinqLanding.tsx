@@ -106,10 +106,11 @@ function Nav() {
     >
       <div className="flex w-full max-w-4xl items-center justify-between gap-3 rounded-full border border-white/10 bg-[hsl(0_0%_6%/0.75)] px-3 py-2 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)] backdrop-blur-2xl">
         <a href="#top" className="flex shrink-0 items-center gap-2 pl-2">
-          <span className="relative grid h-8 w-8 place-items-center rounded-full">
-            <span className="absolute inset-0 rounded-full bg-accent-gradient opacity-90" />
-            <img src={linqLogo} alt="LinqWrites" className="relative h-6 w-6 rounded-full" />
-          </span>
+          <img
+            src={linqLogo}
+            alt="LinqWrites"
+            className="h-9 w-9 rounded-full object-cover ring-1 ring-white/20 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)]"
+          />
           <span className="font-display text-lg tracking-tight text-ink hidden sm:inline">Linq<em className="not-italic font-display italic text-accent-warm">Writes</em></span>
         </a>
         <nav className="hidden items-center gap-7 text-[13px] text-ink-soft md:flex">

@@ -226,9 +226,9 @@
     -webkit-background-clip: text; background-clip: text;
     color: transparent;
   }
-  .bg-accent-warm { background: var(--accent-gradient); color: hsl(0 0% 4%); }
+  .bg-accent-warm { background: var(--accent-gradient); color: #fff; }
   .bg-accent-gradient { background: var(--accent-gradient); }
-  .ring-accent { box-shadow: 0 0 0 1px rgba(137,170,204,0.55), 0 0 30px -6px rgba(78,133,191,0.55); }
+  .ring-accent { box-shadow: 0 0 0 1px rgba(255,75,114,0.35), 0 0 30px -6px rgba(0,210,255,0.45); }
   .bg-ink { background-color: var(--ink); }
 
   .marquee-track {
@@ -404,8 +404,8 @@
   }
 
   /* Heading rhythm — editorial weights everywhere */
-  h1, h2, h3, h4 { font-weight: 400; letter-spacing: -0.015em; }
-  .font-display { font-weight: 400; }
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.03em; }
+  .font-display { font-weight: 700; }
 }
 
 /* Reduced motion: pause ambient video + soften transforms */

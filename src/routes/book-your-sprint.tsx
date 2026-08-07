@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
-import linqLogo from "@/assets/linq-logo.webp";
+import linqLogo from "@/assets/linq-logo-new.png";
 import bgAsset from "@/assets/book-sprint-bg.jpg.asset.json";
 
 export const Route = createFileRoute("/book-your-sprint")({

@@ -36,7 +36,7 @@ import showBrand from "@/assets/showcase-brand.jpg";
 import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
-import linqLogo from "@/assets/linq-logo.webp";
+import linqLogo from "@/assets/linq-logo-new.png";
 import beeAsset from "@/assets/bee.png.asset.json";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";

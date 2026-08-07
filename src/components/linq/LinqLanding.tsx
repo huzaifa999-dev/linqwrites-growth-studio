@@ -46,6 +46,7 @@ import { Magnetic, TiltCard } from "./Magnetic";
 import { SectionIndicator } from "./SectionIndicator";
 import { CursorSpotlight } from "./CursorSpotlight";
 import { MetricsBand } from "./MetricsBand";
+import { Journey } from "./Journey";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -1069,16 +1070,8 @@ function Preloader({ onDone }: { onDone: () => void }) {
 
 /* -------------------- Page -------------------- */
 export function LinqLanding() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    document.body.style.overflow = loading ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [loading]);
   return (
     <div className="cyber-mode text-ink">
-      <AnimatePresence>
-        {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
-      </AnimatePresence>
       <ScrollRail />
       <SectionIndicator />
       <CustomCursor />
@@ -1088,6 +1081,7 @@ export function LinqLanding() {
         <Hero />
         <Marquee />
         <Story />
+        <Journey />
         <NeonRibbon />
         <MetricsBand />
         <Services />

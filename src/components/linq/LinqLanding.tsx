@@ -104,12 +104,12 @@ function Nav() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed inset-x-0 top-4 z-50 flex justify-center px-4 transition-all duration-500 ${scrolled ? "top-2" : "top-5"}`}
     >
-      <div className="flex w-full max-w-4xl items-center justify-between gap-3 rounded-full border border-white/10 bg-[hsl(0_0%_6%/0.75)] px-3 py-2 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)] backdrop-blur-2xl">
+      <div className="flex w-full max-w-4xl items-center justify-between gap-3 rounded-full border border-white/70 bg-white/75 px-3 py-2 shadow-[0_20px_60px_-30px_rgba(30,27,75,0.35)] backdrop-blur-2xl">
         <a href="#top" className="flex shrink-0 items-center gap-2 pl-2">
           <img
             src={linqLogo}
             alt="LinqWrites"
-            className="h-9 w-9 rounded-full object-cover ring-1 ring-white/20 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)]"
+            className="h-9 w-9 rounded-full object-contain p-0.5 ring-1 ring-[rgba(30,27,75,0.08)]"
           />
           <span className="font-display text-lg tracking-tight text-ink hidden sm:inline">Linq<em className="not-italic font-display italic text-accent-warm">Writes</em></span>
         </a>
@@ -121,7 +121,7 @@ function Nav() {
             ["Pricing", "#pricing"],
             ["About", "#about"],
           ].map(([l, h]) => (
-            <a key={l} href={h} className="group relative transition hover:text-white">
+            <a key={l} href={h} className="group relative transition hover:text-ink">
               {l}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent-gradient transition-all duration-500 group-hover:w-full" />
             </a>
@@ -129,7 +129,7 @@ function Nav() {
         </nav>
         <Link
           to="/book-your-sprint"
-          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-gradient px-4 py-2 text-[13px] font-medium text-[hsl(0_0%_4%)] shadow-[0_10px_30px_-10px_rgba(78,133,191,0.7)] transition hover:brightness-110"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-gradient px-4 py-2 text-[13px] font-medium text-white shadow-[0_10px_30px_-10px_rgba(255,75,114,0.6)] transition hover:brightness-110"
         >
           <Calendar size={13} />
           Book Sprint

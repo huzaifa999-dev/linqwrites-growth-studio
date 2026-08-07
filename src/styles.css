@@ -318,7 +318,8 @@
       radial-gradient(50% 40% at 100% 100%, rgba(224,195,252,0.45), transparent 70%);
     z-index: 0;
   }
-  .cyber-mode section > * { position: relative; z-index: 1; }
+  .cyber-mode section > *:not(.absolute) { position: relative; }
+  .cyber-mode section > * { z-index: 1; }
 
   /* Iridescent kinetic ribbon */
   .neon-ribbon {

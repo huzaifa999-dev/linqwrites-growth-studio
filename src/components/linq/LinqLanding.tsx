@@ -169,15 +169,15 @@ function Hero() {
         muted
         playsInline
         preload="metadata"
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_114316_1c7889ad-2885-410e-b493-98119fee0ddb.mp4"
       />
-      {/* Cinematic overlay: top vignette + bottom fade so type stays crisp on every screen */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,oklch(0.13_0.012_260/0.35)_0%,oklch(0.13_0.012_260/0.78)_60%,var(--paper)_100%)]" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-paper" />
+      {/* Luminous overlay: keeps deep-indigo type crisp over the bright reel */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.75)_0%,rgba(255,255,255,0.88)_55%,#ffffff_100%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-white" />
       {/* Floating gradients */}
-      <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
-      <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
+      <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,rgba(255,229,217,0.9),transparent_70%)] blur-2xl" />
+      <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(224,195,252,0.85),transparent_70%)] blur-2xl" />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 text-center">
         <div>

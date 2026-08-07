@@ -46,7 +46,6 @@ import { Magnetic, TiltCard } from "./Magnetic";
 import { SectionIndicator } from "./SectionIndicator";
 import { CursorSpotlight } from "./CursorSpotlight";
 import { MetricsBand } from "./MetricsBand";
-import { AudioOrb } from "./AudioOrb";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -1101,7 +1100,6 @@ export function LinqLanding() {
       </main>
       <Footer />
       <FloatingCTA />
-      <AudioOrb />
     </div>
   );
 }

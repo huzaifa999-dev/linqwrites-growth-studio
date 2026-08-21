@@ -36,7 +36,7 @@ import showBrand from "@/assets/showcase-brand.jpg";
 import showAi from "@/assets/showcase-ai.jpg";
 import showFounder from "@/assets/showcase-founder.jpg";
 import showCarousel from "@/assets/showcase-carousel.jpg";
-import linqLogo from "@/assets/linq-logo-new.png";
+import linqLogo from "@/assets/linq-logo.webp";
 import beeAsset from "@/assets/bee.png.asset.json";
 import { ContactForm } from "./ContactForm";
 import { caseStudies } from "./caseStudies";
@@ -46,7 +46,6 @@ import { Magnetic, TiltCard } from "./Magnetic";
 import { SectionIndicator } from "./SectionIndicator";
 import { CursorSpotlight } from "./CursorSpotlight";
 import { MetricsBand } from "./MetricsBand";
-import { Journey } from "./Journey";
 
 /* -------------------- Custom cursor -------------------- */
 function CustomCursor() {
@@ -104,12 +103,12 @@ function Nav() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed inset-x-0 top-4 z-50 flex justify-center px-4 transition-all duration-500 ${scrolled ? "top-2" : "top-5"}`}
     >
-      <div className="flex w-full max-w-4xl items-center justify-between gap-3 rounded-full border border-white/70 bg-white/75 px-3 py-2 shadow-[0_20px_60px_-30px_rgba(30,27,75,0.35)] backdrop-blur-2xl">
+      <div className="flex w-full max-w-4xl items-center justify-between gap-3 rounded-full border border-white/10 bg-[hsl(0_0%_6%/0.75)] px-3 py-2 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)] backdrop-blur-2xl">
         <a href="#top" className="flex shrink-0 items-center gap-2 pl-2">
           <img
             src={linqLogo}
             alt="LinqWrites"
-            className="h-9 w-9 rounded-full object-contain p-0.5 ring-1 ring-[rgba(30,27,75,0.08)]"
+            className="h-9 w-9 rounded-full object-cover ring-1 ring-white/20 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)]"
           />
           <span className="font-display text-lg tracking-tight text-ink hidden sm:inline">Linq<em className="not-italic font-display italic text-accent-warm">Writes</em></span>
         </a>
@@ -121,7 +120,7 @@ function Nav() {
             ["Pricing", "#pricing"],
             ["About", "#about"],
           ].map(([l, h]) => (
-            <a key={l} href={h} className="group relative transition hover:text-ink">
+            <a key={l} href={h} className="group relative transition hover:text-white">
               {l}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent-gradient transition-all duration-500 group-hover:w-full" />
             </a>
@@ -129,7 +128,7 @@ function Nav() {
         </nav>
         <Link
           to="/book-your-sprint"
-          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-gradient px-4 py-2 text-[13px] font-medium text-white shadow-[0_10px_30px_-10px_rgba(255,75,114,0.6)] transition hover:brightness-110"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-gradient px-4 py-2 text-[13px] font-medium text-[hsl(0_0%_4%)] shadow-[0_10px_30px_-10px_rgba(78,133,191,0.7)] transition hover:brightness-110"
         >
           <Calendar size={13} />
           Book Sprint
@@ -169,15 +168,15 @@ function Hero() {
         muted
         playsInline
         preload="metadata"
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_114316_1c7889ad-2885-410e-b493-98119fee0ddb.mp4"
       />
-      {/* Luminous overlay: keeps deep-indigo type crisp over the bright reel */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.75)_0%,rgba(255,255,255,0.88)_55%,#ffffff_100%)]" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-white" />
+      {/* Cinematic overlay: top vignette + bottom fade so type stays crisp on every screen */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,oklch(0.13_0.012_260/0.35)_0%,oklch(0.13_0.012_260/0.78)_60%,var(--paper)_100%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-paper" />
       {/* Floating gradients */}
-      <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,rgba(255,229,217,0.9),transparent_70%)] blur-2xl" />
-      <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(224,195,252,0.85),transparent_70%)] blur-2xl" />
+      <motion.div style={{ x: mx, y: my }} className="pointer-events-none absolute -left-32 top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,oklch(0.78_0.12_80/0.28),transparent_70%)] blur-2xl" />
+      <motion.div style={{ x: useTransform(mx, (v) => -v), y: useTransform(my, (v) => -v) }} className="pointer-events-none absolute -right-40 top-60 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,oklch(0.72_0.13_55/0.22),transparent_70%)] blur-2xl" />
 
       <motion.div style={{ y, opacity }} className="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 text-center">
         <div>
@@ -1000,11 +999,86 @@ function FloatingCTA() {
   );
 }
 
+/* -------------------- Preloader -------------------- */
+function Preloader({ onDone }: { onDone: () => void }) {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    let p = 0;
+    const id = setInterval(() => {
+      p = Math.min(100, p + Math.random() * 14 + 6);
+      setProgress(Math.floor(p));
+      if (p >= 100) {
+        clearInterval(id);
+        setTimeout(onDone, 650);
+      }
+    }, 110);
+    return () => clearInterval(id);
+  }, [onDone]);
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-paper"
+    >
+      <motion.div
+        initial={{ scale: 1 }}
+        exit={{ scale: 1.1, y: -40 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-md px-8 text-center"
+      >
+        <motion.img
+          src={linqLogo}
+          alt="LinqWrites"
+          initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mb-8 h-24 w-24 rounded-full shadow-lift ring-1 ring-accent-warm/50"
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-5xl tracking-tight text-ink md:text-6xl"
+        >
+          Linq<em className="italic text-accent-warm">Writes</em>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-6 text-[0.7rem] uppercase tracking-[0.4em] text-ink-soft"
+        >
+          Master your narrative
+        </motion.p>
+        <div className="relative mx-auto mt-12 h-px w-full overflow-hidden bg-white/10">
+          <motion.div
+            animate={{ width: `${progress}%` }}
+            transition={{ ease: "easeOut", duration: 0.3 }}
+            className="absolute inset-y-0 left-0 bg-accent-warm"
+          />
+        </div>
+        <div className="mt-4 flex justify-between text-[0.65rem] uppercase tracking-[0.3em] text-ink-soft tabular-nums">
+          <span>Loading studio</span>
+          <span>{String(progress).padStart(3, "0")}%</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 /* -------------------- Page -------------------- */
 export function LinqLanding() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [loading]);
   return (
     <div className="cyber-mode text-ink">
+      <AnimatePresence>
+        {loading && <Preloader key="pre" onDone={() => setLoading(false)} />}
+      </AnimatePresence>
       <ScrollRail />
       <SectionIndicator />
       <CustomCursor />
@@ -1014,7 +1088,6 @@ export function LinqLanding() {
         <Hero />
         <Marquee />
         <Story />
-        <Journey />
         <NeonRibbon />
         <MetricsBand />
         <Services />

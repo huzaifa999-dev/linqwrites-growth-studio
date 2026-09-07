@@ -1,90 +1,134 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { ArrowUpRight, ArrowLeft } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { ServicePage } from "@/components/bother/ServicePage";
 
 const URL = "https://linqwrites-growth-studio.lovable.app/imagine";
-const VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_114316_1c7889ad-2885-410e-b493-98119fee0ddb.mp4";
 
 export const Route = createFileRoute("/imagine")({
   head: () => ({
     meta: [
-      { title: "Imagine Anything — LinqWrites" },
-      { name: "description", content: "Tell us what it should look like. Even if it lives on the moon. One studio, one team, one bill." },
-      { property: "og:title", content: "Imagine Anything — LinqWrites" },
-      { property: "og:description", content: "Describe the world you want to build and leave the rest to us." },
+      { title: "Signal — Authority and content that people can repeat | BOTHER" },
+      {
+        name: "description",
+        content:
+          "Signal is BOTHER's authority practice: founder voice and positioning, LinkedIn ghostwriting, newsletters, SEO-aware long form, research and proof. From $1,500/mo.",
+      },
+      { property: "og:title", content: "Signal — Authority and content | BOTHER" },
+      {
+        property: "og:description",
+        content: "Find the sentence your market can repeat, then say it often enough that it sticks.",
+      },
+      { property: "og:type", content: "website" },
       { property: "og:url", content: URL },
     ],
     links: [{ rel: "canonical", href: URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Signal",
+          serviceType: "Authority and content strategy",
+          provider: { "@type": "Organization", name: "BOTHER", url: "https://linqwrites-growth-studio.lovable.app" },
+          areaServed: "Worldwide",
+          url: URL,
+          description:
+            "Founder voice and positioning, LinkedIn ghostwriting, newsletters, SEO-aware long form, editorial strategy, research and proof development, repurposing and reporting.",
+          offers: [
+            { "@type": "Offer", name: "Signal Core", price: "1500", priceCurrency: "USD" },
+            { "@type": "Offer", name: "Signal Authority", price: "3500", priceCurrency: "USD" },
+            { "@type": "Offer", name: "Authority + Distribution", price: "4500", priceCurrency: "USD" },
+          ],
+        }),
+      },
+    ],
   }),
-  component: ImaginePage,
+  component: SignalPage,
 });
 
-function ImaginePage() {
+function SignalPage() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-ink text-paper">
-      <video
-        aria-hidden
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="fixed inset-0 h-full w-full object-cover opacity-60"
-        src={VIDEO}
-      />
-      <div aria-hidden className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,oklch(0_0_0/0.55)_60%,oklch(0_0_0/0.9)_100%)]" />
-      <div aria-hidden className="fixed inset-0 bg-gradient-to-b from-ink/70 via-transparent to-ink/80" />
-
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col justify-between px-6 py-10 md:px-10 md:py-16">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 self-start rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-paper/80 backdrop-blur transition hover:border-white/60 hover:text-paper"
-        >
-          <ArrowLeft size={14} /> Back
-        </Link>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="my-16"
-        >
-          <p className="text-[0.7rem] uppercase tracking-[0.35em] text-accent-warm">From here to the moon</p>
-          <h1 className="mt-6 font-display text-[clamp(2.4rem,6vw,5rem)] font-light leading-[1.02] text-paper">
-            Tell us what it should look like.<br />
-            <em className="italic text-accent-warm">Even if it lives on the moon.</em>
-          </h1>
-          <div className="mt-10 grid max-w-2xl gap-5 text-base leading-relaxed text-paper/80 md:text-lg">
-            <p>
-              You don’t need a brief, a deck or a checklist. Describe the world you want to build, the
-              audience, the feeling, the outcome, and leave the rest to us.
-            </p>
-            <p>
-              We design it, write it, build it and run it. Strategy, brand, content, code, automation,
-              motion. One studio, one team, one bill.
-            </p>
-            <p className="text-paper">
-              Pay what the work is worth. We’ll serve you the dish.
-            </p>
-          </div>
-          <div className="mt-12 flex flex-wrap items-center gap-3">
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent-warm px-7 py-3.5 text-sm font-medium text-ink shadow-lift transition hover:-translate-y-0.5"
-            >
-              Tell us the vision
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <Link
-              to="/"
-              className="rounded-full border border-white/25 px-7 py-3.5 text-sm text-paper/80 transition hover:border-white/60 hover:text-paper"
-            >
-              Maybe later
-            </Link>
-          </div>
-        </motion.div>
-
-        <div />
-      </div>
-    </main>
+    <ServicePage
+      index="01"
+      label="Signal"
+      lead="Find the sentence, then say it until it carries."
+      intro={[
+        "Most founders are not short of ideas. They are short of one clear line that a stranger can repeat correctly. Signal is the practice of finding that line inside the work you already do, and then publishing it often enough that the right people recognise it.",
+        "We interview you, read what you have already written, and build a voice foundation: what you believe, what you refuse, and the proof behind both. Everything after that is production against a plan, not posting for the sake of it.",
+      ]}
+      capabilities={[
+        {
+          title: "Founder voice and positioning",
+          body: "Interviews and archive review that turn how you actually think into a written standard the whole studio can write to.",
+        },
+        {
+          title: "LinkedIn ghostwriting",
+          body: "Posts in your voice on a steady cadence, built from your work and your opinions rather than recycled industry advice.",
+        },
+        {
+          title: "Newsletters",
+          body: "A recurring letter that keeps the audience you already earned, with a structure your readers learn to expect.",
+        },
+        {
+          title: "SEO-aware long form",
+          body: "Essays and articles written for people first, structured so search and AI answer engines can read the argument.",
+        },
+        {
+          title: "Editorial strategy",
+          body: "Pillars, cadence and a running calendar so publishing stops depending on who felt inspired that week.",
+        },
+        {
+          title: "Research and proof development",
+          body: "Turning client results, internal data and lived experience into evidence a sceptical reader will accept.",
+        },
+        {
+          title: "Repurposing",
+          body: "One serious piece of thinking becomes the post, the letter, the carousel and the sales follow-up asset.",
+        },
+        {
+          title: "Reporting",
+          body: "Plain monthly reads on what landed, what did not, and what we are changing next month because of it.",
+        },
+      ]}
+      tiers={[
+        {
+          name: "Signal Core",
+          price: "$1,500",
+          cadence: "/mo",
+          scope:
+            "Voice foundation, editorial calendar, eight ghostwritten LinkedIn posts a month, monthly reporting and a working session.",
+          bestFit: "Founders who need to show up consistently and have never had a written voice standard.",
+          logic:
+            "Consistency is the cheapest advantage on the internet and the hardest to sustain alone. Core buys the cadence and the standard, so you stop restarting from zero every month.",
+        },
+        {
+          name: "Signal Authority",
+          price: "$3,500",
+          cadence: "/mo",
+          scope:
+            "Everything in Core, plus twelve to sixteen posts, one long-form essay a month, a newsletter, and research and proof development.",
+          bestFit: "Founders selling considered, higher-value work where the buyer reads before they reply.",
+          highlight: "Most chosen",
+          logic:
+            "Short posts get attention. Long form is what a buyer forwards to the person who signs. Authority pairs the two so the audience and the argument grow together.",
+        },
+        {
+          name: "Authority + Distribution",
+          price: "$4,500",
+          cadence: "/mo",
+          scope:
+            "Everything in Authority, plus multi-channel repurposing, guest and podcast placement support, and a distribution plan per flagship piece.",
+          bestFit: "Teams with a proven point of view that is still only reaching the audience they already had.",
+          logic:
+            "Publishing is production. Distribution is reach. When the writing is already working, the constraint moves to how far each piece travels, so that is where the money should go.",
+        },
+      ]}
+      footnote="Standalone voice foundation available at $650 if you want the standard without the retainer. Monthly engagements run month to month after the first ninety days."
+      cta={{ label: "Find the friction", note: "Start with a diagnostic. No pitch deck." }}
+      next={[
+        { to: "/deep-dive", label: "Carry", blurb: "Attention arrives. Your website, copy and proof decide whether it converts." },
+        { to: "/labs", label: "Systems", blurb: "The repeated manual work behind the scenes, made bounded and reliable." },
+      ]}
+    />
   );
 }

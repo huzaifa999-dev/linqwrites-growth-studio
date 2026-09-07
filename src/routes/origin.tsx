@@ -1,45 +1,199 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/linq/PageShell";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { SiteNav, SiteFooter } from "@/components/bother/SiteChrome";
+import { Reveal, MaskedLine } from "@/components/bother/Reveal";
+import founderHuzaifa from "@/assets/founder-huzaifa.png";
+import founderFaiz from "@/assets/founder-faiz.jpg";
 
 const URL = "https://linqwrites-growth-studio.lovable.app/origin";
 
 export const Route = createFileRoute("/origin")({
   head: () => ({
     meta: [
-      { title: "Origin Story — Two Brothers, One Studio" },
-      { name: "description", content: "How LinqWrites started. Two brothers, a JEE prep desk and a decision not to wait until later to build something real." },
-      { name: "keywords", content: "LinqWrites story, founder story, brothers agency, ghostwriting agency origin, young founders" },
-      { property: "og:title", content: "The LinqWrites Origin Story" },
-      { property: "og:description", content: "Two brothers, one studio, built between school days and study nights." },
-      { property: "og:url", content: URL },
+      { title: "About BOTHER — Two brothers, one useful interruption" },
+      {
+        name: "description",
+        content:
+          "BOTHER is run by two brothers, Faiz and Huzaifa. One kept bothering the other about the vague part until the questions became a studio. Here is how we work and what we hold to.",
+      },
+      { property: "og:title", content: "About BOTHER — Two brothers, one useful interruption" },
+      {
+        property: "og:description",
+        content: "The origin, the values, and the behaviour the studio is named after.",
+      },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: URL },
     ],
     links: [{ rel: "canonical", href: URL }],
   }),
-  component: OriginPage,
+  component: AboutPage,
 });
 
-function OriginPage() {
+const VALUES = [
+  {
+    name: "Clarity",
+    behaviour:
+      "We write the plain sentence before the clever one. If a stranger cannot repeat it back, it is not finished.",
+  },
+  {
+    name: "Human judgement",
+    behaviour:
+      "Tools draft, people decide. Nothing goes out with your name on it that neither of us would defend in a room.",
+  },
+  {
+    name: "Useful friction",
+    behaviour:
+      "We ask the awkward question early. A hard conversation in week one is cheaper than a rebuild in month six.",
+  },
+  {
+    name: "Evidence",
+    behaviour:
+      "Claims come with proof or they come out. We report what did not work in the same email as what did.",
+  },
+  {
+    name: "Carry",
+    behaviour:
+      "The idea is not done when it is written. It is done when it survives the website, the follow-up and the handover.",
+  },
+] as const;
+
+function AboutPage() {
   return (
-    <PageShell
-      index="06"
-      eyebrow="The Mission · Origin Story"
-      title="Built between school nights"
-      emphasis="and study days."
-      lede="LinqWrites is run by two brothers, Huzaifa and Faiz. One is preparing for JEE in 12th grade. The other is learning to run a studio."
-    >
-      <p>We did not want to wait until graduation to make something real. We had been writing on LinkedIn for fun, helping friends rewrite their bios, ghosting posts for a cousin who runs a small SaaS. People kept coming back. So we built a name around the thing they were already paying us for.</p>
-      <h2>What we believe</h2>
-      <p>That a personal brand is not a logo or a tagline. It is the way a founder thinks, written down often enough that the right people start to recognise it. Our job is to make that easier.</p>
-      <h2>What we promise</h2>
-      <ul>
-        <li>To answer every message ourselves.</li>
-        <li>To deliver on time, even when life is loud.</li>
-        <li>To write in your voice, not ours.</li>
-        <li>To stay small enough to care.</li>
-      </ul>
-      <h2>Why the name</h2>
-      <p>Linq is the link between a founder and the audience that should already know them. Writes is what we do all day. Together it is a quiet promise to bring the two closer.</p>
-    </PageShell>
+    <div className="min-h-screen bg-paper text-ink">
+      <SiteNav />
+      <main>
+        <section className="wrap pb-16 pt-20 md:pb-24 md:pt-28">
+          <div className="rail">
+            <p className="rail-label">
+              <b>04</b> / About
+            </p>
+            <div>
+              <h1 className="t-display max-w-[18ch]">
+                <MaskedLine>One brother kept bothering</MaskedLine>
+                <MaskedLine delay={0.08}>the other. It became a studio.</MaskedLine>
+              </h1>
+              <div className="measure mt-8 space-y-5">
+                <p className="t-lead text-ink-soft">
+                  Faiz and Huzaifa are brothers. The studio exists because one of us would not let a vague
+                  answer stand, and the other kept getting better answers because of it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="wrap rail">
+            <p className="rail-label">The story</p>
+            <div className="measure space-y-6 text-ink-soft">
+              <p className="t-body">
+                It started at a desk between school and study. One of us was writing on the internet, helping
+                friends rewrite their bios and ghostwriting posts for a cousin with a small software business.
+                The other kept asking the same annoying question about every draft: what is the actual point,
+                and why would anyone care.
+              </p>
+              <p className="t-body">
+                That question turned out to be the service. The writing was never the hard part. Finding the
+                one true thing worth writing about, and refusing to publish anything vaguer than it, is what
+                people kept coming back for.
+              </p>
+              <p className="t-body">
+                For a while the studio was called LinqWrites. The name explained one service while we sold
+                several, and every conversation opened with someone asking what we actually did. So we ran the
+                diagnostic on ourselves, cut the offer back to three connected jobs, and renamed the studio
+                after the behaviour that built it.
+              </p>
+              <p className="t-body text-ink">
+                We are small on purpose. You talk to the people doing the work, because there is nobody else
+                to talk to.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="wrap rail">
+            <p className="rail-label">The two of us</p>
+            <div className="grid gap-8 sm:grid-cols-2">
+              <Reveal>
+                <figure className="frame overflow-hidden">
+                  <img
+                    src={founderFaiz}
+                    alt="Faiz, co-founder of BOTHER"
+                    width={640}
+                    height={640}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-cover"
+                  />
+                </figure>
+                <h2 className="t-h3 mt-5">Faiz</h2>
+                <p className="t-label mt-1 text-ochre">Co-founder</p>
+                <p className="t-body mt-3 text-ink-soft">
+                  Writing, positioning and the editorial standard. The one who decides whether a sentence has
+                  earned its place before a client ever sees it.
+                </p>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <figure className="frame overflow-hidden">
+                  <img
+                    src={founderHuzaifa}
+                    alt="Huzaifa, co-founder of BOTHER"
+                    width={640}
+                    height={640}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-cover"
+                  />
+                </figure>
+                <h2 className="t-h3 mt-5">Huzaifa</h2>
+                <p className="t-label mt-1 text-ochre">Co-founder</p>
+                <p className="t-body mt-3 text-ink-soft">
+                  Surfaces and systems. Builds the site, wires the workflows, and asks the awkward question
+                  that turns a nice idea into something you can actually run.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        <section className="section on-plum">
+          <div className="wrap rail">
+            <p className="rail-label">What we hold to</p>
+            <div>
+              <h2 className="t-h2 max-w-[20ch]">Five values, written as behaviour.</h2>
+              <ul className="mt-12 divide-y divide-[var(--rule)] border-y border-rule">
+                {VALUES.map((v, i) => (
+                  <Reveal as="li" key={v.name} delay={i * 0.04} className="grid gap-3 py-7 md:grid-cols-[12rem_minmax(0,1fr)]">
+                    <span className="t-h3">{v.name}</span>
+                    <span className="t-body max-w-[55ch] text-ink-soft">{v.behaviour}</span>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="section on-ink">
+          <div className="wrap rail">
+            <p className="rail-label">Start</p>
+            <div>
+              <h2 className="t-h2 max-w-[20ch]">Tell us the part that feels stuck.</h2>
+              <p className="measure t-lead mt-6 text-ink-soft">
+                The diagnostic is a short conversation about what people misunderstand, where attention leaks,
+                and what work keeps repeating. You leave with a shortlist either way.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link to="/book-your-sprint" className="btn btn-signal">
+                  Find the friction <ArrowRight size={16} />
+                </Link>
+                <Link to="/contact" className="btn btn-quiet">
+                  Or send a note
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

@@ -275,3 +275,46 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Motion layer ---- */
+.hl { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-size: clamp(1.75rem, 4.2vw, 3.25rem); text-wrap: balance; }
+.hl-ochre { --hl-color: var(--ochre-ink); }
+.hl-plum { --hl-color: var(--plum); }
+.on-plum .hl-plum, .on-ink .hl-plum { --hl-color: #d8a866; }
+.hl-word { display: inline-block; will-change: opacity, color; }
+
+.cursor {
+  position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none;
+  translate: -50% -50%; border-radius: 999px; background: var(--ochre);
+  mix-blend-mode: multiply; display: grid; place-items: center;
+  font-family: "Space Grotesk", sans-serif; font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; color: #f4f0e8;
+}
+@media (pointer: fine) { body:has(.cursor) { cursor: none; } body:has(.cursor) a, body:has(.cursor) button { cursor: none; } }
+
+.portrait-block { perspective: 1200px; }
+.portrait { position: relative; overflow: hidden; background: var(--ink); transform-style: preserve-3d; }
+.portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; scale: 1.12; filter: grayscale(1) contrast(1.1); }
+.portrait-ink img { mix-blend-mode: luminosity; }
+.portrait-plum { background: var(--plum); }
+.portrait-plum img { mix-blend-mode: luminosity; opacity: 0.92; }
+.portrait::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--paper); mix-blend-mode: multiply; opacity: 0.35; }
+.portrait-bar { position: absolute; inset: 0 auto 0 0; width: 100%; z-index: 3; background: var(--ochre); }
+.grain { position: absolute; inset: -50%; z-index: 2; pointer-events: none; opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.6s steps(4) infinite; }
+@keyframes grain { 0% { transform: translate(0,0);} 25% { transform: translate(-4%,3%);} 50% { transform: translate(3%,-5%);} 75% { transform: translate(-2%,-2%);} 100% { transform: translate(0,0);} }
+
+.wipe { position: fixed; inset: 0; z-index: 9000; pointer-events: none; display: grid; place-items: center; }
+.wipe-ink { position: absolute; inset: 0; background: var(--ink); transform-origin: top; }
+.wipe-word { position: relative; color: #f4f0e8; font-size: clamp(2.5rem, 8vw, 7rem); font-weight: 700; letter-spacing: -0.03em; }
+
+.pin-seq { position: relative; }
+.pin-seq-inner { position: sticky; top: 4rem; }
+.work-card img { transition: transform 700ms var(--ease-out), object-position 700ms var(--ease-out); }
+.work-card:hover img { transform: scale(1.06); object-position: 60% 40%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .grain { animation: none; }
+  .cursor, .wipe { display: none !important; }
+}

@@ -110,9 +110,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              name: "LinqWrites",
+              name: "BOTHER",
+              alternateName: "LinqWrites",
               url: "https://linqwrites-growth-studio.lovable.app",
-              description: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation.",
+              email: "linqwrites@gmail.com",
+              description: "BOTHER is a clarity and systems studio: authority, customer-facing surfaces, and systems for work that keeps repeating.",
               sameAs: [
                 "https://www.instagram.com/linqwrites",
                 "https://youtube.com/@linqwrites",
@@ -121,7 +123,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "WebSite",
-              name: "LinqWrites",
+              name: "BOTHER",
               url: "https://linqwrites-growth-studio.lovable.app",
             },
           ],

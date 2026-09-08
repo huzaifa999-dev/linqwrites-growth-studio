@@ -71,23 +71,31 @@ export function Home() {
             <p className="rail-label">
               <b>00</b> / Clarity and systems studio
             </p>
-            <div>
-              <h1 className="t-display max-w-[16ch]">
-                <MaskedLine>Good work gets expensive</MaskedLine>
-                <MaskedLine delay={0.08}>when people cannot see it.</MaskedLine>
-              </h1>
-              <p className="measure t-lead mt-8 text-ink-soft">
-                BOTHER finds the signal, then helps it carry — through authority, customer-facing surfaces,
-                and systems that stop useful work from being repeated badly.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/book-your-sprint" className="btn btn-primary">
-                  Find the friction <ArrowRight size={16} />
-                </Link>
-                <Link to="/deep-dive" className="btn btn-quiet">
-                  See how we carry it
-                </Link>
+            <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+              <div>
+                <h1 className="t-display max-w-[16ch]">
+                  <MaskedLine>Good work gets expensive</MaskedLine>
+                  <MaskedLine delay={0.08}>when people cannot see it.</MaskedLine>
+                </h1>
+                <p className="measure t-lead mt-8 text-ink-soft">
+                  BOTHER finds the signal, then helps it carry — through authority, customer-facing surfaces,
+                  and systems that stop useful work from being repeated badly.
+                </p>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link to="/book-your-sprint" className="btn btn-primary">
+                    Find the friction <ArrowRight size={16} />
+                  </Link>
+                  <Link to="/deep-dive" className="btn btn-quiet">
+                    See how we carry it
+                  </Link>
+                </div>
               </div>
+              <VideoFrame
+                src={HERO_CLIP}
+                poster={heroPoster.url}
+                ratio="3 / 4"
+                caption="Working notes, not slogans"
+              />
             </div>
           </div>
         </section>

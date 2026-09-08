@@ -193,6 +193,13 @@ export function Home() {
               <Link to="/origin" className="btn btn-quiet mt-8">
                 Read the origin <ArrowRight size={16} />
               </Link>
+              </div>
+              <VideoFrame
+                src={PROCESS_CLIP}
+                poster={processPoster.url}
+                ratio="4 / 5"
+                caption="The diagnostic, in practice"
+              />
             </div>
           </div>
         </section>

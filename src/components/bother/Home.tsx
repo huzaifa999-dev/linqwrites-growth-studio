@@ -172,7 +172,8 @@ export function Home() {
             <p className="rail-label">
               <b>03</b> / Proof
             </p>
-            <div>
+            <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_16rem] md:items-start">
+              <div>
               <h2 className="t-h2 max-w-[20ch]">We bothered ourselves first.</h2>
               <div className="measure mt-8 space-y-5 text-ink-soft">
                 <p className="t-body">

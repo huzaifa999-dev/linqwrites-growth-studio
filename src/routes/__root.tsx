@@ -72,25 +72,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LinqWrites — Creative Growth Studio for Founders" },
-      { name: "description", content: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation." },
-      { name: "author", content: "LinqWrites" },
-      { property: "og:title", content: "LinqWrites — Creative Growth Studio for Founders" },
-      { property: "og:description", content: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation." },
-      { property: "og:site_name", content: "LinqWrites" },
+      { title: "BOTHER — Clarity and systems studio" },
+      { name: "description", content: "BOTHER finds the signal, then helps it carry: authority, customer-facing surfaces, and systems for work that keeps repeating." },
+      { name: "author", content: "BOTHER" },
+      { property: "og:title", content: "BOTHER — Clarity and systems studio" },
+      { property: "og:description", content: "BOTHER finds the signal, then helps it carry: authority, customer-facing surfaces, and systems for work that keeps repeating." },
+      { property: "og:site_name", content: "BOTHER" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "LinqWrites — Creative Growth Studio for Founders" },
-      { name: "twitter:description", content: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation." },
+      { name: "twitter:title", content: "BOTHER — Clarity and systems studio" },
+      { name: "twitter:description", content: "BOTHER finds the signal, then helps it carry: authority, customer-facing surfaces, and systems for work that keeps repeating." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/9ePIfmRIi6ZQKJJuoHboy7razfQ2/social-images/social-1779615136275-1000491063.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/9ePIfmRIi6ZQKJJuoHboy7razfQ2/social-images/social-1779615136275-1000491063.webp" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://api.fontshare.com" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap",
       },
       {
         rel: "stylesheet",
@@ -105,9 +110,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              name: "LinqWrites",
+              name: "BOTHER",
+              alternateName: "LinqWrites",
               url: "https://linqwrites-growth-studio.lovable.app",
-              description: "Creative growth studio helping founders build authority through ghostwriting, branding, content systems, design and AI automation.",
+              email: "linqwrites@gmail.com",
+              description: "BOTHER is a clarity and systems studio: authority, customer-facing surfaces, and systems for work that keeps repeating.",
               sameAs: [
                 "https://www.instagram.com/linqwrites",
                 "https://youtube.com/@linqwrites",
@@ -116,7 +123,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "WebSite",
-              name: "LinqWrites",
+              name: "BOTHER",
               url: "https://linqwrites-growth-studio.lovable.app",
             },
           ],

@@ -2,6 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
 import { Reveal, MaskedLine } from "./Reveal";
+import { VideoFrame, HERO_CLIP, PROCESS_CLIP } from "./VideoFrame";
+import heroPoster from "@/assets/hero-poster.jpg.asset.json";
+import processPoster from "@/assets/process-poster.jpg.asset.json";
 import founderHuzaifa from "@/assets/founder-huzaifa.png";
 import founderFaiz from "@/assets/founder-faiz.jpg";
 
@@ -68,23 +71,31 @@ export function Home() {
             <p className="rail-label">
               <b>00</b> / Clarity and systems studio
             </p>
-            <div>
-              <h1 className="t-display max-w-[16ch]">
-                <MaskedLine>Good work gets expensive</MaskedLine>
-                <MaskedLine delay={0.08}>when people cannot see it.</MaskedLine>
-              </h1>
-              <p className="measure t-lead mt-8 text-ink-soft">
-                BOTHER finds the signal, then helps it carry — through authority, customer-facing surfaces,
-                and systems that stop useful work from being repeated badly.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/book-your-sprint" className="btn btn-primary">
-                  Find the friction <ArrowRight size={16} />
-                </Link>
-                <Link to="/deep-dive" className="btn btn-quiet">
-                  See how we carry it
-                </Link>
+            <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+              <div>
+                <h1 className="t-display max-w-[16ch]">
+                  <MaskedLine>Good work gets expensive</MaskedLine>
+                  <MaskedLine delay={0.08}>when people cannot see it.</MaskedLine>
+                </h1>
+                <p className="measure t-lead mt-8 text-ink-soft">
+                  BOTHER finds the signal, then helps it carry — through authority, customer-facing surfaces,
+                  and systems that stop useful work from being repeated badly.
+                </p>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link to="/book-your-sprint" className="btn btn-primary">
+                    Find the friction <ArrowRight size={16} />
+                  </Link>
+                  <Link to="/deep-dive" className="btn btn-quiet">
+                    See how we carry it
+                  </Link>
+                </div>
               </div>
+              <VideoFrame
+                src={HERO_CLIP}
+                poster={heroPoster.url}
+                ratio="3 / 4"
+                caption="Working notes, not slogans"
+              />
             </div>
           </div>
         </section>
@@ -161,7 +172,8 @@ export function Home() {
             <p className="rail-label">
               <b>03</b> / Proof
             </p>
-            <div>
+            <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_16rem] md:items-start">
+              <div>
               <h2 className="t-h2 max-w-[20ch]">We bothered ourselves first.</h2>
               <div className="measure mt-8 space-y-5 text-ink-soft">
                 <p className="t-body">
@@ -181,6 +193,13 @@ export function Home() {
               <Link to="/origin" className="btn btn-quiet mt-8">
                 Read the origin <ArrowRight size={16} />
               </Link>
+              </div>
+              <VideoFrame
+                src={PROCESS_CLIP}
+                poster={processPoster.url}
+                ratio="4 / 5"
+                caption="The diagnostic, in practice"
+              />
             </div>
           </div>
         </section>

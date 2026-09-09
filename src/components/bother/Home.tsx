@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
-import { Reveal, MaskedLine } from "./Reveal";
+import { Reveal } from "./Reveal";
+import { ClipLine, Magnetic, ScrollHighlight } from "./Motion";
 import { VideoFrame, HERO_CLIP, PROCESS_CLIP } from "./VideoFrame";
 import heroPoster from "@/assets/hero-poster.jpg.asset.json";
 import processPoster from "@/assets/process-poster.jpg.asset.json";

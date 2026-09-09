@@ -106,13 +106,15 @@ export function Home() {
         </section>
 
         {/* Problems */}
-        <section className="section">
+        <section className="section pin-seq">
           <div className="wrap rail">
             <p className="rail-label">
               <b>01</b> / Where it breaks
             </p>
             <div>
-              <h2 className="t-h2 max-w-[20ch]">Three plain problems. One of them is yours right now.</h2>
+              <h2 className="t-h2 pin-seq-inner max-w-[20ch] bg-paper py-2">
+                Three plain problems. One of them is yours right now.
+              </h2>
               <ul className="mt-12 divide-y divide-[var(--rule)] border-y border-rule">
                 {PROBLEMS.map((p, i) => (
                   <Reveal as="li" key={p.n} delay={i * 0.05}>
@@ -134,6 +136,20 @@ export function Home() {
                 ))}
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* Statement */}
+        <section className="section">
+          <div className="wrap rail">
+            <p className="rail-label">
+              <b>01b</b> / The point
+            </p>
+            <ScrollHighlight
+              className="t-h2 max-w-[22ch]"
+              tone="ochre"
+              text="We make the important thing easier to see, easier to say, and easier to run."
+            />
           </div>
         </section>
 

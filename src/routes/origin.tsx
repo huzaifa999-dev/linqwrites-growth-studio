@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/bother/SiteChrome";
 import { Reveal, MaskedLine } from "@/components/bother/Reveal";
+import { Portrait, ScrollHighlight, Magnetic } from "@/components/bother/Motion";
 import founderHuzaifa from "@/assets/founder-huzaifa.png";
 import founderFaiz from "@/assets/founder-faiz.jpg";
 
@@ -84,6 +85,17 @@ function AboutPage() {
 
         <section className="section">
           <div className="wrap rail">
+            <p className="rail-label">The method</p>
+            <ScrollHighlight
+              className="t-h2 max-w-[24ch]"
+              tone="plum"
+              text="The interruption was never rude. It was the question that made the vague thing specific."
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="wrap rail">
             <p className="rail-label">The story</p>
             <div className="measure space-y-6 text-ink-soft">
               <p className="t-body">
@@ -114,43 +126,28 @@ function AboutPage() {
         <section className="section">
           <div className="wrap rail">
             <p className="rail-label">The two of us</p>
-            <div className="grid gap-8 sm:grid-cols-2">
-              <Reveal>
-                <figure className="frame overflow-hidden">
-                  <img
-                    src={founderFaiz}
-                    alt="Faiz, co-founder of BOTHER"
-                    width={640}
-                    height={640}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                </figure>
-                <h2 className="t-h3 mt-5">Faiz</h2>
-                <p className="t-label mt-1 text-ochre">Co-founder</p>
-                <p className="t-body mt-3 text-ink-soft">
-                  Writing, positioning and the editorial standard. The one who decides whether a sentence has
-                  earned its place before a client ever sees it.
-                </p>
-              </Reveal>
-              <Reveal delay={0.06}>
-                <figure className="frame overflow-hidden">
-                  <img
-                    src={founderHuzaifa}
-                    alt="Huzaifa, co-founder of BOTHER"
-                    width={640}
-                    height={640}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                </figure>
-                <h2 className="t-h3 mt-5">Huzaifa</h2>
-                <p className="t-label mt-1 text-ochre">Co-founder</p>
-                <p className="t-body mt-3 text-ink-soft">
-                  Surfaces and systems. Builds the site, wires the workflows, and asks the awkward question
-                  that turns a nice idea into something you can actually run.
-                </p>
-              </Reveal>
+            <div className="grid gap-16 sm:grid-cols-2">
+              <Portrait
+                src={founderFaiz}
+                alt="Faiz, co-founder of BOTHER"
+                name="Faiz"
+                role="Co-founder"
+                tone="ink"
+              >
+                Writing, positioning and the editorial standard. The one who decides whether a sentence has
+                earned its place before a client ever sees it.
+              </Portrait>
+              <Portrait
+                src={founderHuzaifa}
+                alt="Huzaifa, co-founder of BOTHER"
+                name="Huzaifa"
+                role="Co-founder"
+                tone="plum"
+                delay={0.12}
+              >
+                Surfaces and systems. Builds the site, wires the workflows, and asks the awkward question
+                that turns a nice idea into something you can actually run.
+              </Portrait>
             </div>
           </div>
         </section>
@@ -181,13 +178,17 @@ function AboutPage() {
                 The diagnostic is a short conversation about what people misunderstand, where attention leaks,
                 and what work keeps repeating. You leave with a shortlist either way.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/book-your-sprint" className="btn btn-signal">
-                  Find the friction <ArrowRight size={16} />
-                </Link>
-                <Link to="/contact" className="btn btn-quiet">
-                  Or send a note
-                </Link>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Magnetic>
+                  <Link to="/book-your-sprint" className="btn btn-signal" data-cursor="start">
+                    Find the friction <ArrowRight size={16} />
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link to="/contact" className="btn btn-quiet">
+                    Or send a note
+                  </Link>
+                </Magnetic>
               </div>
             </div>
           </div>

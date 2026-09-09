@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
-import { Reveal, MaskedLine } from "./Reveal";
+import { Reveal } from "./Reveal";
+import { ClipLine, Magnetic, ScrollHighlight } from "./Motion";
 import { VideoFrame, HERO_CLIP, PROCESS_CLIP } from "./VideoFrame";
 import heroPoster from "@/assets/hero-poster.jpg.asset.json";
 import processPoster from "@/assets/process-poster.jpg.asset.json";
@@ -74,20 +75,24 @@ export function Home() {
             <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
               <div>
                 <h1 className="t-display max-w-[16ch]">
-                  <MaskedLine>Good work gets expensive</MaskedLine>
-                  <MaskedLine delay={0.08}>when people cannot see it.</MaskedLine>
+                  <ClipLine>Good work gets expensive</ClipLine>
+                  <ClipLine delay={0.14}>when people cannot see it.</ClipLine>
                 </h1>
                 <p className="measure t-lead mt-8 text-ink-soft">
                   BOTHER finds the signal, then helps it carry — through authority, customer-facing surfaces,
                   and systems that stop useful work from being repeated badly.
                 </p>
-                <div className="mt-10 flex flex-wrap gap-4">
-                  <Link to="/book-your-sprint" className="btn btn-primary">
-                    Find the friction <ArrowRight size={16} />
-                  </Link>
-                  <Link to="/deep-dive" className="btn btn-quiet">
-                    See how we carry it
-                  </Link>
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                  <Magnetic>
+                    <Link to="/book-your-sprint" className="btn btn-primary" data-cursor="start">
+                      Find the friction <ArrowRight size={16} />
+                    </Link>
+                  </Magnetic>
+                  <Magnetic>
+                    <Link to="/deep-dive" className="btn btn-quiet">
+                      See how we carry it
+                    </Link>
+                  </Magnetic>
                 </div>
               </div>
               <VideoFrame
@@ -101,13 +106,15 @@ export function Home() {
         </section>
 
         {/* Problems */}
-        <section className="section">
+        <section className="section pin-seq">
           <div className="wrap rail">
             <p className="rail-label">
               <b>01</b> / Where it breaks
             </p>
             <div>
-              <h2 className="t-h2 max-w-[20ch]">Three plain problems. One of them is yours right now.</h2>
+              <h2 className="t-h2 pin-seq-inner max-w-[20ch] bg-paper py-2">
+                Three plain problems. One of them is yours right now.
+              </h2>
               <ul className="mt-12 divide-y divide-[var(--rule)] border-y border-rule">
                 {PROBLEMS.map((p, i) => (
                   <Reveal as="li" key={p.n} delay={i * 0.05}>
@@ -129,6 +136,20 @@ export function Home() {
                 ))}
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* Statement */}
+        <section className="section">
+          <div className="wrap rail">
+            <p className="rail-label">
+              <b>01b</b> / The point
+            </p>
+            <ScrollHighlight
+              className="t-h2 max-w-[22ch]"
+              tone="ochre"
+              text="We make the important thing easier to see, easier to say, and easier to run."
+            />
           </div>
         </section>
 
@@ -285,13 +306,17 @@ export function Home() {
                 misunderstand, where attention leaks, and what work keeps repeating. You leave with the
                 shortlist either way.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/book-your-sprint" className="btn btn-signal">
-                  Find the friction <ArrowRight size={16} />
-                </Link>
-                <Link to="/contact" className="btn btn-quiet">
-                  Or send a note
-                </Link>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Magnetic>
+                  <Link to="/book-your-sprint" className="btn btn-signal" data-cursor="start">
+                    Find the friction <ArrowRight size={16} />
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link to="/contact" className="btn btn-quiet">
+                    Or send a note
+                  </Link>
+                </Magnetic>
               </div>
             </div>
           </div>

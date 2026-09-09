@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Cursor, PageWipe } from "@/components/bother/Motion";
 
 function NotFoundComponent() {
   return (
@@ -156,6 +157,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Cursor />
+      <PageWipe />
       <Outlet />
     </QueryClientProvider>
   );

@@ -306,13 +306,17 @@ export function Home() {
                 misunderstand, where attention leaks, and what work keeps repeating. You leave with the
                 shortlist either way.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/book-your-sprint" className="btn btn-signal">
-                  Find the friction <ArrowRight size={16} />
-                </Link>
-                <Link to="/contact" className="btn btn-quiet">
-                  Or send a note
-                </Link>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Magnetic>
+                  <Link to="/book-your-sprint" className="btn btn-signal" data-cursor="start">
+                    Find the friction <ArrowRight size={16} />
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link to="/contact" className="btn btn-quiet">
+                    Or send a note
+                  </Link>
+                </Magnetic>
               </div>
             </div>
           </div>

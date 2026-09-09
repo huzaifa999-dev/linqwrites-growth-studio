@@ -85,6 +85,17 @@ function AboutPage() {
 
         <section className="section">
           <div className="wrap rail">
+            <p className="rail-label">The method</p>
+            <ScrollHighlight
+              className="t-h2 max-w-[24ch]"
+              tone="plum"
+              text="The interruption was never rude. It was the question that made the vague thing specific."
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="wrap rail">
             <p className="rail-label">The story</p>
             <div className="measure space-y-6 text-ink-soft">
               <p className="t-body">
@@ -167,13 +178,17 @@ function AboutPage() {
                 The diagnostic is a short conversation about what people misunderstand, where attention leaks,
                 and what work keeps repeating. You leave with a shortlist either way.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/book-your-sprint" className="btn btn-signal">
-                  Find the friction <ArrowRight size={16} />
-                </Link>
-                <Link to="/contact" className="btn btn-quiet">
-                  Or send a note
-                </Link>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Magnetic>
+                  <Link to="/book-your-sprint" className="btn btn-signal" data-cursor="start">
+                    Find the friction <ArrowRight size={16} />
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link to="/contact" className="btn btn-quiet">
+                    Or send a note
+                  </Link>
+                </Magnetic>
               </div>
             </div>
           </div>

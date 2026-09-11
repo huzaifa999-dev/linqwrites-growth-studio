@@ -88,7 +88,7 @@ function AboutPage() {
             <p className="rail-label">The method</p>
             <ScrollHighlight
               className="t-h2 max-w-[24ch]"
-              tone="plum"
+              tone="teal"
               text="The interruption was never rude. It was the question that made the vague thing specific."
             />
           </div>
@@ -142,7 +142,7 @@ function AboutPage() {
                 alt="Huzaifa, co-founder of BOTHER"
                 name="Huzaifa"
                 role="Co-founder"
-                tone="plum"
+                tone="teal"
                 delay={0.12}
               >
                 Surfaces and systems. Builds the site, wires the workflows, and asks the awkward question
@@ -152,7 +152,7 @@ function AboutPage() {
           </div>
         </section>
 
-        <section className="section on-plum">
+        <section className="section on-teal">
           <div className="wrap rail">
             <p className="rail-label">What we hold to</p>
             <div>

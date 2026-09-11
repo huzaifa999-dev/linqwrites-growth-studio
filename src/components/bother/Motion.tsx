@@ -5,11 +5,11 @@ import { useRouterState } from "@tanstack/react-router";
 /* ---------- 5. Scroll text highlight (native) ---------- */
 export function ScrollHighlight({
   text,
-  tone = "ochre",
+  tone = "amber",
   className = "",
 }: {
   text: string;
-  tone?: "ochre" | "plum";
+  tone?: "amber" | "teal";
   className?: string;
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -149,7 +149,7 @@ export function Portrait({
   name: string;
   role: string;
   children: ReactNode;
-  tone?: "ink" | "plum";
+  tone?: "ink" | "teal";
   delay?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -186,7 +186,7 @@ export function Portrait({
       </motion.figure>
       <motion.div style={{ y: capY }} className="mt-6">
         <h2 className="font-display text-[clamp(2.5rem,7vw,5rem)] font-bold leading-none">{name}</h2>
-        <p className="t-label mt-2 text-ochre">{role}</p>
+        <p className="t-label mt-2 text-amber">{role}</p>
         <p className="t-body mt-4 max-w-[40ch] text-ink-soft">{children}</p>
       </motion.div>
     </div>

@@ -318,7 +318,7 @@
   color: #f7f4eb;
   border-color: rgba(247, 244, 235, 0.4);
 }
-.menu-primary { display: flex; flex-direction: column; gap: 0.25rem; margin-top: auto; }
+.menu-primary { display: flex; flex-direction: column; gap: 0.25rem; margin-block: auto; }
 .menu-link {
   position: relative;
   font-family: "Space Grotesk", sans-serif;

@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Plus, Minus } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
 import { Reveal, MaskedLine } from "./Reveal";
+import { RouteLine, InterruptedLine } from "./VisualDevices";
 
 export interface Tier {
   name: string;
@@ -16,6 +17,7 @@ export interface Tier {
 }
 
 export interface ServicePageProps {
+  showBriefMark?: boolean;
   index: string;
   label: string;
   lead: string;
@@ -49,6 +51,7 @@ export function ServicePage(p: ServicePageProps) {
                   </p>
                 ))}
               </div>
+              {p.showBriefMark && <InterruptedLine className="mt-8" />}
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link to="/book-your-sprint" className="btn btn-primary">
                   {p.cta.label} <ArrowRight size={16} />
@@ -87,7 +90,7 @@ export function ServicePage(p: ServicePageProps) {
           </div>
         </section>
 
-        <section className="section on-plum">
+        <section className="section on-teal">
           <div className="wrap rail">
             <p className="rail-label">Next</p>
             <div className="grid gap-6 sm:grid-cols-2">
@@ -120,10 +123,10 @@ function PricingCard({ tier, delay }: { tier: Tier; delay: number }) {
   return (
     <Reveal delay={delay} className="flex">
       <div
-        className={`card flex w-full flex-col ${tier.highlight ? "border-[var(--ochre-ink)]" : ""}`}
+        className={`card flex w-full flex-col ${tier.highlight ? "border-[var(--amber-ink)]" : ""}`}
       >
         {tier.highlight && (
-          <span className="t-label mb-4 self-start rounded-full border border-[var(--ochre-ink)] px-3 py-1 text-ochre">
+          <span className="t-label mb-4 self-start rounded-full border border-[var(--amber-ink)] px-3 py-1 text-amber">
             {tier.highlight}
           </span>
         )}
@@ -143,7 +146,7 @@ function PricingCard({ tier, delay }: { tier: Tier; delay: number }) {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="t-label mt-6 inline-flex items-center gap-2 self-start text-ochre"
+          className="t-label mt-6 inline-flex items-center gap-2 self-start text-amber"
         >
           {open ? <Minus size={14} /> : <Plus size={14} />} The logic
         </button>
@@ -163,7 +166,8 @@ function PricingCard({ tier, delay }: { tier: Tier; delay: number }) {
           )}
         </AnimatePresence>
 
-        <Link to="/book-your-sprint" className="btn btn-quiet mt-8 self-start">
+        <RouteLine className="mt-8" />
+        <Link to="/book-your-sprint" className="btn btn-quiet mt-3 self-start">
           Start here <ArrowRight size={16} />
         </Link>
       </div>

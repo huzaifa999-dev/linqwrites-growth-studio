@@ -1,3 +1,4 @@
+import { PairedRails } from "./VisualDevices";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
@@ -127,7 +128,7 @@ export function Home() {
                         <span className="t-h3 block">{p.title}</span>
                         <span className="t-body mt-3 block max-w-[55ch] text-ink-soft">{p.body}</span>
                       </span>
-                      <span className="t-label flex items-start gap-2 text-ochre md:justify-end">
+                      <span className="t-label flex items-start gap-2 text-amber md:justify-end">
                         {p.path}
                         <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
@@ -139,6 +140,10 @@ export function Home() {
           </div>
         </section>
 
+        <div className="wrap flex justify-center py-2">
+          <PairedRails />
+        </div>
+
         {/* Statement */}
         <section className="section">
           <div className="wrap rail">
@@ -147,21 +152,21 @@ export function Home() {
             </p>
             <ScrollHighlight
               className="t-h2 max-w-[22ch]"
-              tone="ochre"
+              tone="amber"
               text="We make the important thing easier to see, easier to say, and easier to run."
             />
           </div>
         </section>
 
         {/* Paths */}
-        <section className="section on-plum">
+        <section className="section on-teal">
           <div className="wrap rail">
             <p className="rail-label">
               <b>02</b> / The three jobs
             </p>
             <div className="space-y-px bg-[var(--rule)]">
               {PATHS.map((p, i) => (
-                <Reveal key={p.name} delay={i * 0.05} className="bg-plum">
+                <Reveal key={p.name} delay={i * 0.05} className="bg-teal">
                   <Link
                     to={p.to}
                     className={`group grid items-end gap-6 py-10 md:grid-cols-12 ${
@@ -173,7 +178,7 @@ export function Home() {
                       <h3 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-none">
                         {p.name}
                       </h3>
-                      <p className="t-label mt-3 text-ochre">{p.line}</p>
+                      <p className="t-label mt-3 text-amber">{p.line}</p>
                     </div>
                     <p className="t-body max-w-[50ch] text-ink-soft md:col-span-6">{p.forWhen}</p>
                     <p className="t-label flex items-center gap-2 md:col-span-1 md:justify-end">
@@ -238,7 +243,7 @@ export function Home() {
                     <h2 className="t-h3">{p.name}</h2>
                     <p className="font-display mt-3 text-[2rem] font-bold leading-none">{p.from}</p>
                     <p className="t-body mt-4 text-ink-soft">{p.line}</p>
-                    <span className="t-label mt-6 flex items-center gap-2 text-ochre">
+                    <span className="t-label mt-6 flex items-center gap-2 text-amber">
                       See the tiers <ArrowRight size={14} />
                     </span>
                   </Link>

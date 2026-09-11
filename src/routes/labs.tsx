@@ -49,6 +49,7 @@ export const Route = createFileRoute("/labs")({
 function SystemsPage() {
   return (
     <ServicePage
+      showBriefMark
       index="03"
       label="Systems"
       lead="Stop paying twice for the same work."

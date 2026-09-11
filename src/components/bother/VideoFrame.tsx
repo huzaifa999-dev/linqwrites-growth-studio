@@ -9,7 +9,7 @@ export interface VideoFrameProps {
 }
 
 /**
- * Treated footage frame. Raw stock is desaturated and washed with plum/ink so it
+ * Treated footage frame. Raw stock is desaturated and washed with teal/ink so it
  * reads as BOTHER material rather than pasted-in office video.
  */
 export function VideoFrame({ src, poster, caption, className = "", ratio = "4 / 3" }: VideoFrameProps) {
@@ -55,14 +55,14 @@ export function VideoFrame({ src, poster, caption, className = "", ratio = "4 / 
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0"
-          style={{ background: "var(--plum)", mixBlendMode: "multiply", opacity: 0.35 }}
+          style={{ background: "var(--teal-deep)", mixBlendMode: "multiply", opacity: 0.35 }}
         />
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(23,19,29,0.18) 0%, rgba(23,19,29,0) 45%, rgba(23,19,29,0.28) 100%)",
+              "linear-gradient(180deg, rgba(20,24,22,0.18) 0%, rgba(20,24,22,0) 45%, rgba(20,24,22,0.28) 100%)",
           }}
         />
       </div>

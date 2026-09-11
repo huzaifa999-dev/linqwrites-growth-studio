@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Plus, Minus } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";
 import { Reveal, MaskedLine } from "./Reveal";
+import { RouteLine, InterruptedLine } from "./VisualDevices";
 
 export interface Tier {
   name: string;

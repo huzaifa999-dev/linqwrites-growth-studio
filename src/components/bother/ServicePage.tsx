@@ -51,6 +51,7 @@ export function ServicePage(p: ServicePageProps) {
                   </p>
                 ))}
               </div>
+              {p.showBriefMark && <InterruptedLine className="mt-8" />}
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link to="/book-your-sprint" className="btn btn-primary">
                   {p.cta.label} <ArrowRight size={16} />

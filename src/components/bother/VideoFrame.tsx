@@ -62,7 +62,7 @@ export function VideoFrame({ src, poster, caption, className = "", ratio = "4 / 
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(23,19,29,0.18) 0%, rgba(23,19,29,0) 45%, rgba(23,19,29,0.28) 100%)",
+              "linear-gradient(180deg, rgba(20,24,22,0.18) 0%, rgba(20,24,22,0) 45%, rgba(20,24,22,0.28) 100%)",
           }}
         />
       </div>

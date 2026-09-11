@@ -17,6 +17,7 @@ export interface Tier {
 }
 
 export interface ServicePageProps {
+  showBriefMark?: boolean;
   index: string;
   label: string;
   lead: string;

@@ -166,7 +166,8 @@ function PricingCard({ tier, delay }: { tier: Tier; delay: number }) {
           )}
         </AnimatePresence>
 
-        <Link to="/book-your-sprint" className="btn btn-quiet mt-8 self-start">
+        <RouteLine className="mt-8" />
+        <Link to="/book-your-sprint" className="btn btn-quiet mt-3 self-start">
           Start here <ArrowRight size={16} />
         </Link>
       </div>

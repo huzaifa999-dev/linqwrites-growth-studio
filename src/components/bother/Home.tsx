@@ -1,3 +1,4 @@
+import { PairedRails } from "./VisualDevices";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "./SiteChrome";

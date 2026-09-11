@@ -139,6 +139,10 @@ export function Home() {
           </div>
         </section>
 
+        <div className="wrap flex justify-center py-2">
+          <PairedRails />
+        </div>
+
         {/* Statement */}
         <section className="section">
           <div className="wrap rail">
